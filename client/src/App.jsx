@@ -33,6 +33,7 @@ class App extends React.Component {
           <span>Logo</span>
           <span>Search</span>
         </nav>
+        <div className="whitespace_bottom"></div>
         <div>
           <Container />
         </div>
