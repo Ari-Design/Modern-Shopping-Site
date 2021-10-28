@@ -1,9 +1,9 @@
 import React from 'react';
 import products from '../../sampleData/products/productList.js';
 import productInfo from '../../sampleData/products/productInfo.js';
-import productStyles from '../../sampleData/products/productStyles.js';
-import reviewSample from '../...sampleData/reviews/reviewSample.js';
-import reviewMeta from '../...sampleData/reviews/reviewMeta.js';
+import productStyles from '../../sampleData/products/productStyle.js';
+import reviewSample from '../..sampleData/reviews/reviewSample.js';
+import reviewMeta from '../..sampleData/reviews/reviewMeta.js';
 import qaSample from '../../sampleData/qaSample.js';
 
 class App extends React.Component {
