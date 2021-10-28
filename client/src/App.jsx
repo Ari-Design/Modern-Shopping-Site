@@ -7,8 +7,10 @@ import reviewSample from '../../sampleData/reviews/reviewSample.js';
 import reviewMeta from '../../sampleData/reviews/reviewsMeta.js';
 import qaSample from '../../sampleData/qaSample.js';
 
+
 import Container from './overview/Container.jsx';
 import QAContainer from './qa/QAContainer.jsx'
+import ReviewsList from './Reviews/ReviewsList.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -42,6 +44,7 @@ class App extends React.Component {
         </div>
         <div>
           Ratings and Reviews Component
+          <ReviewsList currentProductId={this.state.currentProductId} reviewData={this.state.reviewData} reviewMeta={this.state.reviewMeta}/>
         </div>
       </div>
     )
