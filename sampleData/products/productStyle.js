@@ -1,4 +1,4 @@
-var productStyles = {
+var productStyle = {
   "product_id": "37311",
   "results": [
       {
@@ -358,4 +358,4 @@ var productStyles = {
   ]
 }
 
-export default productStyles;
+export default productStyle;
