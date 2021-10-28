@@ -6,6 +6,8 @@ import reviewSample from '../../sampleData/reviews/reviewSample.js';
 import reviewMeta from '../../sampleData/reviews/reviewsMeta.js';
 import qaSample from '../../sampleData/qaSample.js';
 
+import Container from './overview/Container.jsx';
+
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -28,7 +30,7 @@ class App extends React.Component {
           <span>Search</span>
         </nav>
         <div>
-          Overview Component
+          <Container />
         </div>
         <div>
           Q/A Component
