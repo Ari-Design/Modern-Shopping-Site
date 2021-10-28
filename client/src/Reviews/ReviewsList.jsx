@@ -12,23 +12,37 @@ class ReviewsList extends React.Component{
       reviewsToDisplay: [this.props.reviewData.results[0], this.props.reviewData.results[1]],
       metaReviews: this.props.reviewMeta
     }
+    this.handleClick = this.handleClick.bind(this);
   }
 
   // Where should metaReviews caclulations sit?
-
+  handleClick(e) {
+    if(e.target.id === "MoreReviews") {
+      var currentDisplayLength = this.state.reviewsToDisplay.length;
+      currentDisplayLength += 2;
+      var newDisplay = this.state.allReviews.slice(0, currentDisplayLength);
+      this.setState({
+        reviewsToDisplay: newDisplay
+      });
+    } else if(e.target.id === "AddReview+") {
+      console.log('Add a review');
+    }
+  }
 
   render() {
     // Only render reviews if there are reviews:
     if(this.state.allReviews.length > 0) {
       return(
         <>
+        <div className="RatingsBreakdown">
         <RatingsBreakdown metaReviews={this.state.metaReviews}/>
+        </div>
         <div>## Reviews, sorted by ##dropdown</div>
         {this.state.reviewsToDisplay.map((review) => {
           return <ReviewTile key={review.review_id} review={review}/>
         })}
-        <div>Read More</div>
-        <div>Add Review</div>
+        <button id="MoreReviews" onClick={(e) => this.handleClick(e)}>More Reviews</button>
+        <button id="AddReview+" onClick={(e) => this.handleClick(e)}>Add A Review +</button>
         </>
       );
     }
