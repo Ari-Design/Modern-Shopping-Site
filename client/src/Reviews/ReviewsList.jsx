@@ -5,11 +5,11 @@ import RatingsBreakdown from './RatingsBreakdown.jsx';
 class ReviewsList extends React.Component{
   constructor(props) {
     super(props);
-    /* console.log('ReviewsList props > ', this.props);
-    console.log('metaReviews props > ', this.props.reviewMeta); */
+    console.log('ReviewsList props > ', this.props);
+    console.log('metaReviews props > ', this.props.reviewMeta);
     this.state = {
       allReviews: this.props.reviewData.results,
-      reviewsToDisplay: [this.props.reviewData.results[0], this.props.reviewData.results[1]],
+      reviewsToDisplay: this.props.reviewData.results.slice(0, 2),
       metaReviews: this.props.reviewMeta
     }
     this.handleClick = this.handleClick.bind(this);
@@ -18,9 +18,8 @@ class ReviewsList extends React.Component{
   // Where should metaReviews caclulations sit?
   handleClick(e) {
     if(e.target.id === "MoreReviews") {
-      var currentDisplayLength = this.state.reviewsToDisplay.length;
-      currentDisplayLength += 2;
-      var newDisplay = this.state.allReviews.slice(0, currentDisplayLength);
+      var displayLength = this.state.reviewsToDisplay.length + 2;
+      var newDisplay = this.state.allReviews.slice(0, displayLength);
       this.setState({
         reviewsToDisplay: newDisplay
       });
