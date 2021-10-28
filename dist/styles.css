@@ -1,0 +1,7 @@
+.overview_container {
+  background-color: orange;
+  height: 965px;
+  width: 1890px;
+  display: grid;
+  grid-template-columns: 17% 39% 27% 17%;
+}
