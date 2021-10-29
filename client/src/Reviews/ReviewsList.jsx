@@ -17,13 +17,14 @@ class ReviewsList extends React.Component{
 
   // Where should metaReviews caclulations sit?
   handleClick(e) {
-    if(e.target.id === "MoreReviews") {
+    console.log(e.target.id);
+    if(e.target.id === "More_Reviews") {
       var displayLength = this.state.reviewsToDisplay.length + 2;
       var newDisplay = this.state.allReviews.slice(0, displayLength);
       this.setState({
         reviewsToDisplay: newDisplay
       });
-    } else if(e.target.id === "AddReview+") {
+    } else if(e.target.id === "Add_Review+") {
       console.log('Add a review');
     }
   }
@@ -33,15 +34,18 @@ class ReviewsList extends React.Component{
     if(this.state.allReviews.length > 0) {
       return(
         <>
-        <div className="RatingsBreakdown">
+        <div className="ratings_container">
+        <div className="ratings_breakdown">
         <RatingsBreakdown metaReviews={this.state.metaReviews}/>
         </div>
-        <div>## Reviews, sorted by ##dropdown</div>
+        <div className="reviews_list">## Reviews, sorted by ##dropdown
         {this.state.reviewsToDisplay.map((review) => {
           return <ReviewTile key={review.review_id} review={review}/>
         })}
-        <button id="MoreReviews" onClick={(e) => this.handleClick(e)}>More Reviews</button>
-        <button id="AddReview+" onClick={(e) => this.handleClick(e)}>Add A Review +</button>
+        <button id="More_Reviews" onClick={(e) => this.handleClick(e)}>More Reviews</button>
+        <button id="Add_Review+" onClick={(e) => this.handleClick(e)}>Add A Review +</button>
+        </div>
+        </div>
         </>
       );
     }
