@@ -65,6 +65,8 @@
   grid-area: 2/2/2/4;
 }
 
+/* RATINGS CONTAINER */
+
 .ratings_container {
 
   width: 1890px;
@@ -80,6 +82,8 @@
 .ratings_breakdown { grid-area: ratings_breakdown; }
 
 .reviews_list { grid-area: reviews_list; }
+
+/* QA CONTAINER */
 
 .qa_container {
   border: black solid 3px;
@@ -106,4 +110,3 @@
 
 }
 
-/* END */
