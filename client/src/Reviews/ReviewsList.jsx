@@ -10,7 +10,8 @@ class ReviewsList extends React.Component{
     this.state = {
       allReviews: this.props.reviewData.results,
       reviewsToDisplay: this.props.reviewData.results.slice(0, 2),
-      metaReviews: this.props.reviewMeta
+      metaReviews: this.props.reviewMeta,
+      count: this.props.reviewData.count
     }
     this.handleClick = this.handleClick.bind(this);
   }
@@ -36,9 +37,9 @@ class ReviewsList extends React.Component{
         <>
         <div className="ratings_container">
         <div className="ratings_breakdown">
-        <RatingsBreakdown metaReviews={this.state.metaReviews}/>
+          <RatingsBreakdown metaReviews={this.state.metaReviews}/>
         </div>
-        <div className="reviews_list">## Reviews, sorted by ##dropdown
+        <div className="reviews_list">{this.state.count} Reviews, sorted by _dropdown_
         {this.state.reviewsToDisplay.map((review) => {
           return <ReviewTile key={review.review_id} review={review}/>
         })}
