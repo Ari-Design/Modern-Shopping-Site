@@ -29,23 +29,21 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <nav>
-          <span>Logo</span>
-          <span>Search</span>
-        </nav>
-        <div className="whitespace_bottom"></div>
-        <div>
-          <Container />
-        </div>
-        <div>
+        <header>
+          <nav>
+            <span>Logo</span>
+            <span>Search</span>
+          </nav>
+        </header>
+        <main>
+          <Container productInfo={this.state.productInfo} productStyles={this.state.productStyles} />
           <QAContainer
             data={this.state.qaData}
             id={this.state.currentProductId}
           />
-        </div>
-        <div>
           <ReviewsList currentProductId={this.state.currentProductId} reviewData={this.state.reviewData} reviewMeta={this.state.reviewMeta} />
-        </div>
+          <div className="whitespace_bottom"></div>
+        </main>
       </div>
     )
   }

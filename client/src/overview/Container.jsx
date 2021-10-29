@@ -1,8 +1,8 @@
 import React from 'react';
 import Gallery from './Gallery.jsx';
 
-const Container = () => {
-
+const Container = (props) => {
+  // console.log(props);
   return (
     <div className="overview_container" >
       <div className="whitespace_left"></div>
