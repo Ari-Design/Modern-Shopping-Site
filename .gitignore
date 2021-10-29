@@ -4,6 +4,7 @@ coverage/
 dist/*
 !dist/styles.css
 !dist/index.html
+!dist/assets
 node_modules/
 *.log
 
