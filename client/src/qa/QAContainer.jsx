@@ -1,4 +1,6 @@
 import React from 'react';
+import QuestionList from './QuestionList.jsx';
+import Search from './Search.jsx';
 
 class QAContainer extends React.Component {
   constructor(props) {
@@ -13,10 +15,12 @@ class QAContainer extends React.Component {
     return (
       <div>
         <div>
-          Search Questions
+          <Search />
         </div>
         <div>
-          Questions List
+          <QuestionList
+            data={this.state.qaData}
+          />
         </div>
         <div>
           <button>More Answered Questions</button>
