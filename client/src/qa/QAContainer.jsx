@@ -13,7 +13,7 @@ class QAContainer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="qa_container">
         <div>
           <Search />
         </div>
@@ -23,8 +23,8 @@ class QAContainer extends React.Component {
           />
         </div>
         <div>
-          <button>More Answered Questions</button>
-          <button>Add a Question</button>
+          <button className="question_button" id="MoreQuestions">MORE ANSWERED QUESTIONS</button>
+          <button className="question_button" id="AddQuesion">ADD A QUESTION +</button>
         </div>
       </div>
     )
