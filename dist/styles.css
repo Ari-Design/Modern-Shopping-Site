@@ -2,7 +2,7 @@
 /* OVERVIEW CONTAINER */
 
 .overview_container {
-  background-color: lightgray;
+  /* background-color: lightgray; */
   height: 865px;
   width: 1890px;
   position: relative;
@@ -37,7 +37,7 @@
 }
 
 .vertical_carousel {
-  height: 67%;
+  height: 70%;
   width: 8%;
   top: 4%;
   left: 4%;
@@ -48,9 +48,9 @@
 }
 
 .thumbnail {
-  border: 2px solid black;
+  border: 1px solid black;
   background-color: white;
-  height: 80%;
+  height: 75%;
   width: 100%;
   grid-area: auto;
 }
@@ -80,5 +80,30 @@
 .ratings_breakdown { grid-area: ratings_breakdown; }
 
 .reviews_list { grid-area: reviews_list; }
+
+.qa_container {
+  border: black solid 3px;
+  margin: 20px;
+  background-color: rgb(161, 222, 224);
+  padding: 20px;
+
+}
+
+#question_search {
+  width: 1000px;
+  height: 50px;
+  font-size: 18px;
+}
+
+.question_button {
+  height: 50px;
+  font-size: 18px;
+  border: black solid 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  margin: 10px;
+
+}
 
 /* END */

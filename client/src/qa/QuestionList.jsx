@@ -5,7 +5,7 @@ var QuestionList = ({data}) => (
   <div>
     <ul>
       {data.results.map((question) => (
-        <li class="question">
+        <li className="question">
           <Question
             question={question}
           />

@@ -45,7 +45,7 @@ class App extends React.Component {
         </div>
         <div>
           Ratings and Reviews Component
-          <ReviewsList currentProductId={this.state.currentProductId} reviewData={this.state.reviewData} reviewMeta={this.state.reviewMeta}/>
+          <ReviewsList currentProductId={this.state.currentProductId} reviewData={this.state.reviewData} reviewMeta={this.state.reviewMeta} />
         </div>
       </div>
     )
