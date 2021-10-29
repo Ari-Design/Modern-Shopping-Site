@@ -66,11 +66,11 @@
 }
 
 .ratings_container {
-  background-color: aquamarine;
+
   width: 1890px;
   position: relative;
   display: grid;
-  grid-template-columns: 0.7fr 1fr 2fr 0.7fr;
+  grid-template-columns: 0.5fr .5fr 2fr 0.5fr;
   grid-template-rows: 1fr;
   gap: 0px 0px;
   grid-template-areas:

@@ -37,9 +37,11 @@ class ReviewsList extends React.Component{
         <>
         <div className="ratings_container">
         <div className="ratings_breakdown">
+          <h3>Ratings & Reviews</h3>
           <RatingsBreakdown metaReviews={this.state.metaReviews}/>
         </div>
-        <div className="reviews_list">{this.state.count} Reviews, sorted by _dropdown_
+        <div className="reviews_list">
+          <h4>{this.state.count} Reviews, sorted by _dropdown_</h4>
         {this.state.reviewsToDisplay.map((review) => {
           return <ReviewTile key={review.review_id} review={review}/>
         })}
