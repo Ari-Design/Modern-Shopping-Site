@@ -42,10 +42,9 @@ class App extends React.Component {
             id={this.state.currentProductId}
           />
           <ReviewsList currentProductId={this.state.currentProductId} reviewData={this.state.reviewData} reviewMeta={this.state.reviewMeta} />
-          <div className="whitespace_bottom"></div>
         </main>
       </div>
-    )
+    );
   }
 }
 
