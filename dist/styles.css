@@ -103,6 +103,7 @@ header {
   grid-template-columns: 0.5fr .5fr 2fr 0.5fr;
   grid-template-rows: 1fr;
   gap: 0px 0px;
+  margin-bottom: 100px;
   grid-template-areas:
     ". ratings_breakdown reviews_list .";
 }
@@ -137,4 +138,3 @@ header {
   margin: 10px;
 
 }
-
