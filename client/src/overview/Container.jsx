@@ -1,17 +1,31 @@
 import React from 'react';
 import Gallery from './Gallery.jsx';
 
-const Container = (props) => {
-  // console.log(props);
-  return (
-    <div className="overview_container" >
-      <div className="whitespace_left"></div>
-      <div className="gallery_container"><Gallery /></div>
-      <div className="styles_container"></div>
-      <div className="productInfo_container"></div>
-      <div className="whitespace_right"></div>
-    </div>
-  );
+class Container extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      productInfo: this.props.productInfo,
+      productStyles: this.props.productStyles,
+      currentStyle: this.props.productStyles.results[0]
+    };
+  }
+  // productInfo={this.state.productInfo}
+  // productStyles={this.state.productStyles.results}
+  render() {
+
+    return (
+      <div className="overview_container" >
+        <div className="gallery_container">
+          <Gallery key={this.state.productStyles.product_id}
+            currentStyle={this.state.currentStyle}
+          />
+        </div>
+        <section className="styles_container"></section>
+        <section className="productInfo_container"></section>
+      </div>
+    );
+  }
 };
 
 export default Container;
