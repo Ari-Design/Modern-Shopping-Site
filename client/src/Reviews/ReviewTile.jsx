@@ -1,6 +1,5 @@
 import React from 'react';
 var ReviewTile = (props) => {
-  console.log('ReviewTile props > ', props.review);
   return (
     <>
     <div className="review_stars"><h4>*{props.review.rating} stars here*</h4></div>
