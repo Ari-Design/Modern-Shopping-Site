@@ -1,47 +1,27 @@
 import React from 'react';
 import down_arrow from '../../../dist/assets/images/down_arrow.png';
 
-const styles = {
-  arrowRight: {
-    width: 20,
-    margin: 'auto',
-    position: 'absolute',
-    top: '302.75px',
-    left: '94%'
-  },
-  fullscreen: {
-    width: 30,
-    margin: 'auto',
-    position: 'absolute',
-    top: '4.5%',
-    left: '93%'
-  },
-  arrowDown: {
-    width: 20,
-    right: '400px'
-  },
-  media: {
-    height: '100%',
-    width: '100%',
-    objectFit: 'scale-down',
-    // position: 'absolute',
-    // zIndex: '1',
+class Carousel extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentPhotos: [1, 2, 3],
+    };
   }
-};
+  render() {
 
-const Carousel = () => {
-
-
-  return (
-    <ul className="vertical_carousel">
-      <img className="thumbnail"></img>
-      <img className="thumbnail"></img>
-      <img className="thumbnail"></img>
-      <img className="thumbnail"></img>
-      <img className="thumbnail"></img>
-      <img style={styles.arrowDown} src={down_arrow}></img>
-    </ul>
-  );
+    return (
+      <ul className="vertical_carousel"> {
+        this.state.currentPhotos.map(({ thumbnail_url }, index) => {
+          if (index < 5) {
+            return <img key={`photo ${index - 1}`} className="thumbnail" src={thumbnail_url}></img>;
+          }
+        })
+      }
+        <img className="arrowDown" src={down_arrow}></img>
+      </ul>
+    );
+  }
 };
 
 export default Carousel;

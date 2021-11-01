@@ -12,6 +12,7 @@ header {
 /* OVERVIEW CONTAINER */
 
 .overview_container {
+  box-sizing: border-box;
   background: linear-gradient(#206D73, white);
   height: 865px;
   position: relative;
@@ -22,14 +23,17 @@ header {
 }
 
 .gallery_container {
+  box-sizing: border-box;
   background-color: white;
   position: relative;
   grid-area: 1/2/2/3;
 }
 
 .vertical_carousel {
+  box-sizing: border-box;
+  background-color: orange;
   height: 70%;
-  width: 8%;
+  width: 100px;
   top: 3%;
   left: -1%;
   position: absolute;
@@ -39,10 +43,12 @@ header {
 }
 
 .thumbnail {
+  box-sizing: border-box;
   border: 1px solid black;
   background-color: white;
-  height: 75%;
-  width: 100%;
+  object-fit: cover;
+  height: 63px;
+  width: 60px;
   grid-area: auto;
 }
 
@@ -56,19 +62,20 @@ header {
   top: 302.75px;
   left: 15%;
 }
-/*
 .arrowRight {
   left: 94%;
 }
 .fullscreen {
-  width: 30;
-  top: 4%;
+  width: 30px;
+  top: 4.5%;
   left: 93%;
 }
 .arrowDown {
-  top: 450px;
-  left: 6.85%;
-} */
+  width: 20px;
+  /* position: relative; */
+  left: 61%;
+  grid-row-end: -3;
+}
 
 .styles_container {
   background-color: orange;
