@@ -106,6 +106,10 @@ header {
 
 .reviews_list { grid-area: reviews_list; }
 
+.bars {
+  fill:aquamarine;
+}
+
 /* QA CONTAINER */
 
 .qa_container {

@@ -16,9 +16,7 @@ class ReviewsList extends React.Component{
     this.handleClick = this.handleClick.bind(this);
   }
 
-  // Where should metaReviews caclulations sit?
   handleClick(e) {
-    console.log(e.target.id);
     if(e.target.id === "More_Reviews") {
       var displayLength = this.state.reviewsToDisplay.length + 2;
       var newDisplay = this.state.allReviews.slice(0, displayLength);
@@ -42,15 +40,19 @@ class ReviewsList extends React.Component{
         </div>
         <div className="reviews_list">
           <h4>{this.state.count} reviews, sorted by _dropdown_</h4>
-        {this.state.reviewsToDisplay.map((review) => {
-          return <ReviewTile key={review.review_id} review={review}/>
-        })}
+        {this.state.reviewsToDisplay.map((review) => (
+          <ReviewTile key={review.review_id} review={review}/>
+        ))}
         <button id="More_Reviews" onClick={(e) => this.handleClick(e)}>More Reviews</button>
         <button id="Add_Review+" onClick={(e) => this.handleClick(e)}>Add A Review +</button>
         </div>
         </div>
         </>
       );
+    } else /*if there are no reviews, prominently display Add_Review+ button*/ {
+      return (
+        <div>Add_Review Button displays</div>
+      )
     }
   }
 }
