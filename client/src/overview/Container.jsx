@@ -5,11 +5,9 @@ const Container = (props) => {
   // console.log(props);
   return (
     <div className="overview_container" >
-      <div className="whitespace_left"></div>
       <div className="gallery_container"><Gallery /></div>
-      <div className="styles_container"></div>
-      <div className="productInfo_container"></div>
-      <div className="whitespace_right"></div>
+      <section className="styles_container"></section>
+      <section className="productInfo_container"></section>
     </div>
   );
 };
