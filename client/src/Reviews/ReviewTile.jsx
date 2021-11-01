@@ -7,8 +7,8 @@ var ReviewTile = (props) => {
     <div className="review_sumarry"><h4>{props.review.summary}</h4></div>
     <div className="review_body">{props.review.body}</div>
     <div className="footer">
-    Helpful? <a id="helpful_button" className="helpful_button"><u>Yes</u></a>
-    <a id="report_button" className="repot_button">   <u>Report</u></a>
+    Helpful? <a id="helpful_button" className="helpful_button"><u>Yes</u> ({props.review.helpfulness})  |  </a>
+    <a id="report_button" className="repot_button"><u>Report</u></a>
     </div>
     </>
   )
