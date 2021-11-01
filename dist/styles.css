@@ -31,10 +31,9 @@ header {
 
 .vertical_carousel {
   box-sizing: border-box;
-  background-color: orange;
   height: 70%;
   width: 100px;
-  top: 3%;
+  top: 15%;
   left: -1%;
   position: absolute;
   display: grid;
@@ -55,7 +54,8 @@ header {
 .arrowLeft,
 .arrowRight,
 .fullscreen,
-.arrowDown {
+.arrowDown,
+.arrowUp {
   width: 20px;
   margin: auto;
   position: absolute;
@@ -71,10 +71,12 @@ header {
   left: 93%;
 }
 .arrowDown {
-  width: 20px;
-  /* position: relative; */
   left: 61%;
-  grid-row-end: -3;
+  top: 100%;
+}
+.arrowUp {
+  left: 61%;
+  top: -10%;
 }
 
 .styles_container {
@@ -105,10 +107,6 @@ header {
 .ratings_breakdown { grid-area: ratings_breakdown; }
 
 .reviews_list { grid-area: reviews_list; }
-
-.bars {
-  fill:aquamarine;
-}
 
 /* QA CONTAINER */
 
