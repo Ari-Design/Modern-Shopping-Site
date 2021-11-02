@@ -1,5 +1,6 @@
 import React from 'react';
 import Gallery from './Gallery.jsx';
+import Styles from './Styles.jsx';
 
 class Container extends React.Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class Container extends React.Component {
             currentStyle={this.state.currentStyle}
           />
         </div>
-        <section className="styles_container"></section>
+        <section className="styles_container" ></section>
         <section className="productInfo_container"></section>
       </div>
     );
