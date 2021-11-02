@@ -9,7 +9,7 @@ var Question = ({question}) => (
         {question.question_body}
       </span>
       <span className="question_helpfulness">
-        Helpful <a>Yes</a> {question.question_helpfulness}&nbsp&nbsp |&nbsp&nbsp <a>Add Answer</a>
+        Helpful <a>Yes</a> {question.question_helpfulness} <a>Add Answer</a>
       </span>
     </div>
     <div>
