@@ -1,5 +1,6 @@
 import React from 'react';
 import AnswerList from './AnswerList.jsx';
+var count = 0;
 
 var Question = ({question}) => (
   <div className="qa_component">
@@ -13,9 +14,10 @@ var Question = ({question}) => (
       </span>
     </div>
     <div>
-      <AnswerList
+      <AnswerList key={count}
       answers={question.answers}
       />
+      {count = count + 1}
     </div>
   </div>
 

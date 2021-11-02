@@ -22,7 +22,7 @@ class Container extends React.Component {
             currentStyle={this.state.currentStyle}
           />
         </div>
-        <section className="styles_container" ></section>
+        <section className="styles_container" ><Styles/></section>
         <section className="productInfo_container"></section>
       </div>
     );
