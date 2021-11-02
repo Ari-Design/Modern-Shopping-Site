@@ -13,18 +13,21 @@ class QAContainer extends React.Component {
 
   render() {
     return (
-      <div className="qa_container">
-        <div>
-          <Search />
-        </div>
-        <div>
-          <QuestionList
-            data={this.state.qaData}
-          />
-        </div>
-        <div>
-          <button className="question_button" id="MoreQuestions">MORE ANSWERED QUESTIONS</button>
-          <button className="question_button" id="AddQuesion">ADD A QUESTION +</button>
+      <div className="qa_outer_container">
+        <div className="qa_inner_container">
+          <h4>QUESTIONS AND ANSWERS</h4>
+          <div>
+            <Search />
+          </div>
+          <div>
+            <QuestionList
+              data={this.state.qaData}
+            />
+          </div>
+          <div>
+            <button className="question_button" id="MoreQuestions">MORE ANSWERED QUESTIONS</button>
+            <button className="question_button" id="AddQuesion">ADD A QUESTION +</button>
+          </div>
         </div>
       </div>
     )

@@ -3,15 +3,13 @@ import Question from './Question.jsx';
 
 var QuestionList = ({data}) => (
   <div>
-    <ul>
       {data.results.map((question) => (
-        <li className="question">
+        <div>
           <Question
             question={question}
           />
-        </li>
+        </div>
       ))}
-    </ul>
   </div>
 )
 
