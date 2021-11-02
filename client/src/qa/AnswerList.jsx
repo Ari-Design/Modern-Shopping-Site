@@ -7,6 +7,7 @@ var AnswerList = ({answers}) => (
     {Object.keys(answers).map((key) => (
       <div>
         <Answer
+          key={`${key}`}
           answer={answers[key]}
         />
       </div>

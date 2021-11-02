@@ -6,6 +6,7 @@ var QuestionList = ({data}) => (
       {data.results.map((question) => (
         <div>
           <Question
+            key={`${question.question_id}`}
             question={question}
           />
         </div>
