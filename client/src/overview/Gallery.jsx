@@ -18,13 +18,18 @@ class Gallery extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPhotos: [],
+      carouselPhotos: [],
+      currentImg: { url: '' },
       downShow: true, //change this
-      page: 0,
       upShow: false,
+      page: 0,
+      imgIndex: '',
+
     };
-    this.getNext = this.getNext.bind(this);
-    this.getLast = this.getLast.bind(this);
+    this.getNextPage = this.getNextPage.bind(this);
+    this.getLastPage = this.getLastPage.bind(this);
+    this.getNextImg = this.getNextImg.bind(this);
+    this.getLastImg = this.getLastImg.bind(this);
   }
   componentDidMount() {
     var index = 0;
@@ -38,43 +43,72 @@ class Gallery extends React.Component {
     }
 
     this.setState({
-      currentPhotos: tempArray[0],
+      carouselPhotos: tempArray[0],
+      currentImg: tempArray[0][0],
       pages: tempArray,
       downShow: tempArray.length > 1 ? true : false,
+      imgIndex: 0,
     });
   }
 
-  getNext() {
+  getNextPage() {
     this.setState({
-      currentPhotos: this.state.pages[this.state.page + 1],
+      carouselPhotos: this.state.pages[this.state.page + 1],
       downShow: this.state.pages[this.state.page + 2] ? true : false,
       upShow: true,
       page: this.state.page = this.state.page + 1,
     });
   }
-  getLast() {
+  getLastPage() {
     this.setState({
-      currentPhotos: this.state.pages[this.state.page - 1],
+      carouselPhotos: this.state.pages[this.state.page - 1],
       downShow: true,
       upShow: this.state.pages[this.state.page - 2] ? true : false,
       page: this.state.page = this.state.page - 1,
     });
   }
 
+  getNextImg() {
+    if (this.state.imgIndex < 4) {
+      this.setState({
+        currentImg: this.state.carouselPhotos[this.state.imgIndex + 1],
+        imgIndex: this.state.imgIndex = this.state.imgIndex + 1,
+      });
+    }
+  }
+
+  getLastImg() {
+    if (this.state.imgIndex > 0) {
+      this.setState({
+        currentImg: this.state.carouselPhotos[this.state.imgIndex - 1],
+        imgIndex: this.state.imgIndex = this.state.imgIndex - 1,
+      });
+    }
+  }
+
   render() {
     return (
-      <React.Fragment>
+      <>
         <Carousel downArrow={this.state.downShow}
           upArrow={this.state.upShow}
-          currentPhotos={this.state.currentPhotos}
-          onClickLast={this.getLast}
-          onClickNext={this.getNext}
+          carouselPhotos={this.state.carouselPhotos}
+          onClickLastPage={this.getLastPage}
+          onClickNextPage={this.getNextPage}
         />
-        <img className="arrowLeft" src={left_arrow}></img>
-        <img className="arrowRight" src={right_arrow}></img>
+
+        <img className="arrowLeft"
+        onClick={this.getLastImg}
+        src={left_arrow}
+        ></img>
+
+        <img className="arrowRight"
+          onClick={this.getNextImg}
+          src={right_arrow}
+        ></img>
+        
         <img className="fullscreen" src={full_screen_icon}></img>
-        <img style={styles.media} src={this.props.currentStyle.photos[0].url}></img>
-      </React.Fragment>
+        <img style={styles.media} src={this.state.currentImg.url}></img>
+      </>
     );
   }
 };
