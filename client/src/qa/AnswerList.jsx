@@ -3,15 +3,15 @@ import Answer from './Answer.jsx';
 
 
 var AnswerList = ({answers}) => (
-  <ul>
+  <div>
     {Object.keys(answers).map((key) => (
-      <li className="answer">
+      <div>
         <Answer
           answer={answers[key]}
         />
-      </li>
+      </div>
     ))}
-  </ul>
+  </div>
 )
 
 export default AnswerList;
