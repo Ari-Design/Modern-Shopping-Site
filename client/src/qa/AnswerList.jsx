@@ -2,7 +2,7 @@ import React from 'react';
 import Answer from './Answer.jsx';
 
 
-var AnswerList = ({answers}) => (
+var AnswerList = ({ answers }) => (
   <div>
     {Object.keys(answers).map((key) => (
       <div>
@@ -11,6 +11,7 @@ var AnswerList = ({answers}) => (
           answer={answers[key]}
         />
       </div>
+
     ))}
   </div>
 )
