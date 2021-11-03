@@ -13,9 +13,8 @@ const Carousel = ({ upArrow, onClickLastPage, page, onClickCurrentImg, currentIm
       {page.map((photo, index) => {
         var { thumbnail_url } = photo;
         return (
-          <>
+          <React.Fragment key={`photo ${index - 1}`}>
             <img
-              key={`photo ${index - 1}`}
               className="thumbnail"
               onClick={() => onClickCurrentImg(photo)}
               src={thumbnail_url}
@@ -25,7 +24,7 @@ const Carousel = ({ upArrow, onClickLastPage, page, onClickCurrentImg, currentIm
                 style={{ top: index > 0 ? `${15.35 + index / 5 * 100}%` : '15.35%' }}
                 className="line"></div> : null
             }
-          </>
+          </React.Fragment>
         );
       })}
 
