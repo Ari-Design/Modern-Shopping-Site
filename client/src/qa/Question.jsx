@@ -1,5 +1,6 @@
 import React from 'react';
 import AnswerList from './AnswerList.jsx';
+var count = 0;
 
 var Question = ({question}) => (
   <div className="qa_component">
@@ -8,14 +9,20 @@ var Question = ({question}) => (
       <span className="question_body">
         {question.question_body}
       </span>
-      <span className="question_helpfulness">
-        Helpful <a>Yes</a> {question.question_helpfulness} <a>Add Answer</a>
+      <span className="question_options">
+        <span className="question_helpfulness">
+          Helpful <a className="link_word">Yes</a> {`(${question.question_helpfulness})`}&nbsp;&nbsp;&nbsp;
+        </span>
+        <span className="divider">|</span>
+        <span className="add_answer">&nbsp;&nbsp;&nbsp;<a className="link_word">Add Answer</a></span>
       </span>
     </div>
     <div>
       <AnswerList
-      answers={question.answers}
+        key={`ANS-${question.question_id}`}
+        answers={question.answers}
       />
+      {count = count + 1}
     </div>
   </div>
 

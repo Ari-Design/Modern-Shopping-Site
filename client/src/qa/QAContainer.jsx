@@ -21,6 +21,7 @@ class QAContainer extends React.Component {
           </div>
           <div>
             <QuestionList
+              key={this.state.qaData.product_id}
               data={this.state.qaData}
             />
           </div>
