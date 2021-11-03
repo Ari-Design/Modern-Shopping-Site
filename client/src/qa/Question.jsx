@@ -1,7 +1,7 @@
 import React from 'react';
 import AnswerList from './AnswerList.jsx';
 
-var Question = ({ question }) => (
+var Question = ({ question, handleHandR }) => (
   <div className="qa_component">
     <div className="question">
       <span className="question_label">Q:</span>
@@ -10,7 +10,11 @@ var Question = ({ question }) => (
       </span>
       <span className="question_options">
         <span className="question_helpfulness">
-          Helpful <a className="link_word">Yes</a> {`(${question.question_helpfulness})`}&nbsp;&nbsp;&nbsp;
+          Helpful <a
+            className="link_word"
+            href ="#"
+            onClick={() => handleHandR(`/qa/questions/${question.question_id}/helpful`, { "question_helpfulness": question.question_helpfulness++ })}
+            >Yes</a> {`(${question.question_helpfulness})`}&nbsp;&nbsp;&nbsp;
         </span>
         <span className="divider">|</span>
         <span className="add_answer">&nbsp;&nbsp;&nbsp;<a className="link_word">Add Answer</a></span>
@@ -20,6 +24,7 @@ var Question = ({ question }) => (
       <AnswerList
         key={`ANS-${question.question_id}`}
         answers={question.answers}
+        handleHandR={handleHandR}
       />
     </div>
   </div>
