@@ -1,23 +1,18 @@
 import React from 'react';
 
 
-class ProductInfo extends React.Component {
-  constructor() {
-    super();
-    this.state = {
+const ProductInfo = ({ productInfo }) => {
 
-    };
-  }
-
-  render() {
-    return (
-      <>
-      <h3>slogan</h3>
-      <p>description</p>
-      <div>extra description stuff</div>
-      </>
-    )
-  }
+  return (
+    <>
+      <h3>{productInfo.slogan}</h3>
+      <p>{productInfo.description}</p>
+      {productInfo.features.map(({ feature, value }, index) => {
+        console.log(value)
+        return <p key={index - 1}>{`${value} ${feature}`}</p>
+      })}
+    </>
+  )
 };
 
 export default ProductInfo;
