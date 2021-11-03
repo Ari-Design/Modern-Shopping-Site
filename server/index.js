@@ -14,3 +14,17 @@ app.listen(port, () => {
 // app.get('/:product_id', (req, res) => {
 //   req.params.id
 // });
+
+
+app.put('/qa/questions/:question_id/helpful', (req, res) => {
+  console.log(req.body)
+})
+
+
+app.put('/qa/answers/:answer_id/helpful', (req, res) => {
+  console.log(req.body)
+})
+
+app.put('/qa/answers/:answer_id/report', (req, res) => {
+  console.log(req.body)
+})

@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import products from '../../sampleData/products/productList.js';
 import productInfo from '../../sampleData/products/productInfo.js';
@@ -24,6 +25,17 @@ class App extends React.Component {
       reviewMeta: reviewMeta,
       qaData: qaSample
     }
+    this.handleIsHelpfulAndReport = this.handleIsHelpfulAndReport.bind(this)
+  }
+
+  handleIsHelpfulAndReport(url, data) {
+    axios.put(url, data)
+    .then((res) => {
+      console.log(res)
+    })
+    .catch((err) => {
+      console.log(`error: ${err}`)
+    })
   }
 
   render() {
@@ -40,6 +52,7 @@ class App extends React.Component {
           <QAContainer
             data={this.state.qaData}
             id={this.state.currentProductId}
+            handleHandR={this.handleIsHelpfulAndReport}
           />
           <ReviewsList currentProductId={this.state.currentProductId} reviewData={this.state.reviewData} reviewMeta={this.state.reviewMeta} />
         </main>
