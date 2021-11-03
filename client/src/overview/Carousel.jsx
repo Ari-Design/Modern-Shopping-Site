@@ -2,24 +2,37 @@ import React from 'react';
 import down_arrow from '../../../dist/assets/images/down_arrow.png';
 import up_arrow from '../../../dist/assets/images/up_arrow.png';
 
-const Carousel = (props) => {
+const Carousel = ({ upArrow, onClickLastPage, page, onClickCurrentImg, currentImg, downArrow, onClickNextPage }) => {
   return (
     <ul className="vertical_carousel">
-      {props.upArrow ? <img className="arrowUp"
-                        src={up_arrow}
-                        onClick={props.onClickLastPage}
-                      ></img> : null}
+      {upArrow ? <img className="arrowUp"
+        src={up_arrow}
+        onClick={onClickLastPage}
+      ></img> : null}
 
-      {props.carouselPhotos.map(({ thumbnail_url }, index) => {
-        if (index < 5) {
-          return <img key={`photo ${index - 1}`} className="thumbnail" src={thumbnail_url}></img>;
-        }
+      {page.map((photo, index) => {
+        var { thumbnail_url } = photo;
+        return (
+          <>
+            <img
+              key={`photo ${index - 1}`}
+              className="thumbnail"
+              onClick={() => onClickCurrentImg(photo)}
+              src={thumbnail_url}
+            ></img>
+            {
+              currentImg.thumbnail_url === thumbnail_url ? <div
+                style={{ top: index > 0 ? `${15.35 + index / 5 * 100}%` : '15.35%' }}
+                className="line"></div> : null
+            }
+          </>
+        );
       })}
 
-      {props.downArrow ? <img className="arrowDown"
-                            src={down_arrow}
-                            onClick={props.onClickNextPage}
-                          ></img> : null}
+      {downArrow ? <img className="arrowDown"
+        src={down_arrow}
+        onClick={onClickNextPage}
+      ></img> : null}
     </ul>
   );
 };
