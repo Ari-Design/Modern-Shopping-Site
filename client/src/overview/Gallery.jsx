@@ -24,6 +24,7 @@ class Gallery extends React.Component {
       upShow: false,
       page: 0,
       imgIndex: '',
+      allPhotos: this.props.currentStyle.photos,
 
     };
     this.getNextPage = this.getNextPage.bind(this);
@@ -105,7 +106,7 @@ class Gallery extends React.Component {
           onClick={this.getNextImg}
           src={right_arrow}
         ></img>
-        
+
         <img className="fullscreen" src={full_screen_icon}></img>
         <img style={styles.media} src={this.state.currentImg.url}></img>
       </>
