@@ -9,8 +9,6 @@ const styles = {
     height: '100%',
     width: '100%',
     objectFit: 'scale-down',
-    // position: 'absolute',
-    // zIndex: '1',
   }
 };
 
@@ -23,16 +21,29 @@ class Gallery extends React.Component {
       downShow: true, //change this
       upShow: false,
       page: 0,
+      pages: [[]],
       imgIndex: '',
-      allPhotos: this.props.currentStyle.photos,
 
     };
     this.getNextPage = this.getNextPage.bind(this);
     this.getLastPage = this.getLastPage.bind(this);
     this.getNextImg = this.getNextImg.bind(this);
     this.getLastImg = this.getLastImg.bind(this);
+    this.changeCurrentImg = this.changeCurrentImg.bind(this);
   }
   componentDidMount() {
+    this.onUpdate();
+  }
+
+  componentDidUpdate(prevProps) {
+    var {name} = prevProps.currentStyle;
+    var {currentStyle} = this.props;
+    if (name !== currentStyle.name) {
+      this.onUpdate();
+    }
+  }
+
+  onUpdate() {
     var index = 0;
     var myArray = this.props.currentStyle.photos;
     var arrayLength = myArray.length;
@@ -44,8 +55,8 @@ class Gallery extends React.Component {
     }
 
     this.setState({
-      carouselPhotos: tempArray[0],
-      currentImg: tempArray[0][0],
+      carouselPhotos: myArray,
+      currentImg: myArray[0],
       pages: tempArray,
       downShow: tempArray.length > 1 ? true : false,
       imgIndex: 0,
@@ -53,48 +64,59 @@ class Gallery extends React.Component {
   }
 
   getNextPage() {
+    var {page, pages} = this.state;
     this.setState({
-      carouselPhotos: this.state.pages[this.state.page + 1],
-      downShow: this.state.pages[this.state.page + 2] ? true : false,
+      downShow: pages[page + 2] ? true : false,
       upShow: true,
-      page: this.state.page = this.state.page + 1,
+      page: page = page + 1,
     });
   }
   getLastPage() {
+    var {page, pages} = this.state;
     this.setState({
-      carouselPhotos: this.state.pages[this.state.page - 1],
       downShow: true,
-      upShow: this.state.pages[this.state.page - 2] ? true : false,
-      page: this.state.page = this.state.page - 1,
+      upShow: pages[page - 2] ? true : false,
+      page: page = page - 1,
     });
   }
 
   getNextImg() {
-    if (this.state.imgIndex < 4) {
+    var {imgIndex, carouselPhotos} = this.state;
+    if (imgIndex < carouselPhotos.length - 1) {
       this.setState({
-        currentImg: this.state.carouselPhotos[this.state.imgIndex + 1],
-        imgIndex: this.state.imgIndex = this.state.imgIndex + 1,
+        currentImg: carouselPhotos[imgIndex + 1],
+        imgIndex: imgIndex = imgIndex + 1,
       });
     }
   }
 
   getLastImg() {
-    if (this.state.imgIndex > 0) {
+    var {imgIndex, carouselPhotos} = this.state;
+    if (imgIndex > 0) {
       this.setState({
-        currentImg: this.state.carouselPhotos[this.state.imgIndex - 1],
-        imgIndex: this.state.imgIndex = this.state.imgIndex - 1,
+        currentImg: carouselPhotos[imgIndex - 1],
+        imgIndex: imgIndex = imgIndex - 1,
       });
     }
   }
 
+  changeCurrentImg(obj) {
+    this.setState({
+      currentImg: obj
+    });
+  }
+
   render() {
+    var {downShow, upShow, page, pages, currentImg} = this.state;
     return (
       <>
-        <Carousel downArrow={this.state.downShow}
-          upArrow={this.state.upShow}
-          carouselPhotos={this.state.carouselPhotos}
+        <Carousel downArrow={downShow}
+          upArrow={upShow}
+          page={pages[page]}
           onClickLastPage={this.getLastPage}
           onClickNextPage={this.getNextPage}
+          currentImg={currentImg}
+          onClickCurrentImg={this.changeCurrentImg}
         />
 
         <img className="arrowLeft"
@@ -108,7 +130,7 @@ class Gallery extends React.Component {
         ></img>
 
         <img className="fullscreen" src={full_screen_icon}></img>
-        <img style={styles.media} src={this.state.currentImg.url}></img>
+        <img style={styles.media} src={currentImg.url}></img>
       </>
     );
   }

@@ -5,10 +5,10 @@ import Answer from './Answer.jsx';
 var AnswerList = ({ answers }) => (
   <div>
     {Object.keys(answers).map((key) => (
-        <Answer
-          key={`${key}`}
-          answer={answers[key]}
-        />
+      <Answer
+        key={`${key}`}
+        answer={answers[key]}
+      />
     ))}
   </div>
 )

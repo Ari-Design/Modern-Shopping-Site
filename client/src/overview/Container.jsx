@@ -32,6 +32,7 @@ class Container extends React.Component {
 
         <section className="styles_container" >
           <Styles productStyles={this.state.productStyles.results}
+            currentStyle={this.state.currentStyle}
             onClick={this.changeStyle}
             productInfo={this.state.productInfo}
           />
