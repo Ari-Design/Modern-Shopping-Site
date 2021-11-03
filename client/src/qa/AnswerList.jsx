@@ -2,16 +2,15 @@ import React from 'react';
 import Answer from './Answer.jsx';
 
 
-var AnswerList = ({answers}) => (
-  <ul>
+var AnswerList = ({ answers }) => (
+  <div>
     {Object.keys(answers).map((key) => (
-      <li className="answer">
         <Answer
+          key={`${key}`}
           answer={answers[key]}
         />
-      </li>
     ))}
-  </ul>
+  </div>
 )
 
 export default AnswerList;

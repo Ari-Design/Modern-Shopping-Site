@@ -1,22 +1,31 @@
 import React from 'react';
 import AnswerList from './AnswerList.jsx';
+var count = 0;
 
 var Question = ({question}) => (
-  <ul>
-    <li>
-      <span>
-        <h3>{question.question_body}</h3>
+  <div className="qa_component">
+    <div className="question">
+      <span className="question_label">Q:</span>
+      <span className="question_body">
+        {question.question_body}
       </span>
-      <span>
-        Helpful Yes {question.question_helpfulness} | Add Answer
+      <span className="question_options">
+        <span className="question_helpfulness">
+          Helpful <a className="link_word">Yes</a> {`(${question.question_helpfulness})`}&nbsp;&nbsp;&nbsp;
+        </span>
+        <span className="divider">|</span>
+        <span className="add_answer">&nbsp;&nbsp;&nbsp;<a className="link_word">Add Answer</a></span>
       </span>
-      <div>
-        <AnswerList
+    </div>
+    <div>
+      <AnswerList
+        key={`ANS-${question.question_id}`}
         answers={question.answers}
-        />
-      </div>
-    </li>
-  </ul>
+      />
+      {count = count + 1}
+    </div>
+  </div>
+
 )
 
 export default Question;
