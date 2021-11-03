@@ -38,7 +38,7 @@ class Container extends React.Component {
           />
         </section>
 
-        <section className="productInfo_container"><ProductInfo/></section>
+        <section className="productInfo_container"><ProductInfo productInfo={this.state.productInfo}/></section>
       </div>
     );
   }
