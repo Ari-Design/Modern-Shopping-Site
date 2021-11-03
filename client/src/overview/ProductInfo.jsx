@@ -8,7 +8,7 @@ const ProductInfo = ({ productInfo }) => {
       <h3>{productInfo.slogan}</h3>
       <p>{productInfo.description}</p>
       {productInfo.features.map(({ feature, value }, index) => {
-        console.log(value)
+        // console.log(value)
         return <p key={index - 1}>{`${value} ${feature}`}</p>
       })}
     </>

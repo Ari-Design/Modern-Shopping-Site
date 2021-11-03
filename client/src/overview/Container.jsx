@@ -26,6 +26,8 @@ class Container extends React.Component {
       <div className="overview_container" >
         <div className="gallery_container">
           <Gallery key={this.state.productStyles.product_id}
+            openFullscreen={this.props.openFullscreen}
+            getCurrentImg={this.props.getCurrentImg}
             currentStyle={this.state.currentStyle}
           />
         </div>
