@@ -2,6 +2,7 @@ import React from 'react';
 import ReviewTile from './ReviewTile.jsx';
 import RatingsBreakdown from './RatingsBreakdown.jsx';
 import Dropdown from '../shared/Dropdown.jsx';
+import Modal from '../shared/Modal.jsx';
 
 class ReviewsList extends React.Component{
   constructor(props) {
