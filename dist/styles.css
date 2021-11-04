@@ -184,7 +184,10 @@ header {
 
 .reviews_list { grid-area: reviews_list; }
 
-/* QA CONTAINER */
+
+/**************************************************************
+  Q/A CONTAINER
+**************************************************************/
 
 .qa_outer_container {
   display: grid;
@@ -198,6 +201,11 @@ header {
   background-color: rgb(161, 222, 224);
   padding: 20px;
 }
+
+/**************************************************************
+   Q/A SEARCH
+**************************************************************/
+
 .qa_search_placement {
   display: grid;
   grid-template-columns: 1% 98% 1%;
@@ -223,6 +231,10 @@ input.question_search {
   border: black solid 1px
 }
 
+/**************************************************************
+  QUESTION LIST
+**************************************************************/
+
 .question_button {
   height: 50px;
   font-size: 18px;
@@ -239,6 +251,7 @@ input.question_search {
   display: grid;
   grid-template-columns: 4% 76% 20%;
 }
+
 .question_label {
   font-weight: bold;
   font-size: 22px;
@@ -257,12 +270,30 @@ input.question_search {
   grid-column-start: 3;
 }
 
+.divider {
+  font-size: 30px;
+  line-height: 30px;
+  vertical-align: middle
+}
+
+.link_word {
+  text-decoration: underline;
+}
+
+/**************************************************************
+  ANSWERS
+**************************************************************/
+
 .answer_component {
   margin-bottom: 10px;
 }
 .answer {
   display: grid;
   grid-template-columns: 4% 76% 20%;
+}
+
+.answer_component {
+  margin-bottom: 10px;
 }
 
 .answer_label {
@@ -296,15 +327,186 @@ input.question_search {
 
 .report_answer {
   font-size: 13px;
-
 }
 
-.divider {
-  font-size: 30px;
-  line-height: 30px;
-  vertical-align: middle
+/**************************************************************
+   ADD QUESTION FORM
+***************************************************************/
+
+.question_form {
+  background-color: rgb(166, 206, 240);
+  border: black solid 1px;
+  border-radius: 10px;
+  padding: 15px;
+  padding-left:27px;
+  width: 790px;
+  height: 450px;
+  margin: 40px;
+  display: grid;
+  grid-template-rows: 10% 10% 10% 10% 10% 40% 10%;
 }
 
-.link_word {
-  text-decoration: underline;
+.q_email_label {
+  grid-row-start: 2;
+  font-size: 19px;
+  font-weight: bold
+}
+
+.q_email_input {
+  border: black solid 1px;
+  border-radius: 10px;
+  height: 23px;
+  font-size: 16px;
+  padding-left: 20px;
+  padding: 4px;
+  width: 280px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+
+}
+.q_nickname_label {
+  grid-row-start: 3;
+  font-size: 19px;
+  font-weight: bold
+}
+
+.q_nickname_input {
+  border: black solid 1px;
+  border-radius: 10px;
+  height: 23px;
+  font-size: 16px;
+  padding: 4px;
+  padding-left: 10px;
+  width: 280px;
+  margin-bottom: 20px;
+  grid-row-start: 3;
+}
+
+.q_input_label {
+  font-size: 19px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.question_input {
+  border: black solid 1px;
+  border-radius: 10px;
+  padding-top: 7px;
+  padding-left: 7px;
+  font-size: 16px;
+}
+
+.q_cancel {
+  height: 30px;
+  font-size: 18px;
+  border: black solid 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 10px;
+  margin-top: 15px;
+  position: relative;
+  left: 70%;
+}
+
+.question_submit {
+  height: 30px;
+  font-size: 18px;
+  border: black solid 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 10px;
+  margin-top: 15px;
+  position: relative;
+  left: 70%;
+}
+
+/**************************************************************
+   ADD ANSWER FORM
+***************************************************************/
+
+.answer_form {
+  background-color: rgb(166, 206, 240);
+  border: black solid 1px;
+  border-radius: 10px;
+  padding: 15px;
+  padding-left:27px;
+  width: 790px;
+  height: 450px;
+  margin: 40px;
+  display: grid;
+  grid-template-rows: 10% 10% 10% 10% 10% 40% 10%;
+}
+
+.a_email_label {
+  grid-row-start: 2;
+  font-size: 19px;
+  font-weight: bold
+}
+
+.a_email_input {
+  border: black solid 1px;
+  border-radius: 10px;
+  height: 23px;
+  font-size: 16px;
+  padding-left: 20px;
+  padding: 4px;
+  width: 280px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+
+}
+.a_nickname_label {
+  grid-row-start: 3;
+  font-size: 19px;
+  font-weight: bold
+}
+
+.a_nickname_input {
+  border: black solid 1px;
+  border-radius: 10px;
+  height: 23px;
+  font-size: 16px;
+  padding: 4px;
+  padding-left: 10px;
+  width: 280px;
+  margin-bottom: 20px;
+  grid-row-start: 3;
+}
+
+.a_input_label {
+  font-size: 19px;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.answer_input {
+  border: black solid 1px;
+  border-radius: 10px;
+  padding-top: 7px;
+  padding-left: 7px;
+  font-size: 16px;
+}
+
+.a_cancel {
+  height: 30px;
+  font-size: 18px;
+  border: black solid 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 10px;
+  margin-top: 15px;
+  position: relative;
+  left: 70%;
+}
+
+.answer_submit {
+  height: 30px;
+  font-size: 18px;
+  border: black solid 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 10px;
+  margin-top: 15px;
+  position: relative;
+  left: 70%;
 }
