@@ -12,6 +12,7 @@ import qaSample from '../../sampleData/qaSample.js';
 import Container from './overview/Container.jsx';
 import QAContainer from './qa/QAContainer.jsx'
 import ReviewsList from './Reviews/ReviewsList.jsx';
+import Modal from './shared/Modal.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -23,9 +24,13 @@ class App extends React.Component {
       productStyles: productStyles,
       reviewData: reviewSample,
       reviewMeta: reviewMeta,
-      qaData: qaSample
+      qaData: qaSample,
+      fullscreen: false,
+      currentImg: '',
     }
-    this.handleIsHelpfulAndReport = this.handleIsHelpfulAndReport.bind(this)
+    this.handleIsHelpfulAndReport = this.handleIsHelpfulAndReport.bind(this);
+    this.changeFullscreen = this.changeFullscreen.bind(this);
+    this.getCurrentImg = this.getCurrentImg.bind(this);
   }
 
   handleIsHelpfulAndReport(url, data) {
@@ -38,6 +43,14 @@ class App extends React.Component {
     })
   }
 
+  changeFullscreen() {
+    this.setState({ fullscreen: !this.state.fullscreen });
+  }
+
+  getCurrentImg(obj) {
+    this.setState({currentImg: obj})
+  }
+
   render() {
     return (
       <div>
@@ -48,13 +61,14 @@ class App extends React.Component {
           </nav>
         </header>
         <main>
-          <Container productInfo={this.state.productInfo} productStyles={this.state.productStyles} />
+          <Container productInfo={this.state.productInfo} productStyles={this.state.productStyles} getCurrentImg={this.getCurrentImg} openFullscreen={this.changeFullscreen}/>
           <QAContainer
             data={this.state.qaData}
             id={this.state.currentProductId}
             handleHandR={this.handleIsHelpfulAndReport}
           />
           <ReviewsList currentProductId={this.state.currentProductId} reviewData={this.state.reviewData} reviewMeta={this.state.reviewMeta} />
+          {this.state.fullscreen ? <Modal onClose={this.changeFullscreen} currentImg={this.state.currentImg} fullscreen={this.state.fullscreen} /> : null}
         </main>
       </div>
     );
