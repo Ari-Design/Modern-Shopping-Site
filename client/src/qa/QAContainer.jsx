@@ -40,6 +40,7 @@ class QAContainer extends React.Component {
               key={this.state.qaData.product_id}
               data={this.state.qaData}
               handleHandR={this.props.handleHandR}
+              openAnswerForm={this.props.openAnswerForm}
               term={this.state.searchTerm}
             />
           </div>
