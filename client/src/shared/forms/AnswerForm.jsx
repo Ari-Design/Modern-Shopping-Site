@@ -75,7 +75,7 @@ class AnswerForm extends React.Component {
             onChange={this.handleChange}>
           </textarea>
         </label>
-        <button className="a_cancel">Cancel</button>
+        <button onClick={this.props.onClick} className="a_cancel">Cancel</button>
         <input className="answer_submit" type="submit" value="Submit" />
       </form>
     </div>

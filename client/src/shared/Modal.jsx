@@ -56,16 +56,16 @@ const Modal = (props) => {
         <div style={fullscreenStyle}>
           <img style={styles.media} src={props.currentImg.url}></img>
         </div>
-        <div style={backdropStyle} onClick={e => close(e, props.onClose)} />
+        <div style={backdropStyle} onClick={e => close(e, props.onClose.bind(this, 'fullscreen'))} />
       </div>
     );
   } else if (props.answerForm) {
     return (
       <div>
         <div style={modalStyle}>
-          <AnswerForm/>
+          <AnswerForm onClick={e => close(e, props.onClose.bind(this, 'answerForm'))}/>
         </div>
-        <div style={backdropStyle} onClick={e => close(e, props.onClose)} />
+        <div style={backdropStyle} onClick={e => close(e, props.onClose.bind(this, 'answerForm'))} />
       </div>
     );
   } else if (props.fullscreen) {

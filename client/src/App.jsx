@@ -30,9 +30,8 @@ class App extends React.Component {
       currentImg: '',
     }
     this.handleIsHelpfulAndReport = this.handleIsHelpfulAndReport.bind(this);
-    this.changeFullscreen = this.changeFullscreen.bind(this);
+    this.changeModal = this.changeModal.bind(this);
     this.getCurrentImg = this.getCurrentImg.bind(this);
-    this.changeAnswerForm = this.changeAnswerForm.bind(this);
   }
 
   handleIsHelpfulAndReport(url, data) {
@@ -45,12 +44,8 @@ class App extends React.Component {
       })
   }
 
-  changeFullscreen() {
-    this.setState({ fullscreen: !this.state.fullscreen });
-  }
-
-  changeAnswerForm() {
-    this.setState({ answerForm: !this.state.answerForm });
+  changeModal(state) {
+    this.setState({ [state]: !this.state[state] });
   }
 
   getCurrentImg(obj) {
@@ -70,20 +65,20 @@ class App extends React.Component {
           <Container productInfo={this.state.productInfo}
             productStyles={this.state.productStyles}
             getCurrentImg={this.getCurrentImg}
-            openFullscreen={this.changeFullscreen} />
+            openFullscreen={this.changeModal} />
 
           <QAContainer
             data={this.state.qaData}
             id={this.state.currentProductId}
             handleHandR={this.handleIsHelpfulAndReport}
-            openAnswerForm={this.changeAnswerForm}
+            openAnswerForm={this.changeModal}
             productInfo={this.state.productInfo} />
 
           <ReviewsList currentProductId={this.state.currentProductId}
             reviewData={this.state.reviewData}
             reviewMeta={this.state.reviewMeta} />
 
-          {this.state.fullscreen || this.state.answerForm ? <Modal onClose={this.changeFullscreen} currentImg={this.state.currentImg} answerForm={this.state.answerForm} fullscreen={this.state.fullscreen} /> : null}
+          {this.state.fullscreen || this.state.answerForm ? <Modal onClose={this.changeModal} currentImg={this.state.currentImg} answerForm={this.state.answerForm} fullscreen={this.state.fullscreen} /> : null}
         </main>
       </div>
     );

@@ -17,7 +17,7 @@ var Question = ({ question, handleHandR, openAnswerForm }) => (
             >Yes</a> {`(${question.question_helpfulness})`}&nbsp;&nbsp;&nbsp;
         </span>
         <span className="divider">|</span>
-        <span onClick={openAnswerForm} className="add_answer">&nbsp;&nbsp;&nbsp;<a className="link_word">Add Answer</a></span>
+        <span onClick={() => openAnswerForm('answerForm')} className="add_answer">&nbsp;&nbsp;&nbsp;<a className="link_word">Add Answer</a></span>
       </span>
     </div>
     <div>
