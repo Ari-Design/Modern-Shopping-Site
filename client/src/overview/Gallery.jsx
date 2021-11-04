@@ -22,7 +22,7 @@ class Gallery extends React.Component {
       upShow: false,
       page: 0,
       pages: [[]],
-      imgIndex: '',
+      imgIndex: 0,
 
     };
     this.getNextPage = this.getNextPage.bind(this);
@@ -44,6 +44,7 @@ class Gallery extends React.Component {
   }
 
   onUpdate() {
+    var {page, imgIndex} = this.state;
     var index = 0;
     var myArray = this.props.currentStyle.photos;
     var arrayLength = myArray.length;
@@ -56,10 +57,9 @@ class Gallery extends React.Component {
 
     this.setState({
       carouselPhotos: myArray,
-      currentImg: myArray[0],
+      currentImg: tempArray[page][imgIndex] ? tempArray[page][imgIndex] : myArray[imgIndex],
       pages: tempArray,
       downShow: tempArray.length > 1 ? true : false,
-      imgIndex: 0,
     });
   }
 
@@ -100,9 +100,12 @@ class Gallery extends React.Component {
     }
   }
 
-  changeCurrentImg(obj) {
+  changeCurrentImg(obj, index, page) {
+    console.log(index)
     this.setState({
-      currentImg: obj
+      currentImg: obj,
+      imgIndex: index,
+      page: page,
     });
   }
 
@@ -113,6 +116,7 @@ class Gallery extends React.Component {
         <Carousel downArrow={downShow}
           upArrow={upShow}
           page={pages[page]}
+          pageIndex={page}
           onClickLastPage={this.getLastPage}
           onClickNextPage={this.getNextPage}
           currentImg={currentImg}

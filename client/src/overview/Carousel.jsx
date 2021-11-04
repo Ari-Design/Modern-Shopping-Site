@@ -2,7 +2,7 @@ import React from 'react';
 import down_arrow from '../../../dist/assets/images/down_arrow.png';
 import up_arrow from '../../../dist/assets/images/up_arrow.png';
 
-const Carousel = ({ upArrow, onClickLastPage, page, onClickCurrentImg, currentImg, downArrow, onClickNextPage }) => {
+const Carousel = ({ upArrow, onClickLastPage, page, onClickCurrentImg, currentImg, downArrow, onClickNextPage, pageIndex }) => {
   return (
     <ul className="vertical_carousel">
       {upArrow ? <img className="arrowUp"
@@ -16,7 +16,7 @@ const Carousel = ({ upArrow, onClickLastPage, page, onClickCurrentImg, currentIm
           <React.Fragment key={`photo ${index - 1}`}>
             <img
               className="thumbnail"
-              onClick={() => onClickCurrentImg(photo)}
+              onClick={() => onClickCurrentImg(photo, index, pageIndex)}
               src={thumbnail_url}
             ></img>
             {
