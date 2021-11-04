@@ -28,8 +28,6 @@ class ReviewsList extends React.Component{
       this.setState({
         reviewsToDisplay: newDisplay
       });
-    } else if(e.target.id === "Add_Review+") {
-      console.log('Add a review');
     }
   }
   onSortChange(e) {
@@ -41,6 +39,7 @@ class ReviewsList extends React.Component{
 
   render() {
     var dropdownOptions=['Relevance', 'Helpfulness', 'Newest'];
+    this.state.sortChoice === 'helpful' ? console.log('helpful selected') : console.log('helpful selected')
     // Only render reviews if there are reviews:
     if(this.state.allReviews.length > 0) {
       return(
