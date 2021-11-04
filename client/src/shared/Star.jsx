@@ -6,11 +6,11 @@ var Star = ({avg, numStars}) => {
   return mapArr.map((star, index) => {
     if (numStars - 1 >= index) {
       return (
-        <span className="full_star">&#9733;</span>
+        <span key={index} className="full_star">&#9733;</span>
       )
     } else {
       return (
-        <span className="empty_star">&#9734;</span>
+        <span key={index} className="empty_star">&#9734;</span>
       )
     }
 

@@ -30,16 +30,22 @@ class ReviewsList extends React.Component{
       });
     }
   }
+
   onSortChange(e) {
-    this.setState({
-      sortChoice: e.target.value
-    });
+    var choice = e.target.value;
+    var currentDisplay = this.state.reviewsToDisplay;
+    if (choice === 'Relevance') {
+      console.log('sorting by relevance');
+    } else if (choice === 'Helpfulness') {
+      console.log('sorting by helpfulness');
+    } else if (choice === 'Newest') {
+      console.log('sorting by newest');
+    }
   }
 
 
   render() {
     var dropdownOptions=['Relevance', 'Helpfulness', 'Newest'];
-    this.state.sortChoice === 'helpful' ? console.log('helpful selected') : console.log('helpful selected')
     // Only render reviews if there are reviews:
     if(this.state.allReviews.length > 0) {
       return(

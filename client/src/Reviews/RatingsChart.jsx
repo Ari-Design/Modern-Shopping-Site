@@ -6,7 +6,7 @@ var RatingsChart = ({ratingsArray, numRatings}) => {
     var width = JSON.stringify(Math.round(ratingsArray[index - 1]/numRatings * 100)) + '%';
     return (
       <>
-      <div>
+      <div key={index}>
       <span><u>{index} stars</u> </span>
       <svg width='70%' height='16px'>
         <g className='bars'>
