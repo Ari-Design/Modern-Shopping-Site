@@ -19,7 +19,7 @@ var RatingsBreakdown = ({metaReviews}) => {
     <>
     <div className="average_ratings">
       <h2>{averageRating} <Star numStars={averageRating}/></h2>
-      </div>
+    </div>
     <div className="ratings_breakdown">
       <RatingsChart ratingsArray={ratingsArray} numRatings={numRatings}/>
     </div>
