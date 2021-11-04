@@ -65,16 +65,16 @@ const Modal = (props) => {
         <div style={modalStyle}>
           <AnswerForm onClick={e => close(e, props.onClose.bind(this, 'answerForm'))}/>
         </div>
-        <div style={backdropStyle} onClick={e => close(e, props.onClose.bind(this, 'answerForm'))} />
+        <div style={backdropStyle}/>
       </div>
     );
-  } else if (props.fullscreen) {
+  } else if (props.questionForm) {
     return (
       <div>
         <div style={modalStyle}>
-          <QuestionForm/>
+          <QuestionForm onClick={e => close(e, props.onClose.bind(this, 'questionForm'))}/>
         </div>
-        <div style={backdropStyle} onClick={e => close(e, props.onClose)} />
+        <div style={backdropStyle}/>
       </div>
     );
   } else {

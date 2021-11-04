@@ -27,6 +27,7 @@ class App extends React.Component {
       qaData: qaSample,
       fullscreen: false,
       answerForm: false,
+      questionForm: false,
       currentImg: '',
     }
     this.handleIsHelpfulAndReport = this.handleIsHelpfulAndReport.bind(this);
@@ -53,6 +54,8 @@ class App extends React.Component {
   }
 
   render() {
+    var { productInfo, productStyles, qaData, currentProductId, reviewData, reviewMeta,
+      fullscreen, answerForm, currentImg, questionForm } = this.state;
     return (
       <div>
         <header>
@@ -62,23 +65,28 @@ class App extends React.Component {
           </nav>
         </header>
         <main>
-          <Container productInfo={this.state.productInfo}
-            productStyles={this.state.productStyles}
+          <Container productInfo={productInfo}
+            productStyles={productStyles}
             getCurrentImg={this.getCurrentImg}
             openFullscreen={this.changeModal} />
 
           <QAContainer
-            data={this.state.qaData}
-            id={this.state.currentProductId}
+            data={qaData}
+            id={currentProductId}
             handleHandR={this.handleIsHelpfulAndReport}
             openAnswerForm={this.changeModal}
-            productInfo={this.state.productInfo} />
+            productInfo={productInfo} />
 
-          <ReviewsList currentProductId={this.state.currentProductId}
-            reviewData={this.state.reviewData}
-            reviewMeta={this.state.reviewMeta} />
+          <ReviewsList currentProductId={currentProductId}
+            reviewData={reviewData}
+            reviewMeta={reviewMeta} />
 
-          {this.state.fullscreen || this.state.answerForm ? <Modal onClose={this.changeModal} currentImg={this.state.currentImg} answerForm={this.state.answerForm} fullscreen={this.state.fullscreen} /> : null}
+          {fullscreen || answerForm || questionForm ? <Modal
+            onClose={this.changeModal}
+            currentImg={currentImg}
+            answerForm={answerForm}
+            questionForm={questionForm}
+            fullscreen={fullscreen} /> : null}
         </main>
       </div>
     );
