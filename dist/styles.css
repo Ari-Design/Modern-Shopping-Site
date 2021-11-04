@@ -339,6 +339,7 @@ input.question_search {
   border-radius: 10px;
   padding: 15px;
   padding-left:27px;
+  padding-bottom: 22px;
   width: 790px;
   height: 450px;
   margin: 40px;
@@ -391,6 +392,7 @@ input.question_search {
 .question_input {
   border: black solid 1px;
   border-radius: 10px;
+  margin-top: 7px;
   padding-top: 7px;
   padding-left: 7px;
   font-size: 16px;
@@ -403,7 +405,7 @@ input.question_search {
   padding-left: 15px;
   padding-right: 15px;
   margin: 10px;
-  margin-top: 15px;
+  margin-bottom: 15px;
   position: relative;
   left: 70%;
 }
@@ -415,7 +417,7 @@ input.question_search {
   padding-left: 15px;
   padding-right: 15px;
   margin: 10px;
-  margin-top: 15px;
+  margin-bottom: 15px;
   position: relative;
   left: 70%;
 }
