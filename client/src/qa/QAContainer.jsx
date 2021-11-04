@@ -1,7 +1,7 @@
 import React from 'react';
 import QuestionList from './QuestionList.jsx';
 import QuestionForm from '../shared/forms/QuestionForm.jsx';
-import AnswerForm from './AnswerForm.jsx';
+import AnswerForm from '../shared/forms/AnswerForm.jsx';
 
 
 class QAContainer extends React.Component {
