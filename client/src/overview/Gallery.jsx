@@ -16,7 +16,6 @@ class Gallery extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      carouselPhotos: [],
       currentImg: { url: '' },
       downShow: true, //change this
       upShow: false,
@@ -36,15 +35,15 @@ class Gallery extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    var {name} = prevProps.currentStyle;
-    var {currentStyle} = this.props;
+    var { name } = prevProps.currentStyle;
+    var { currentStyle } = this.props;
     if (name !== currentStyle.name) {
       this.onUpdate();
     }
   }
 
   onUpdate() {
-    var {page, imgIndex} = this.state;
+    var { page, imgIndex } = this.state;
     var index = 0;
     var myArray = this.props.currentStyle.photos;
     var arrayLength = myArray.length;
@@ -56,7 +55,6 @@ class Gallery extends React.Component {
     }
 
     this.setState({
-      carouselPhotos: myArray,
       currentImg: tempArray[page][imgIndex] ? tempArray[page][imgIndex] : myArray[imgIndex],
       pages: tempArray,
       downShow: tempArray.length > 1 ? true : false,
@@ -64,7 +62,7 @@ class Gallery extends React.Component {
   }
 
   getNextPage() {
-    var {page, pages} = this.state;
+    var { page, pages } = this.state;
     this.setState({
       downShow: pages[page + 2] ? true : false,
       upShow: true,
@@ -72,7 +70,7 @@ class Gallery extends React.Component {
     });
   }
   getLastPage() {
-    var {page, pages} = this.state;
+    var { page, pages } = this.state;
     this.setState({
       downShow: true,
       upShow: pages[page - 2] ? true : false,
@@ -81,27 +79,38 @@ class Gallery extends React.Component {
   }
 
   getNextImg() {
-    var {imgIndex, carouselPhotos} = this.state;
-    if (imgIndex < carouselPhotos.length - 1) {
+    var { imgIndex, pages, page } = this.state;
+    if (imgIndex >= pages[page].length - 1) {
       this.setState({
-        currentImg: carouselPhotos[imgIndex + 1],
+        currentImg: pages[page + 1][0],
+        imgIndex: 0,
+      });
+      this.getNextPage();
+    } else {
+      this.setState({
+        currentImg: pages[page][imgIndex + 1],
         imgIndex: imgIndex = imgIndex + 1,
       });
     }
   }
 
   getLastImg() {
-    var {imgIndex, carouselPhotos} = this.state;
-    if (imgIndex > 0) {
+    var { imgIndex, pages, page } = this.state;
+    if (imgIndex <= 0) {
       this.setState({
-        currentImg: carouselPhotos[imgIndex - 1],
+        currentImg: pages[page - 1][pages[page - 1].length - 1],
+        imgIndex: pages[page - 1].length - 1,
+      });
+      this.getLastPage();
+    } else {
+      this.setState({
+        currentImg: pages[page][imgIndex - 1],
         imgIndex: imgIndex = imgIndex - 1,
       });
     }
   }
 
   changeCurrentImg(obj, index, page) {
-    console.log(index)
     this.setState({
       currentImg: obj,
       imgIndex: index,
@@ -110,7 +119,7 @@ class Gallery extends React.Component {
   }
 
   render() {
-    var {downShow, upShow, page, pages, currentImg} = this.state;
+    var { downShow, upShow, page, pages, currentImg, imgIndex} = this.state;
     return (
       <>
         <Carousel downArrow={downShow}
@@ -123,17 +132,19 @@ class Gallery extends React.Component {
           onClickCurrentImg={this.changeCurrentImg}
         />
 
-        <img className="arrowLeft"
-        onClick={this.getLastImg}
-        src={left_arrow}
-        ></img>
+        {imgIndex !== 0 || page !== 0 ? <img
+          className="arrowLeft"
+          onClick={this.getLastImg}
+          src={left_arrow}
+        ></img> : null}
 
-        <img className="arrowRight"
+        {imgIndex !== pages[page].length - 1 || page !== pages.length - 1 ? <img
+          className="arrowRight"
           onClick={this.getNextImg}
           src={right_arrow}
-        ></img>
+        ></img> : null}
 
-        <img className="fullscreen" src={full_screen_icon} onClick={() => {this.props.getCurrentImg(currentImg); this.props.openFullscreen('fullscreen');}}></img>
+        <img className="fullscreen" src={full_screen_icon} onClick={() => { this.props.getCurrentImg(currentImg); this.props.openFullscreen('fullscreen'); }}></img>
         <img style={styles.media} src={currentImg.url}></img>
       </>
     );
