@@ -38,7 +38,7 @@ class QuestionForm extends React.Component {
     return (
       <div className="question_form">
         <form onSubmit={this.handleSubmit}>
-          <h2 className="question_form_header">Ask Your Question About the {this.props.productInfo.name}</h2>
+          <h2 className="question_form_header">Ask Your Question About the</h2>
           <label className="q_email_label">
             Email:&nbsp;&nbsp;
             <input
