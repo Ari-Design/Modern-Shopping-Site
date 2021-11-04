@@ -1,4 +1,5 @@
 import React from 'react';
+import Star from '../shared/Star.jsx';
 
 var RatingsChart = ({ratingsArray, numRatings}) => {
   return [5, 4, 3, 2, 1].map((index) => {

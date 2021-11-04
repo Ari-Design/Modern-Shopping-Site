@@ -1,5 +1,6 @@
 import React from 'react';
 import RatingsChart from './RatingsChart.jsx';
+import Star from '../shared/Star.jsx'
 
 var RatingsBreakdown = ({metaReviews}) => {
   var numRatings = 0;
@@ -15,7 +16,7 @@ var RatingsBreakdown = ({metaReviews}) => {
   return(
     <>
     <div className="average_ratings">
-      <h2>{averageRating} *stars*</h2>
+      <h2>{averageRating} <Star numStars={averageRating}/></h2>
       </div>
     <div className="ratings_breakdown">
       <RatingsChart ratingsArray={ratingsArray} numRatings={numRatings}/>
