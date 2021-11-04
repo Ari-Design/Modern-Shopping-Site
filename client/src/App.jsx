@@ -26,29 +26,35 @@ class App extends React.Component {
       reviewMeta: reviewMeta,
       qaData: qaSample,
       fullscreen: false,
+      answerForm: false,
       currentImg: '',
     }
     this.handleIsHelpfulAndReport = this.handleIsHelpfulAndReport.bind(this);
     this.changeFullscreen = this.changeFullscreen.bind(this);
     this.getCurrentImg = this.getCurrentImg.bind(this);
+    this.changeAnswerForm = this.changeAnswerForm.bind(this);
   }
 
   handleIsHelpfulAndReport(url, data) {
     axios.put(url, data)
-    .then((res) => {
-      console.log(res)
-    })
-    .catch((err) => {
-      console.log(`error: ${err}`)
-    })
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(`error: ${err}`)
+      })
   }
 
   changeFullscreen() {
     this.setState({ fullscreen: !this.state.fullscreen });
   }
 
+  changeAnswerForm() {
+    this.setState({ answerForm: !this.state.answerForm });
+  }
+
   getCurrentImg(obj) {
-    this.setState({currentImg: obj})
+    this.setState({ currentImg: obj })
   }
 
   render() {
@@ -61,15 +67,23 @@ class App extends React.Component {
           </nav>
         </header>
         <main>
-          <Container productInfo={this.state.productInfo} productStyles={this.state.productStyles} getCurrentImg={this.getCurrentImg} openFullscreen={this.changeFullscreen}/>
+          <Container productInfo={this.state.productInfo}
+            productStyles={this.state.productStyles}
+            getCurrentImg={this.getCurrentImg}
+            openFullscreen={this.changeFullscreen} />
+
           <QAContainer
             data={this.state.qaData}
             id={this.state.currentProductId}
             handleHandR={this.handleIsHelpfulAndReport}
-            productInfo={this.state.productInfo}
-          />
-          <ReviewsList currentProductId={this.state.currentProductId} reviewData={this.state.reviewData} reviewMeta={this.state.reviewMeta} />
-          {this.state.fullscreen ? <Modal onClose={this.changeFullscreen} currentImg={this.state.currentImg} fullscreen={this.state.fullscreen} /> : null}
+            openAnswerForm={this.changeAnswerForm}
+            productInfo={this.state.productInfo} />
+
+          <ReviewsList currentProductId={this.state.currentProductId}
+            reviewData={this.state.reviewData}
+            reviewMeta={this.state.reviewMeta} />
+
+          {this.state.fullscreen || this.state.answerForm ? <Modal onClose={this.changeFullscreen} currentImg={this.state.currentImg} answerForm={this.state.answerForm} fullscreen={this.state.fullscreen} /> : null}
         </main>
       </div>
     );
