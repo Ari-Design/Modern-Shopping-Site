@@ -28,14 +28,19 @@ class ReviewsList extends React.Component{
       this.setState({
         reviewsToDisplay: newDisplay
       });
-    } else if(e.target.id === "Add_Review+") {
-      console.log('Add a review');
     }
   }
+
   onSortChange(e) {
-    this.setState({
-      sortChoice: e.target.value
-    });
+    var choice = e.target.value;
+    var currentDisplay = this.state.reviewsToDisplay;
+    if (choice === 'Relevance') {
+      console.log('sorting by relevance');
+    } else if (choice === 'Helpfulness') {
+      console.log('sorting by helpfulness');
+    } else if (choice === 'Newest') {
+      console.log('sorting by newest');
+    }
   }
 
 

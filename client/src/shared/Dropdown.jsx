@@ -2,9 +2,9 @@ import React from 'react';
 var Dropdown = ({title, optionsArr, onChange}) => {
   return (
     <>
-      <select className={title} id={title} onChange={onChange}>
+      <select key={title} className={title} id={title} onChange={onChange}>
         {optionsArr.map((option) => {
-          return <option onChange={onChange} value={option}>{option}</option>
+          return <option key={option} onChange={onChange} value={option}>{option}</option>
         })}
       </select>
     </>
