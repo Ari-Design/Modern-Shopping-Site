@@ -87,7 +87,7 @@ class AddReviewForm extends React.Component {
           <label className="review_body_input_label">
             Review Body:
             <textarea
-              className="question_input"
+              className="review_body_input"
               cols="75"
               rows="14"
               maxLength="1000"

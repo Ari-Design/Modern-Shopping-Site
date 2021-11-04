@@ -14,9 +14,11 @@ class ReviewsList extends React.Component{
       allReviews: this.props.reviewData.results,
       reviewsToDisplay: this.props.reviewData.results.slice(0, 2),
       metaReviews: this.props.reviewMeta,
-      count: this.props.reviewData.count
+      count: this.props.reviewData.count,
+      sortChoice: 'relevance'
     }
     this.handleClick = this.handleClick.bind(this);
+    this.onSortChange = this.onSortChange.bind(this);
   }
 
   handleClick(e) {
@@ -29,6 +31,11 @@ class ReviewsList extends React.Component{
     } else if(e.target.id === "Add_Review+") {
       console.log('Add a review');
     }
+  }
+  onSortChange(e) {
+    this.setState({
+      sortChoice: e.target.value
+    });
   }
 
 
@@ -44,7 +51,7 @@ class ReviewsList extends React.Component{
           <RatingsBreakdown metaReviews={this.state.metaReviews}/>
         </div>
         <div className="reviews_list">
-          <h4>{this.state.count} reviews, sorted by <Dropdown title="sortReviewsBy" optionsArr={dropdownOptions}/></h4>
+          <h4>{this.state.count} reviews, sorted by <Dropdown title="sortReviewsBy" optionsArr={dropdownOptions} onChange={this.onSortChange}/></h4>
         {this.state.reviewsToDisplay.map((review) => (
           <ReviewTile key={review.review_id} review={review}/>
         ))}
@@ -52,7 +59,6 @@ class ReviewsList extends React.Component{
         <button onClick={() => this.props.openReviewForm('reviewForm')} id="Add_Review+" >Add A Review +</button>
         </div>
         </div>
-        <AddReviewForm />
         </>
       );
     } else /*if there are no reviews, prominently display Add_Review+ button*/ {
