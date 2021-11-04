@@ -66,6 +66,7 @@ class App extends React.Component {
             data={this.state.qaData}
             id={this.state.currentProductId}
             handleHandR={this.handleIsHelpfulAndReport}
+            productInfo={this.state.productInfo}
           />
           <ReviewsList currentProductId={this.state.currentProductId} reviewData={this.state.reviewData} reviewMeta={this.state.reviewMeta} />
           {this.state.fullscreen ? <Modal onClose={this.changeFullscreen} currentImg={this.state.currentImg} fullscreen={this.state.fullscreen} /> : null}

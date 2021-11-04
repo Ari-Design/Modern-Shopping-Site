@@ -15,6 +15,13 @@ app.listen(port, () => {
 //   req.params.id
 // });
 
+app.post('/qa/questions', (req, res) => {
+  console.log(req.body)
+})
+
+app.post('/qa/questions/:question_id/asnwer', (req, res) => {
+  console.log(req.body)
+})
 
 app.put('/qa/questions/:question_id/helpful', (req, res) => {
   console.log(req.body)
