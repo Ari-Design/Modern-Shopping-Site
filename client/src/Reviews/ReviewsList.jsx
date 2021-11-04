@@ -52,7 +52,6 @@ class ReviewsList extends React.Component{
         <button id="Add_Review+" onClick={(e) => this.handleClick(e)}>Add A Review +</button>
         </div>
         </div>
-        <AddReviewForm />
         </>
       );
     } else /*if there are no reviews, prominently display Add_Review+ button*/ {

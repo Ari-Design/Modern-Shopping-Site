@@ -1,7 +1,8 @@
 import React from 'react';
 // As of 11/04/21, only renders whole stars (but will accept fractional numbers). To be updated.
-var Star = ({numStars}) => {
+var Star = ({avg, numStars}) => {
   var mapArr = [1, 2, 3, 4, 5];
+
   return mapArr.map((star, index) => {
     if (numStars - 1 >= index) {
       return (
@@ -14,5 +15,6 @@ var Star = ({numStars}) => {
     }
 
   })
+
 }
 export default Star;
