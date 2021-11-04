@@ -1,5 +1,7 @@
 import React from 'react';
 import QuestionList from './QuestionList.jsx';
+import QuestionForm from './QuestionForm.jsx';
+import AnswerForm from './AnswerForm.jsx';
 
 
 class QAContainer extends React.Component {
@@ -8,6 +10,7 @@ class QAContainer extends React.Component {
     this.state = {
       qaData: this.props.data,
       productId: this.props.id,
+      productInfo: this.props.productInfo,
       searchTerm: ''
     }
     this.handleSearchInputChange =  this.handleSearchInputChange.bind(this)
@@ -39,6 +42,14 @@ class QAContainer extends React.Component {
               handleHandR={this.props.handleHandR}
               term={this.state.searchTerm}
             />
+          </div>
+          <div>
+            <QuestionForm
+              productInfo={this.state.productInfo}
+            />
+          </div>
+          <div>
+            <AnswerForm />
           </div>
           <div>
             <button className="question_button" id="MoreQuestions">MORE ANSWERED QUESTIONS</button>
