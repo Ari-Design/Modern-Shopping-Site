@@ -3,7 +3,6 @@ import Star from '../shared/Star.jsx';
 import moment from 'moment';
 
 var ReviewTile = (props) => {
-  console.log(props);
   return (
     <>
     <div className="review_stars"><h4><Star numStars={props.review.rating}/></h4></div>

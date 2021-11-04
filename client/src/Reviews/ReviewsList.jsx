@@ -34,6 +34,7 @@ class ReviewsList extends React.Component{
   onSortChange(e) {
     var choice = e.target.value;
     var currentDisplay = this.state.reviewsToDisplay;
+
     if (choice === 'Relevance') {
       console.log('sorting by relevance');
     } else if (choice === 'Helpfulness') {
