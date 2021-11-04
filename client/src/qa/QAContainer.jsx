@@ -1,6 +1,6 @@
 import React from 'react';
 import QuestionList from './QuestionList.jsx';
-import QuestionForm from './QuestionForm.jsx';
+import QuestionForm from '../shared/forms/QuestionForm.jsx';
 import AnswerForm from './AnswerForm.jsx';
 
 
