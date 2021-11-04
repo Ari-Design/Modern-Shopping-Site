@@ -95,7 +95,7 @@ class AddReviewForm extends React.Component {
               onChange={this.handleChange}>
             </textarea>
           </label>
-          <button className="review_cancel">Cancel</button>
+          <button onClick={this.props.onClick} className="review_cancel">Cancel</button>
           <input className="review_submit" type="submit" value="Submit" />
         </form>
       </div>

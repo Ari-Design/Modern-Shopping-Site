@@ -56,7 +56,7 @@ class ReviewsList extends React.Component{
           <ReviewTile key={review.review_id} review={review}/>
         ))}
         <button id="More_Reviews" onClick={(e) => this.handleClick(e)}>More Reviews</button>
-        <button id="Add_Review+" onClick={(e) => this.handleClick(e)}>Add A Review +</button>
+        <button onClick={() => this.props.openReviewForm('reviewForm')} id="Add_Review+" >Add A Review +</button>
         </div>
         </div>
         </>

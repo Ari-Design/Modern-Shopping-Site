@@ -54,7 +54,7 @@ class QAContainer extends React.Component {
           </div>
           <div>
             <button className="question_button" id="MoreQuestions">MORE ANSWERED QUESTIONS</button>
-            <button className="question_button" id="AddQuesion">ADD A QUESTION +</button>
+            <button onClick={() => this.props.openAnswerForm('questionForm')} className="question_button" id="AddQuesion">ADD A QUESTION +</button>
           </div>
         </div>
       </div>
