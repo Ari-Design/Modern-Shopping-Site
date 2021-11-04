@@ -3,6 +3,7 @@ import ReviewTile from './ReviewTile.jsx';
 import RatingsBreakdown from './RatingsBreakdown.jsx';
 import Dropdown from '../shared/Dropdown.jsx';
 import Modal from '../shared/Modal.jsx';
+import AddReviewForm from '../shared/forms/AddReviewForm.jsx';
 
 class ReviewsList extends React.Component{
   constructor(props) {
@@ -51,6 +52,7 @@ class ReviewsList extends React.Component{
         <button id="Add_Review+" onClick={(e) => this.handleClick(e)}>Add A Review +</button>
         </div>
         </div>
+        <AddReviewForm />
         </>
       );
     } else /*if there are no reviews, prominently display Add_Review+ button*/ {

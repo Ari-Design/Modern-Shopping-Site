@@ -1,6 +1,8 @@
 import React from 'react';
 import RatingsChart from './RatingsChart.jsx';
 import Star from '../shared/Star.jsx'
+import Size from './Size.jsx';
+import Comfort from './Comfort.jsx';
 
 var RatingsBreakdown = ({metaReviews}) => {
   var numRatings = 0;
@@ -21,8 +23,8 @@ var RatingsBreakdown = ({metaReviews}) => {
     <div className="ratings_breakdown">
       <RatingsChart ratingsArray={ratingsArray} numRatings={numRatings}/>
     </div>
-    <div className="ratings_size">Size</div>
-    <div className="ratings_comfort">Comfort</div>
+    <div className="ratings_size"><Size /></div>
+    <div className="ratings_comfort"><Comfort /></div>
     </>
   )
 }
