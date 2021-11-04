@@ -1,6 +1,7 @@
 import React from 'react';
 import AnswerForm from './forms/AnswerForm.jsx';
 import QuestionForm from './forms/QuestionForm.jsx';
+import AddReviewForm from './forms/AddReviewForm.jsx';
 
 
 const close = (e, onClose) => {
@@ -73,6 +74,15 @@ const Modal = (props) => {
       <div>
         <div style={modalStyle}>
           <QuestionForm onClick={e => close(e, props.onClose.bind(this, 'questionForm'))}/>
+        </div>
+        <div style={backdropStyle}/>
+      </div>
+    );
+  } else if (props.reviewForm) {
+    return (
+      <div>
+        <div style={modalStyle}>
+          <AddReviewForm onClick={e => close(e, props.onClose.bind(this, 'reviewForm'))}/>
         </div>
         <div style={backdropStyle}/>
       </div>

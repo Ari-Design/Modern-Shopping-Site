@@ -28,6 +28,7 @@ class App extends React.Component {
       fullscreen: false,
       answerForm: false,
       questionForm: false,
+      reviewForm: false,
       currentImg: '',
     }
     this.handleIsHelpfulAndReport = this.handleIsHelpfulAndReport.bind(this);
@@ -55,7 +56,7 @@ class App extends React.Component {
 
   render() {
     var { productInfo, productStyles, qaData, currentProductId, reviewData, reviewMeta,
-      fullscreen, answerForm, currentImg, questionForm } = this.state;
+      fullscreen, answerForm, currentImg, questionForm, reviewForm } = this.state;
     return (
       <div>
         <header>
@@ -79,13 +80,15 @@ class App extends React.Component {
 
           <ReviewsList currentProductId={currentProductId}
             reviewData={reviewData}
+            openReviewForm={this.changeModal}
             reviewMeta={reviewMeta} />
 
-          {fullscreen || answerForm || questionForm ? <Modal
+          {fullscreen || answerForm || questionForm || reviewForm ? <Modal
             onClose={this.changeModal}
             currentImg={currentImg}
             answerForm={answerForm}
             questionForm={questionForm}
+            reviewForm={reviewForm}
             fullscreen={fullscreen} /> : null}
         </main>
       </div>
