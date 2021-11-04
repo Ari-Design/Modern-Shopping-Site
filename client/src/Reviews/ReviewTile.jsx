@@ -1,8 +1,10 @@
 import React from 'react';
+import Star from '../shared/Star.jsx';
+
 var ReviewTile = (props) => {
   return (
     <>
-    <div className="review_stars"><h4>*{props.review.rating} stars here*</h4></div>
+    <div className="review_stars"><h4><Star numStars={props.review.rating}/></h4></div>
     <div className="review_reviewer"><h5>(conditional verified check) {props.review.reviewer_name}</h5></div>
     <div className="review_sumarry"><h4>{props.review.summary}</h4></div>
     <div className="review_body">{props.review.body}</div>

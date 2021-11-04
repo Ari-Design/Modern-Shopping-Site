@@ -1,6 +1,7 @@
 import React from 'react';
 import ReviewTile from './ReviewTile.jsx';
 import RatingsBreakdown from './RatingsBreakdown.jsx';
+import Dropdown from '../shared/Dropdown.jsx';
 
 class ReviewsList extends React.Component{
   constructor(props) {
@@ -28,7 +29,9 @@ class ReviewsList extends React.Component{
     }
   }
 
+
   render() {
+    var dropdownOptions=['Relevance', 'Helpfulness', 'Newest'];
     // Only render reviews if there are reviews:
     if(this.state.allReviews.length > 0) {
       return(
@@ -39,7 +42,7 @@ class ReviewsList extends React.Component{
           <RatingsBreakdown metaReviews={this.state.metaReviews}/>
         </div>
         <div className="reviews_list">
-          <h4>{this.state.count} reviews, sorted by _dropdown_</h4>
+          <h4>{this.state.count} reviews, sorted by <Dropdown title="sortReviewsBy" optionsArr={dropdownOptions}/></h4>
         {this.state.reviewsToDisplay.map((review) => (
           <ReviewTile key={review.review_id} review={review}/>
         ))}
