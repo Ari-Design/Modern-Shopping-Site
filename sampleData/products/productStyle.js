@@ -56,7 +56,7 @@ var productStyle = {
               },
               "1281037": {
                   "quantity": 4,
-                  "size": "XL"
+                  "size": "XXL"
               }
           }
       },
