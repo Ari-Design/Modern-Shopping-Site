@@ -2,10 +2,10 @@ import React from 'react';
 import moment from 'moment';
 
 
-var Answer = ({answer, handleHandR}) => (
+var Answer = ({answer, answers, handleHandR}) => (
   <div className="answer_component">
     <div className="answer">
-      <span className="answer_label">A:</span>
+      {answers.indexOf(answer) === 0 ? <span className="answer_label">A:</span> : null}
       <span className="answer_body">{answer.body}</span>
     </div>
     <div className="answer_info_line">
