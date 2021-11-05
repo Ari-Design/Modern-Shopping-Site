@@ -125,6 +125,12 @@ header {
   grid-row-start: 5;
   grid-column-start: 2;
   margin: 0;
+  font-size: 28px;
+}
+
+.sale_price {
+  display: inline;
+  color: red;
 }
 
 .style_style {
