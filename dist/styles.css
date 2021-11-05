@@ -207,12 +207,33 @@ header {
     ". ratings_breakdown reviews_list .";
 }
 
-
-
 .ratings_breakdown { grid-area: ratings_breakdown; }
 
 .reviews_list { grid-area: reviews_list; }
 
+.review_buttons {
+  height: 50px;
+  font-size: 18px;
+  border: black solid 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  margin: 10px;
+}
+
+.add_review_form {
+  background-color: rgb(166, 206, 240);
+  border: black solid 1px;
+  border-radius: 10px;
+  padding: 15px;
+  padding-left:27px;
+  padding-bottom: 22px;
+  width: 790px;
+  height: 450px;
+  margin: 40px;
+  display: grid;
+  grid-template-rows: 10% 10% 10% 10% 10% 40% 10%;
+}
 
 /**************************************************************
   Q/A CONTAINER
