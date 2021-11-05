@@ -204,6 +204,8 @@ header {
     ". ratings_breakdown reviews_list .";
 }
 
+
+
 .ratings_breakdown { grid-area: ratings_breakdown; }
 
 .reviews_list { grid-area: reviews_list; }

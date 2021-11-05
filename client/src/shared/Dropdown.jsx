@@ -4,7 +4,7 @@ var Dropdown = ({title, optionsArr, onChange}) => {
     <>
       <select key={title} className={title} id={title} onChange={onChange}>
         {optionsArr.map((option) => {
-          return <option key={option} onChange={onChange} value={option}>{option}</option>
+          return <option key={option} value={option}>{option}</option>
         })}
       </select>
     </>
