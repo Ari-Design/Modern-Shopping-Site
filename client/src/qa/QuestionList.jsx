@@ -1,17 +1,16 @@
 import React from 'react';
 import Question from './Question.jsx';
 
-var QuestionList = ({data}) => (
+var QuestionList = ({ data, handleHandR, term, openAnswerForm}) => (
   <div>
-    <ul>
-      {data.results.map((question) => (
-        <li className="question">
-          <Question
-            question={question}
-          />
-        </li>
-      ))}
-    </ul>
+    {data.results.map((question) => (
+      <Question
+        key={`${question.question_id}`}
+        openAnswerForm={openAnswerForm}
+        question={question}
+        handleHandR={handleHandR}
+      />
+    ))}
   </div>
 )
 

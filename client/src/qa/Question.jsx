@@ -1,22 +1,34 @@
 import React from 'react';
 import AnswerList from './AnswerList.jsx';
 
-var Question = ({question}) => (
-  <ul>
-    <li>
-      <span>
-        <h3>{question.question_body}</h3>
+var Question = ({ question, handleHandR, openAnswerForm }) => (
+  <div className="qa_component">
+    <div className="question">
+      <span className="question_label">Q:</span>
+      <span className="question_body">
+        {question.question_body}
       </span>
-      <span>
-        Helpful Yes {question.question_helpfulness} | Add Answer
+      <span className="question_options">
+        <span className="question_helpfulness">
+          Helpful <a
+            className="link_word"
+            href ="#"
+            onClick={() => handleHandR(`/qa/questions/${question.question_id}/helpful`, { "question_helpfulness": question.question_helpfulness++ })}
+            >Yes</a> {`(${question.question_helpfulness})`}&nbsp;&nbsp;&nbsp;
+        </span>
+        <span className="divider">|</span>
+        <span onClick={() => openAnswerForm('answerForm')} className="add_answer">&nbsp;&nbsp;&nbsp;<a className="link_word">Add Answer</a></span>
       </span>
-      <div>
-        <AnswerList
+    </div>
+    <div>
+      <AnswerList
+        key={`ANS-${question.question_id}`}
         answers={question.answers}
-        />
-      </div>
-    </li>
-  </ul>
+        handleHandR={handleHandR}
+      />
+    </div>
+  </div>
+
 )
 
 export default Question;

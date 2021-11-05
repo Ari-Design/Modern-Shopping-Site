@@ -3,63 +3,150 @@ import Carousel from './Carousel.jsx';
 import left_arrow from '../../../dist/assets/images/left_arrow.png';
 import right_arrow from '../../../dist/assets/images/right_arrow.png';
 import full_screen_icon from '../../../dist/assets/images/full-screen-icon.png';
-import down_arrow from '../../../dist/assets/images/down_arrow.png';
 
 const styles = {
-  arrowLeft: {
-    width: 20,
-    margin: 'auto',
-    position: 'absolute',
-    top: '302.75px',
-    left: '15%'
-  },
-  arrowRight: {
-    width: 20,
-    margin: 'auto',
-    position: 'absolute',
-    top: '302.75px',
-    left: '94%'
-  },
-  fullscreen: {
-    width: 30,
-    margin: 'auto',
-    position: 'absolute',
-    top: '4%',
-    left: '93%'
-  },
-  arrowDown: {
-    width: 20,
-    margin: 'auto',
-    position: 'absolute',
-    top: '450px',
-    left: '6.85%'
-  },
   media: {
     height: '100%',
     width: '100%',
     objectFit: 'scale-down',
-    gridArea: '1/1/1/1',
-    // position: 'absolute',
-    // zIndex: '1',
   }
 };
 
 class Gallery extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentImg: { url: '' },
+      downShow: true, //change this
+      upShow: false,
+      page: 0,
+      pages: [[]],
+      imgIndex: 0,
+
+    };
+    this.getNextPage = this.getNextPage.bind(this);
+    this.getLastPage = this.getLastPage.bind(this);
+    this.getNextImg = this.getNextImg.bind(this);
+    this.getLastImg = this.getLastImg.bind(this);
+    this.changeCurrentImg = this.changeCurrentImg.bind(this);
+  }
+  componentDidMount() {
+    this.onUpdate();
+  }
+
+  componentDidUpdate(prevProps) {
+    var { name } = prevProps.currentStyle;
+    var { currentStyle } = this.props;
+    if (name !== currentStyle.name) {
+      this.onUpdate();
+    }
+  }
+
+  onUpdate() {
+    var { page, imgIndex } = this.state;
+    var index = 0;
+    var myArray = this.props.currentStyle.photos;
+    var arrayLength = myArray.length;
+    var tempArray = [];
+
+    for (index = 0; index < arrayLength; index += 5) {
+      var myChunk = myArray.slice(index, index + 5);
+      tempArray.push(myChunk);
+    }
+
+    this.setState({
+      currentImg: tempArray[page][imgIndex] ? tempArray[page][imgIndex] : myArray[imgIndex],
+      pages: tempArray,
+      downShow: tempArray.length > 1 ? true : false,
+    });
+  }
+
+  getNextPage() {
+    var { page, pages } = this.state;
+    this.setState({
+      downShow: pages[page + 2] ? true : false,
+      upShow: true,
+      page: page = page + 1,
+    });
+  }
+  getLastPage() {
+    var { page, pages } = this.state;
+    this.setState({
+      downShow: true,
+      upShow: pages[page - 2] ? true : false,
+      page: page = page - 1,
+    });
+  }
+
+  getNextImg() {
+    var { imgIndex, pages, page } = this.state;
+    if (imgIndex >= pages[page].length - 1) {
+      this.setState({
+        currentImg: pages[page + 1][0],
+        imgIndex: 0,
+      });
+      this.getNextPage();
+    } else {
+      this.setState({
+        currentImg: pages[page][imgIndex + 1],
+        imgIndex: imgIndex = imgIndex + 1,
+      });
+    }
+  }
+
+  getLastImg() {
+    var { imgIndex, pages, page } = this.state;
+    if (imgIndex <= 0) {
+      this.setState({
+        currentImg: pages[page - 1][pages[page - 1].length - 1],
+        imgIndex: pages[page - 1].length - 1,
+      });
+      this.getLastPage();
+    } else {
+      this.setState({
+        currentImg: pages[page][imgIndex - 1],
+        imgIndex: imgIndex = imgIndex - 1,
+      });
+    }
+  }
+
+  changeCurrentImg(obj, index, page) {
+    this.setState({
+      currentImg: obj,
+      imgIndex: index,
+      page: page,
+    });
   }
 
   render() {
-
+    var { downShow, upShow, page, pages, currentImg, imgIndex} = this.state;
     return (
-      <React.Fragment>
-        <Carousel />
-        <img style={styles.arrowLeft} src={left_arrow}></img>
-        <img style={styles.arrowRight} src={right_arrow}></img>
-        <img style={styles.fullscreen} src={full_screen_icon}></img>
-        <img style={styles.arrowDown} src={down_arrow}></img>
-        <img style={styles.media} src="https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80"></img>
-      </React.Fragment>
+      <>
+        <Carousel downArrow={downShow}
+          upArrow={upShow}
+          page={pages[page]}
+          pageIndex={page}
+          onClickLastPage={this.getLastPage}
+          onClickNextPage={this.getNextPage}
+          currentImg={currentImg}
+          onClickCurrentImg={this.changeCurrentImg}
+        />
+
+        {imgIndex !== 0 || page !== 0 ? <img
+          className="arrowLeft"
+          onClick={this.getLastImg}
+          src={left_arrow}
+        ></img> : null}
+
+        {imgIndex !== pages[page].length - 1 || page !== pages.length - 1 ? <img
+          className="arrowRight"
+          onClick={this.getNextImg}
+          src={right_arrow}
+        ></img> : null}
+
+        <img className="fullscreen" src={full_screen_icon} onClick={() => { this.props.getCurrentImg(currentImg); this.props.openFullscreen('fullscreen'); }}></img>
+        <img style={styles.media} src={currentImg.url}></img>
+      </>
     );
   }
 };

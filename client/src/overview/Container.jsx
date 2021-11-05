@@ -1,17 +1,49 @@
 import React from 'react';
 import Gallery from './Gallery.jsx';
+import Styles from './Styles.jsx';
+import ProductInfo from './ProductInfo.jsx';
 
-const Container = () => {
+class Container extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      productInfo: this.props.productInfo,
+      productStyles: this.props.productStyles,
+      currentStyle: this.props.productStyles.results[0]
+    };
+    this.changeStyle = this.changeStyle.bind(this);
+  }
 
-  return (
-    <div className="overview_container" >
-      <div className="whitespace_left"></div>
-      <div className="gallery_container"><Gallery /></div>
-      <div className="styles_container"></div>
-      <div className="productInfo_container"></div>
-      <div className="whitespace_right"></div>
-    </div>
-  );
+  changeStyle(obj) {
+    this.setState({
+      currentStyle: obj
+    });
+  }
+
+  render() {
+    // console.log(this.props)
+    return (
+      <div className="overview_container" >
+        <div className="gallery_container">
+          <Gallery key={this.state.productStyles.product_id}
+            openFullscreen={this.props.openFullscreen}
+            getCurrentImg={this.props.getCurrentImg}
+            currentStyle={this.state.currentStyle}
+          />
+        </div>
+
+        <section className="styles_container" >
+          <Styles productStyles={this.state.productStyles.results}
+            currentStyle={this.state.currentStyle}
+            onClick={this.changeStyle}
+            productInfo={this.state.productInfo}
+          />
+        </section>
+
+        <section className="productInfo_container"><ProductInfo productInfo={this.state.productInfo}/></section>
+      </div>
+    );
+  }
 };
 
 export default Container;
