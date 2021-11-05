@@ -22,9 +22,9 @@ class QuestionForm extends React.Component {
   handleSubmit() {
     console.log('submitted')
     axios.post('/qa/questions', {
-      question: this.state.question,
       email: this.state.email,
-      nickname: this.state.nickname
+      nickname: this.state.nickname,
+      question: this.state.question
     })
     .then((res) => {
       console.log(res)

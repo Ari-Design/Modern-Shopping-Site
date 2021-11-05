@@ -11,7 +11,8 @@ class QAContainer extends React.Component {
       qaData: this.props.data,
       productId: this.props.id,
       productInfo: this.props.productInfo,
-      searchTerm: ''
+      searchTerm: '',
+      currentQuestion: null
     }
     this.handleSearchInputChange =  this.handleSearchInputChange.bind(this)
   }
@@ -19,6 +20,12 @@ class QAContainer extends React.Component {
   handleSearchInputChange(e) {
     this.setState({
       searchTerm: e.target.value
+    })
+  }
+
+  selectQuestion(question) {
+    setState({
+      currentQuestion: question
     })
   }
 
@@ -40,6 +47,7 @@ class QAContainer extends React.Component {
               key={this.state.qaData.product_id}
               data={this.state.qaData}
               handleHandR={this.props.handleHandR}
+              selectQuestion={this.selectQuestion}
               openAnswerForm={this.props.openAnswerForm}
               term={this.state.searchTerm}
             />
