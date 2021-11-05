@@ -57,7 +57,7 @@ class Gallery extends React.Component {
     this.setState({
       currentImg: tempArray[page][imgIndex] ? tempArray[page][imgIndex] : myArray[imgIndex],
       pages: tempArray,
-      downShow: tempArray.length > 1 ? true : false,
+      downShow: page > 0 && !tempArray[page + 1] ? false : tempArray.length > 1 ? true : false,
     });
   }
 
@@ -145,7 +145,7 @@ class Gallery extends React.Component {
         ></img> : null}
 
         <img className="fullscreen" src={full_screen_icon} onClick={() => { this.props.getCurrentImg(currentImg); this.props.openFullscreen('fullscreen'); }}></img>
-        <img style={styles.media} src={currentImg.url}></img>
+        <img className="media" onClick={() => { this.props.getCurrentImg(currentImg); this.props.openFullscreen('fullscreen'); }} src={currentImg.url}></img>
       </>
     );
   }
