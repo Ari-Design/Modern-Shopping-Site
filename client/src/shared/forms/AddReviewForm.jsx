@@ -13,10 +13,10 @@ class AddReviewForm extends React.Component {
       quality: '',
       length: '',
       fit: '',
-      summary: '',
+      reviewSummary: '',
       reviewBody: '',
-      nickname: '',
-      email: ''
+      reviewNickname: '',
+      reviewEmail: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
