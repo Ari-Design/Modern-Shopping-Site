@@ -24,7 +24,7 @@ class AddReviewForm extends React.Component {
 
   handleChange(e) {
     this.setState({
-      [e.target.name]: [e.target.value]
+      [e.target.className]: [e.target.value]
     })
   }
 
@@ -54,7 +54,7 @@ class AddReviewForm extends React.Component {
           <label className="review_email_label">
             Email:&nbsp;&nbsp;
             <input
-              className="review_email_input"
+              className="reviewEmail"
               type="email"
               maxLength="60"
               placeholder="For authentication reasons, you will not be emailed"
@@ -65,7 +65,7 @@ class AddReviewForm extends React.Component {
           <label className="review_nickname_label">
             Nickname:&nbsp;&nbsp;
             <input
-              className="review_nickname_input"
+              className="reviewNickname"
               type="text"
               maxLength="60"
               placeholder="Example: jackson11!"
@@ -76,7 +76,7 @@ class AddReviewForm extends React.Component {
           <label className="review_summary_input_label">
           Summary:&nbsp;&nbsp;
             <input
-              className="review_nickname_input"
+              className="reviewSummary"
               type="text"
               maxLength="60"
               placeholder="Example: Best purchase ever!"
@@ -87,7 +87,7 @@ class AddReviewForm extends React.Component {
           <label className="review_body_input_label">
             Review Body:
             <textarea
-              className="review_body_input"
+              className="reviewBody"
               cols="75"
               rows="14"
               maxLength="1000"
