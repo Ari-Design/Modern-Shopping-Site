@@ -4,6 +4,8 @@ import Star from '../shared/Star.jsx'
 import Size from './Size.jsx';
 import Comfort from './Comfort.jsx';
 
+var averageRating;
+
 var RatingsBreakdown = ({metaReviews, onStarsClick}) => {
   var numRatings = 0;
   var ratingsTotal = 0;
@@ -14,11 +16,12 @@ var RatingsBreakdown = ({metaReviews, onStarsClick}) => {
     ratingsTotal += metaReviews.ratings[i] * i;
     ratingsArray.push(Number(metaReviews.ratings[i]));
   }
-  var averageRating = Math.round(ratingsTotal/numRatings * 10) / 10;
+  averageRating = Math.round(ratingsTotal/numRatings * 10) / 10;
+
   return(
     <>
     <div className="average_ratings">
-      <h2>{averageRating} <Star numStars={averageRating}/></h2>
+      <h2>{averageRating} <Star avgRating={true}/></h2>
     </div>
     <div className="ratings_breakdown">
       <RatingsChart ratingsArray={ratingsArray} numRatings={numRatings} onStarsClick={onStarsClick}/>
@@ -28,5 +31,5 @@ var RatingsBreakdown = ({metaReviews, onStarsClick}) => {
     </>
   )
 }
-
+export {averageRating};
 export default RatingsBreakdown;
