@@ -1,8 +1,8 @@
 import React from 'react';
-var Dropdown = ({title, optionsArr, onChange}) => {
+var Dropdown = ({title, optionsArr, onChange, disabled = false}) => {
   return (
     <>
-      <select key={title} className={title} id={title} onChange={onChange}>
+      <select disabled={disabled} key={title} className={title} id={title} onChange={onChange}>
         {optionsArr.map((option) => {
           return <option key={option} value={option}>{option}</option>
         })}

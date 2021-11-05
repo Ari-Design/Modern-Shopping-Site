@@ -49,8 +49,8 @@ class Gallery extends React.Component {
     var arrayLength = myArray.length;
     var tempArray = [];
 
-    for (index = 0; index < arrayLength; index += 5) {
-      var myChunk = myArray.slice(index, index + 5);
+    for (index = 0; index < arrayLength; index += 7) {
+      var myChunk = myArray.slice(index, index + 7);
       tempArray.push(myChunk);
     }
 

@@ -21,7 +21,7 @@ const Carousel = ({ upArrow, onClickLastPage, page, onClickCurrentImg, currentIm
             ></img>
             {
               currentImg.thumbnail_url === thumbnail_url ? <div
-                style={{ top: index > 0 ? `${15.35 + index / 5 * 100}%` : '15.35%' }}
+                style={{ top: index > 0 ? `${12.65 + index / 7 * 100}%` : '12.65%' }}
                 className="line"></div> : null
             }
           </React.Fragment>
