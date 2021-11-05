@@ -28,7 +28,7 @@ var qaSample = {
           "question_body": "How big is this product?",
           "question_date": "2021-10-26T00:00:00.000Z",
           "asker_name": "asker19",
-          "question_helpfulness": 2,
+          "question_helpfulness": 4,
           "reported": false,
           "answers": {
               "4996569": {
@@ -44,7 +44,7 @@ var qaSample = {
                   "body": "The product runs big",
                   "date": "2021-10-26T00:00:00.000Z",
                   "answerer_name": "Seller",
-                  "helpfulness": 1,
+                  "helpfulness": 3,
                   "photos": [
                       "https://i.ibb.co/m66RZRw/test-Hoodie.jpg"
                   ]

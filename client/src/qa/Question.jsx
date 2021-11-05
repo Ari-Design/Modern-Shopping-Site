@@ -1,7 +1,7 @@
 import React from 'react';
 import AnswerList from './AnswerList.jsx';
 
-var Question = ({ question, handleHandR, openAnswerForm }) => (
+var Question = ({ question, handleHandR, openAnswerForm, selectQuestion }) => (
   <div className="qa_component">
     <div className="question">
       <span className="question_label">Q:</span>
@@ -17,7 +17,13 @@ var Question = ({ question, handleHandR, openAnswerForm }) => (
             >Yes</a> {`(${question.question_helpfulness})`}&nbsp;&nbsp;&nbsp;
         </span>
         <span className="divider">|</span>
-        <span onClick={() => openAnswerForm('answerForm')} className="add_answer">&nbsp;&nbsp;&nbsp;<a className="link_word">Add Answer</a></span>
+        <span className="add_answer">
+          &nbsp;&nbsp;&nbsp;
+          <a className="link_word"
+            href="#"
+            onClick={()=> {openAnswerForm('answerForm'); selectQuestion(question) }}
+          >Add Answer</a>
+        </span>
       </span>
     </div>
     <div>
