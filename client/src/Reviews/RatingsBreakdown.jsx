@@ -4,7 +4,7 @@ import Star from '../shared/Star.jsx'
 import Size from './Size.jsx';
 import Comfort from './Comfort.jsx';
 
-var RatingsBreakdown = ({metaReviews}) => {
+var RatingsBreakdown = ({metaReviews, onStarsClick}) => {
   var numRatings = 0;
   var ratingsTotal = 0;
   var ratingsArray = [];
@@ -21,7 +21,7 @@ var RatingsBreakdown = ({metaReviews}) => {
       <h2>{averageRating} <Star numStars={averageRating}/></h2>
     </div>
     <div className="ratings_breakdown">
-      <RatingsChart ratingsArray={ratingsArray} numRatings={numRatings}/>
+      <RatingsChart ratingsArray={ratingsArray} numRatings={numRatings} onStarsClick={onStarsClick}/>
     </div>
     <div className="ratings_size"><Size /></div>
     <div className="ratings_comfort"><Comfort /></div>

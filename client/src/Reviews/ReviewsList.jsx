@@ -19,6 +19,7 @@ class ReviewsList extends React.Component{
     }
     this.handleClick = this.handleClick.bind(this);
     this.onSortChange = this.onSortChange.bind(this);
+    this.onStarsClick = this.onStarsClick.bind(this);
   }
 
   handleClick(e) {
@@ -29,6 +30,15 @@ class ReviewsList extends React.Component{
         reviewsToDisplay: newDisplay
       });
     }
+  }
+
+  onStarsClick(e) {
+    var target = e.target.innerHTML.slice(0, 1);
+    var currentDisplay = this.state.reviewsToDisplay;
+    var toDisplay = currentDisplay.filter((review) => review.rating === Number(target));
+    this.setState({
+      reviewsToDisplay: toDisplay
+    })
   }
 
   onSortChange(e) {
@@ -59,7 +69,7 @@ class ReviewsList extends React.Component{
         <div className="ratings_container">
         <div className="ratings_breakdown">
           <h3>Ratings & Reviews</h3>
-          <RatingsBreakdown metaReviews={this.state.metaReviews}/>
+          <RatingsBreakdown metaReviews={this.state.metaReviews} onStarsClick={this.onStarsClick}/>
         </div>
         <div className="reviews_list">
           <h4>{this.state.count} reviews, sorted by <Dropdown title="sortReviewsBy" optionsArr={dropdownOptions} onChange={this.onSortChange}/></h4>
