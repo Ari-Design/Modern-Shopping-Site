@@ -15,18 +15,21 @@ var Answer = ({answer, answers, handleHandR}) => (
         <span
           className="answer_helpfulness"
           >&nbsp;&nbsp;&nbsp;Helpful? &nbsp;
-          <a className="link_word"
-            href ="#"
+          <span className="link_word"
             onClick={() => handleHandR(`/qa/answers/${answer.id}/helpful`, { "helpfulness": answer.helpfulness++ })}
-          >Yes</a> &nbsp;{`(${answer.helpfulness})`}&nbsp;&nbsp;&nbsp;</span>
+            >Yes
+          </span>
+          &nbsp;{`(${answer.helpfulness})`}&nbsp;&nbsp;&nbsp;
+        </span>
         <span className="divider">|</span>
         <span
           className="report_answer"
           >&nbsp;&nbsp;&nbsp;
-          <a className="link_word"
-            href ="#"
+          <span className="link_word"
             onClick={() => handleHandR(`/qa/answers/${answer.id}/report`, { "reported": true })}
-          >Report</a></span>
+            >Report
+          </span>
+        </span>
       </div>
     </div>
   </div>
