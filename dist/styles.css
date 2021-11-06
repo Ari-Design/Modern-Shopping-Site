@@ -217,6 +217,28 @@ header {
 
 .reviews_list { grid-area: reviews_list; }
 
+.stars_outer {
+  display: inline-block;
+  position: relative;
+}
+
+.stars_outer::before {
+  content: "\2606 \2606 \2606 \2606 \2606";
+}
+
+.stars_inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.stars_inner::before {
+  content: "\2605 \2605 \2605 \2605 \2605";
+}
+
 .review_buttons {
   height: 50px;
   font-size: 18px;

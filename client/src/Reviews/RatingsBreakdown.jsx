@@ -17,6 +17,7 @@ var RatingsBreakdown = ({metaReviews, onStarsClick}) => {
     ratingsArray.push(Number(metaReviews.ratings[i]));
   }
   averageRating = Math.round(ratingsTotal/numRatings * 10) / 10;
+  console.log('metaReviews > ', metaReviews);
 
   return(
     <>
@@ -26,7 +27,7 @@ var RatingsBreakdown = ({metaReviews, onStarsClick}) => {
     <div className="ratings_breakdown">
       <RatingsChart ratingsArray={ratingsArray} numRatings={numRatings} onStarsClick={onStarsClick}/>
     </div>
-    <div className="ratings_size"><Size /></div>
+    <div className="ratings_size"><Size characteristics={metaReviews.characteristics}/></div>
     <div className="ratings_comfort"><Comfort /></div>
     </>
   )

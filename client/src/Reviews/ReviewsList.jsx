@@ -15,7 +15,8 @@ class ReviewsList extends React.Component{
       reviewsToDisplay: this.props.reviewData.results.slice(0, 2),
       metaReviews: this.props.reviewMeta,
       count: this.props.reviewData.count,
-      sortChoice: 'relevance'
+      sortChoice: 'relevance',
+      sorting: false
     }
     this.handleClick = this.handleClick.bind(this);
     this.onSortChange = this.onSortChange.bind(this);
@@ -23,7 +24,7 @@ class ReviewsList extends React.Component{
   }
 
   handleClick(e) {
-    if(e.target.id === "More_Reviews") {
+    if (e.target.id === "More_Reviews") {
       var displayLength = this.state.reviewsToDisplay.length + 2;
       var newDisplay = this.state.allReviews.slice(0, displayLength);
       this.setState({
@@ -49,12 +50,14 @@ class ReviewsList extends React.Component{
     } else if (choice === 'Helpfulness') {
       var sortedDisplay = currentDisplay.sort((a, b) => a.helpfulness > b.helpfulness ? -1: 1);
       this.setState({
-        reviewsToDisplay: sortedDisplay
+        reviewsToDisplay: sortedDisplay,
+        sorting: true
       })
     } else if (choice === 'Newest') {
       var sortedDisplay = currentDisplay.sort((a, b) => a.date > b.date ? -1 : 1);
       this.setState({
-        reviewsToDisplay: sortedDisplay
+        reviewsToDisplay: sortedDisplay,
+        sorting: true
       })
     }
   }

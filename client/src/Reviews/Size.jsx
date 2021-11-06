@@ -1,8 +1,9 @@
 import React from 'react';
-var Size = ({sizeScore}) => {
+var Size = ({characteristics}) => {
+  console.log('characteristics > ', characteristics);
   return (
     <div>
-      <span>Size</span>
+      <span>Fit {characteristics.Fit.value} Length {characteristics.Length.value}</span>
       <svg width='100%' height='24px'>
         <g>
         <rect fill='#ebebeb' width='27%' height='8px' x='0%'></rect>
