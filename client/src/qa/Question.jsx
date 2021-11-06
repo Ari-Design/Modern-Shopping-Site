@@ -10,19 +10,19 @@ var Question = ({ question, handleHandR, openAnswerForm, selectQuestion }) => (
       </span>
       <span className="question_options">
         <span className="question_helpfulness">
-          Helpful <a
+          Helpful <span
             className="link_word"
-            href ="#"
             onClick={() => handleHandR(`/qa/questions/${question.question_id}/helpful`, { "question_helpfulness": question.question_helpfulness++ })}
-            >Yes</a> {`(${question.question_helpfulness})`}&nbsp;&nbsp;&nbsp;
+            >Yes
+          </span> {`(${question.question_helpfulness})`}&nbsp;&nbsp;&nbsp;
         </span>
         <span className="divider">|</span>
         <span className="add_answer">
           &nbsp;&nbsp;&nbsp;
-          <a className="link_word"
-            href="#"
+          <span
+            className="link_word"
             onClick={()=> {openAnswerForm('answerForm'); selectQuestion(question) }}
-          >Add Answer</a>
+          >Add Answer</span>
         </span>
       </span>
     </div>

@@ -8,13 +8,19 @@ class QAContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      qaData: this.props.data,
-      productId: this.props.id,
-      productInfo: this.props.productInfo,
       searchTerm: '',
       currentQuestion: null
     }
-    this.handleSearchInputChange =  this.handleSearchInputChange.bind(this)
+    this.handleSearchInputChange =  this.handleSearchInputChange.bind(this);
+    this.selectQuestion= this.selectQuestion.bind(this);
+  }
+
+  componentDidMount(){
+    console.log('QA Container Mounted')
+  }
+
+  componentDidUpdate() {
+    console.log('QA Container Updated')
   }
 
   handleSearchInputChange(e) {
@@ -24,7 +30,7 @@ class QAContainer extends React.Component {
   }
 
   selectQuestion(question) {
-    setState({
+    this.setState({
       currentQuestion: question
     })
   }
@@ -44,8 +50,8 @@ class QAContainer extends React.Component {
           </div>
           <div>
             <QuestionList
-              key={this.state.qaData.product_id}
-              data={this.state.qaData}
+              key={this.props.data.product_id}
+              data={this.props.data}
               handleHandR={this.props.handleHandR}
               selectQuestion={this.selectQuestion}
               openAnswerForm={this.props.openAnswerForm}

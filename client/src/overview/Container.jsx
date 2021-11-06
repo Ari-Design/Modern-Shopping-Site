@@ -7,8 +7,6 @@ class Container extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productInfo: this.props.productInfo,
-      productStyles: this.props.productStyles,
       currentStyle: this.props.productStyles.results[0]
     };
     this.changeStyle = this.changeStyle.bind(this);
@@ -25,7 +23,7 @@ class Container extends React.Component {
     return (
       <div className="overview_container" >
         <div className="gallery_container">
-          <Gallery key={this.state.productStyles.product_id}
+          <Gallery key={this.props.productStyles.product_id}
             openFullscreen={this.props.openFullscreen}
             getCurrentImg={this.props.getCurrentImg}
             currentStyle={this.state.currentStyle}
@@ -33,14 +31,14 @@ class Container extends React.Component {
         </div>
 
         <section className="styles_container" >
-          <Styles productStyles={this.state.productStyles.results}
+          <Styles productStyles={this.props.productStyles.results}
             currentStyle={this.state.currentStyle}
             onClick={this.changeStyle}
-            productInfo={this.state.productInfo}
+            productInfo={this.props.productInfo}
           />
         </section>
 
-        <section className="productInfo_container"><ProductInfo productInfo={this.state.productInfo}/></section>
+        <section className="productInfo_container"><ProductInfo productInfo={this.props.productInfo}/></section>
       </div>
     );
   }
