@@ -18,7 +18,6 @@ class AddReviewForm extends React.Component {
       reviewNickname: '',
       reviewEmail: ''
     }
-    console.log('PROPS: ', this.props);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
