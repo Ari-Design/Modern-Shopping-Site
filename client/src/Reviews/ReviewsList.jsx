@@ -10,6 +10,7 @@ class ReviewsList extends React.Component{
     super(props);
     /* console.log('ReviewsList props > ', this.props);
     console.log('metaReviews props > ', this.props.reviewMeta); */
+    console.log('review props >', this.props.reviewData.results);
     this.state = {
       allReviews: this.props.reviewData.results,
       reviewsToDisplay: this.props.reviewData.results.slice(0, 2),
