@@ -61,9 +61,13 @@ class App extends React.Component {
     console.log('FETCH DATA FROM DID MOUNTCALLED')
   }
 
+  /*
   componentDidUpdate() {
     console.log('COMPONENT DID UPDATE RAN')
+    this.getProducts();
+    this.fetchData()
   }
+  */
 
   chooseProduct(e) {
     var id = Number(e.target.value)
@@ -71,8 +75,6 @@ class App extends React.Component {
   }
 
   fetchData(id) {
-    console.log('INSIDE FETCH DATA')
-    console.log(this.state)
     const getInfo = axios.get(`/products/${id}`);
     const getStyles = axios.get(`/products/${id}/styles`);
     const getReviewData = axios.get('/reviews', { params: { product_id: id }});
@@ -83,8 +85,7 @@ class App extends React.Component {
       .then(axios.spread((...data) => {
         console.log(`product info from fetch ${data[0].data}`)
         console.log(`product styles from fetch ${data[1].data}`)
-        console.log(`product review from fetch ${data[2].data}`)
-        console.log(`product reviewmeta from fetch ${data[3].data}`)
+
         console.log(`product qadata from fetch ${data[4].data}`)
         this.setState({
           currentProductId: id,
@@ -94,7 +95,6 @@ class App extends React.Component {
           reviewMeta: data[3].data,
           qaData: data[4].data
         })
-        console.log(`AFTER FETCH `)
       }))
       .catch((err) => {
         console.log(`error: ${err}`)

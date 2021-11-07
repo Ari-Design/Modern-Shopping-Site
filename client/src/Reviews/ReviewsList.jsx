@@ -4,13 +4,13 @@ import RatingsBreakdown from './RatingsBreakdown.jsx';
 import Dropdown from '../shared/Dropdown.jsx';
 import Modal from '../shared/Modal.jsx';
 import AddReviewForm from '../shared/forms/AddReviewForm.jsx';
+import axios from 'axios';
 
 class ReviewsList extends React.Component{
   constructor(props) {
     super(props);
     /* console.log('ReviewsList props > ', this.props);
     console.log('metaReviews props > ', this.props.reviewMeta); */
-    console.log('review props >', this.props.reviewData.results);
     this.state = {
       allReviews: this.props.reviewData.results,
       reviewsToDisplay: this.props.reviewData.results.slice(0, 2),
@@ -22,7 +22,36 @@ class ReviewsList extends React.Component{
     this.handleClick = this.handleClick.bind(this);
     this.onSortChange = this.onSortChange.bind(this);
     this.onStarsClick = this.onStarsClick.bind(this);
+    this.fetchReviews = this.fetchReviews.bind(this);
   }
+
+  componentDidMount() {
+    this.fetchReviews();
+  }
+  componentDidUpdate(prevState) {
+    if (this.props.currentProductId !== prevState.currentProductId) {
+      this.fetchReviews();
+    }
+  }
+
+
+  fetchReviews() {
+    console.log('fetch reviews invoked')
+    axios.get('/reviews', { params: { product_id: this.props.currentProductId }})
+    .then((result) => {
+      this.setState({
+        currentProductId: this.props.currentProductId,
+        allReviews : result.data.results,
+        reviewsToDisplay: result.data.results.slice(0, 2),
+        count: result.data.count
+      })
+    })
+    axios.get('/reviews/meta', { params: { product_id: this.props.currentProductId }})
+    .then((result) => {
+      console.log('success > ', result.data);
+    });
+  }
+
 
   handleClick(e) {
     if (e.target.id === "More_Reviews") {
@@ -33,6 +62,7 @@ class ReviewsList extends React.Component{
       });
     }
   }
+
 
   onStarsClick(e) {
     var target = e.target.innerHTML.slice(0, 1);
