@@ -41,7 +41,7 @@ class App extends React.Component {
   }
 
   getProducts() {
-    console.log("GET PRODUCTS WAS CALLED")
+    // console.log("GET PRODUCTS WAS CALLED")
     axios.get('/products')
       .then((res) => {
         this.setState({
@@ -54,16 +54,16 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('COMPONENT DID MOUNT CALLED')
+    // console.log('COMPONENT DID MOUNT CALLED')
     this.getProducts();
-    console.log('GET PRODUCTS FROM DID MOUNT CALLED')
+    // console.log('GET PRODUCTS FROM DID MOUNT CALLED')
     this.fetchData(37311)
-    console.log('FETCH DATA FROM DID MOUNTCALLED')
+    // console.log('FETCH DATA FROM DID MOUNTCALLED')
   }
 
-  componentDidUpdate() {
-    console.log('COMPONENT DID UPDATE RAN')
-  }
+  // componentDidUpdate() {
+  //   console.log('COMPONENT DID UPDATE RAN')
+  // }
 
   chooseProduct(e) {
     var id = Number(e.target.value)
@@ -71,8 +71,8 @@ class App extends React.Component {
   }
 
   fetchData(id) {
-    console.log('INSIDE FETCH DATA')
-    console.log(this.state)
+    // console.log('INSIDE FETCH DATA')
+    // console.log(this.state)
     const getInfo = axios.get(`/products/${id}`);
     const getStyles = axios.get(`/products/${id}/styles`);
     const getReviewData = axios.get('/reviews', { params: { product_id: id }});
@@ -81,11 +81,11 @@ class App extends React.Component {
 
     axios.all([getInfo, getStyles, getReviewData, getReviewMeta, getQaData])
       .then(axios.spread((...data) => {
-        console.log(`product info from fetch ${data[0].data}`)
-        console.log(`product styles from fetch ${data[1].data}`)
-        console.log(`product review from fetch ${data[2].data}`)
-        console.log(`product reviewmeta from fetch ${data[3].data}`)
-        console.log(`product qadata from fetch ${data[4].data}`)
+        // console.log(`product info from fetch ${data[0].data}`)
+        // console.log(`product styles from fetch ${data[1].data}`)
+        // console.log(`product review from fetch ${data[2].data}`)
+        // console.log(`product reviewmeta from fetch ${data[3].data}`)
+        // console.log(`product qadata from fetch ${data[4].data}`)
         this.setState({
           currentProductId: id,
           productInfo: data[0].data,
@@ -94,7 +94,7 @@ class App extends React.Component {
           reviewMeta: data[3].data,
           qaData: data[4].data
         })
-        console.log(`AFTER FETCH `)
+        // console.log(`AFTER FETCH `)
       }))
       .catch((err) => {
         console.log(`error: ${err}`)

@@ -16,11 +16,11 @@ class QAContainer extends React.Component {
   }
 
   componentDidMount(){
-    console.log('QA Container Mounted')
+    // console.log('QA Container Mounted')
   }
 
   componentDidUpdate() {
-    console.log('QA Container Updated')
+    // console.log('QA Container Updated')
   }
 
   handleSearchInputChange(e) {
