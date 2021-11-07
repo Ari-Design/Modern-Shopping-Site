@@ -9,8 +9,6 @@ import axios from 'axios';
 class ReviewsList extends React.Component{
   constructor(props) {
     super(props);
-    /* console.log('ReviewsList props > ', this.props);
-    console.log('metaReviews props > ', this.props.reviewMeta); */
     this.state = {
       allReviews: this.props.reviewData.results,
       reviewsToDisplay: this.props.reviewData.results.slice(0, 2),
@@ -22,36 +20,18 @@ class ReviewsList extends React.Component{
     this.handleClick = this.handleClick.bind(this);
     this.onSortChange = this.onSortChange.bind(this);
     this.onStarsClick = this.onStarsClick.bind(this);
-    this.fetchReviews = this.fetchReviews.bind(this);
   }
 
-  componentDidMount() {
-    this.fetchReviews();
-  }
-  componentDidUpdate(prevState) {
-    if (this.props.currentProductId !== prevState.currentProductId) {
-      this.fetchReviews();
+  componentDidUpdate(prevProps) {
+    if (this.props.currentProductId !== prevProps.currentProductId) {
+      this.setState({
+        allReviews: this.props.reviewData.results,
+        reviewsToDisplay: this.props.reviewData.results.slice(0, 2),
+        metaReviews: this.props.reviewMeta,
+        count: this.props.reviewData.count
+      });
     }
   }
-
-
-  fetchReviews() {
-    console.log('fetch reviews invoked')
-    axios.get('/reviews', { params: { product_id: this.props.currentProductId }})
-    .then((result) => {
-      this.setState({
-        currentProductId: this.props.currentProductId,
-        allReviews : result.data.results,
-        reviewsToDisplay: result.data.results.slice(0, 2),
-        count: result.data.count
-      })
-    })
-    axios.get('/reviews/meta', { params: { product_id: this.props.currentProductId }})
-    .then((result) => {
-      console.log('success > ', result.data);
-    });
-  }
-
 
   handleClick(e) {
     if (e.target.id === "More_Reviews") {

@@ -5,7 +5,6 @@ var RatingsChart = ({ratingsArray, numRatings, onStarsClick}) => {
   return [5, 4, 3, 2, 1].map((index) => {
     var width = JSON.stringify(Math.round(ratingsArray[index - 1]/numRatings * 100)) + '%';
     return (
-      <>
       <div key={index} className="star-rating">
       <span onClick={onStarsClick} id={index}><u>{index} stars</u> </span>
       <svg width='70%' height='16px'>
@@ -15,7 +14,6 @@ var RatingsChart = ({ratingsArray, numRatings, onStarsClick}) => {
         </g>
       </svg>
       </div>
-      </>
     );
   })
 
