@@ -259,8 +259,22 @@ header {
   width: 790px;
   height: 450px;
   margin: 40px;
-  display: grid;
-  grid-template-rows: 10% 10% 10% 10% 10% 40% 10%;
+}
+
+.review_summary_input_label {
+
+
+}
+
+.review_body_input_label {
+
+}
+.review_cancel {
+
+}
+
+.review_submit {
+
 }
 
 /**************************************************************

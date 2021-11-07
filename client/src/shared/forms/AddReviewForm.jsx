@@ -18,6 +18,7 @@ class AddReviewForm extends React.Component {
       reviewNickname: '',
       reviewEmail: ''
     }
+    console.log('PROPS: ', this.props);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -28,8 +29,8 @@ class AddReviewForm extends React.Component {
     })
   }
 
-  handleSubmit() {
-    console.log('submitted')
+  handleSubmit(e) {
+    console.log(this.state.reviewBody);
     // axios.post
   }
 
@@ -39,18 +40,19 @@ class AddReviewForm extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <div className="add_review_form_header">
           <h1>Write Your Review</h1>
-          <h2 >About the *product name*</h2>
+          <h2 >About the {this.props.productInfo.name}</h2>
           </div>
           <label className="overall_rating_label">
             Stars Here
           </label>
           <label className="recommend_label">
             Would You Recommend This Product? <input
-              className="recommend_input"
+              className="recommend"
               type="radio"
               >
             </input>
           </label>
+          <div className="reviewer_info">
           <label className="review_email_label">
             Email:&nbsp;&nbsp;
             <input
@@ -62,6 +64,7 @@ class AddReviewForm extends React.Component {
               onChange={this.handleChange}
             />
           </label>
+          </div>
           <label className="review_nickname_label">
             Nickname:&nbsp;&nbsp;
             <input
@@ -95,8 +98,10 @@ class AddReviewForm extends React.Component {
               onChange={this.handleChange}>
             </textarea>
           </label>
+          <div className="review_footer">
           <button onClick={this.props.onClick} className="review_cancel">Cancel</button>
           <input className="review_submit" type="submit" value="Submit" />
+          </div>
         </form>
       </div>
     )

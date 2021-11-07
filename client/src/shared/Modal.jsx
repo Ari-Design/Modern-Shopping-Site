@@ -84,7 +84,9 @@ const Modal = (props) => {
     return (
       <div>
         <div style={modalStyle}>
-          <AddReviewForm onClick={e => close(e, props.onClose.bind(this, 'reviewForm'))}/>
+          <AddReviewForm
+          productInfo={props.productInfo}
+          onClick={e => close(e, props.onClose.bind(this, 'reviewForm'))}/>
         </div>
         <div style={backdropStyle}/>
       </div>

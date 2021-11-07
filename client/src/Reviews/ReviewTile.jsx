@@ -3,6 +3,7 @@ import Star from '../shared/Star.jsx';
 import moment from 'moment';
 
 var ReviewTile = ({review}) => {
+  console.log(review);
   return (
     <>
     <div className="review_stars"><h4><Star numStars={review.rating}/></h4></div>

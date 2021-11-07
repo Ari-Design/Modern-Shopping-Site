@@ -152,7 +152,7 @@ class App extends React.Component {
           <ReviewsList currentProductId={this.state.currentProductId}
             reviewData={this.state.reviewData}
             openReviewForm={this.changeModal}
-            reviewMeta={this.state.reviewMeta} />
+            reviewMeta={this.state.reviewMeta}/>
 
           {fullscreen || answerForm || questionForm || reviewForm ? <Modal
             onClose={this.changeModal}

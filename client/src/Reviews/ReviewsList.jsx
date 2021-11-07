@@ -43,7 +43,9 @@ class ReviewsList extends React.Component{
     }
   }
 
-
+  handleSubmit(e) {
+    console.log(e.target);
+  }
   onStarsClick(e) {
     var target = e.target.innerHTML.slice(0, 1);
     var currentDisplay = this.state.reviewsToDisplay;
