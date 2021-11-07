@@ -12,6 +12,14 @@ class Container extends React.Component {
     this.changeStyle = this.changeStyle.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    var prevStyle = prevProps.productStyles.results[0];
+    var currentStyle = this.props.productStyles.results[0];
+    if (prevStyle['style_id'] !== currentStyle['style_id']) {
+      this.changeStyle(currentStyle);
+    }
+  }
+
   changeStyle(obj) {
     this.setState({
       currentStyle: obj
