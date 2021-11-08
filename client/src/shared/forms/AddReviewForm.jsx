@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Star from '../Star.jsx';
 
 class AddReviewForm extends React.Component {
   constructor(props) {
@@ -42,8 +43,9 @@ class AddReviewForm extends React.Component {
           <h3>About the {this.props.productInfo.name}</h3>
           </div>
           <label className="overall_rating_label">
-            Stars Here
+            <Star />
           </label>
+          <br/>
           <label className="recommend_label">
             Would You Recommend This Product? <input
               className="recommend"
@@ -75,6 +77,7 @@ class AddReviewForm extends React.Component {
               onChange={this.handleChange}
             />
           </label>
+          <br/>
           <label className="review_summary_input_label">
           Summary:&nbsp;&nbsp;
             <input
@@ -86,8 +89,10 @@ class AddReviewForm extends React.Component {
               onChange={this.handleChange}
             />
           </label>
+          <br/>
           <label className="review_body_input_label">
             Review Body:
+            <br/>
             <textarea
               className="reviewBody"
               cols="75"
