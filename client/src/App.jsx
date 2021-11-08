@@ -116,7 +116,6 @@ class App extends React.Component {
   handleIsHelpfulAndReport(url, data, callback) {
     axios.put(url, data)
       .then((res) => {
-        console.log(res)
         callback
       })
       .catch((err) => {
