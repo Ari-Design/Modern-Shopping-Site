@@ -78,6 +78,7 @@ class AddReviewForm extends React.Component {
             />
           </label>
           <br/>
+          <div className="review_characteristics">**Characteristics Here**</div>
           <label className="review_summary_input_label">
           Summary:&nbsp;&nbsp;
             <input
