@@ -201,13 +201,12 @@ header {
 /* RATINGS CONTAINER */
 
 .ratings_container {
-
   width: 100%;
   position: relative;
   display: grid;
-  grid-template-columns: 0.5fr .5fr 2fr 0.5fr;
+  grid-template-columns: .5fr .75fr 2fr .5fr 1fr;
   grid-template-rows: 1fr;
-  gap: 25px 25px;
+  gap: 50px 50px;
   margin-bottom: 100px;
   grid-template-areas:
     ". ratings_breakdown reviews_list .";
