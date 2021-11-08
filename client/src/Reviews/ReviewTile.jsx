@@ -10,6 +10,7 @@ var ReviewTile = ({review, onHelpfulClick}) => {
     <br/>
     <span className="review_summary"><h4>{review.summary}</h4></span>
     <div className="review_body">{review.body}</div>
+    {console.log(review)}
     {review.recommend ? <div className="review_recommend"><br/><i>&#10003; I recommend this product</i></div> : null}
     <br/>
     <div className="review_footer">
