@@ -24,7 +24,7 @@ class ReviewsList extends React.Component{
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.currentProductId !== prevProps.currentProductId || this.props.allReviews !== prevProps.allReviews) {
+    if (this.props.currentProductId !== prevProps.currentProductId || this.props !== prevProps) {
       this.setState({
         allReviews: this.props.reviewData.results,
         reviewsToDisplay: this.props.reviewData.results.slice(0, 2),
@@ -81,7 +81,7 @@ class ReviewsList extends React.Component{
     var choiceId = Number(e.target.closest('a').id);
     axios.put(`/reviews/${choiceId}/helpful`)
     .then(() => {
-      console.log('congrats')
+      this.props.updateReviewData();
     })
     .catch((err) => {
       console.log('error: ', err)
@@ -94,7 +94,7 @@ class ReviewsList extends React.Component{
     if(this.state.allReviews.length > 0) {
       return(
         <>
-        <div className="ratings_container">
+        <div id="ratings_container" className="ratings_container">
         <div className="ratings_breakdown">
           <h3>Ratings & Reviews</h3>
           <RatingsBreakdown metaReviews={this.state.metaReviews} onStarsClick={this.onStarsClick}/>

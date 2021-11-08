@@ -40,6 +40,7 @@ class App extends React.Component {
     this.fetchData = this.fetchData.bind(this);
     this.selectQuestion = this.selectQuestion.bind(this);
     this.updateQaData = this.updateQaData.bind(this);
+    this.updateReviewData = this.updateReviewData.bind(this);
   }
 
   getProducts() {
@@ -99,7 +100,17 @@ class App extends React.Component {
         console.log(`error: ${err}`)
       })
   }
-
+  updateReviewData() {
+    axios.get('/reviews', { params: { product_id: this.state.currentProductId }})
+    .then((res) => {
+      this.setState({
+        reviewData: res.data
+      })
+    })
+    .catch((err) => {
+      console.log('error')
+    })
+  }
   updateQaData(id) {
     axios.get('/qa/questions', { params: { product_id: id }})
       .then((res) => {
@@ -171,10 +182,11 @@ class App extends React.Component {
             updateQaData={this.updateQaData}
             />
 
-          <ReviewsList currentProductId={currentProductId}
-            reviewData={reviewData}
+          <ReviewsList currentProductId={this.state.currentProductId}
+            reviewData={this.state.reviewData}
             openReviewForm={this.changeModal}
-            reviewMeta={reviewMeta}
+            reviewMeta={this.state.reviewMeta}
+            updateReviewData={this.updateReviewData}
             />
 
           {fullscreen || answerForm || questionForm || reviewForm ? <Modal
