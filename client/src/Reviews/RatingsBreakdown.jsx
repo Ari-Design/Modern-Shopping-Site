@@ -38,6 +38,7 @@ var RatingsBreakdown = ({metaReviews, onStarsClick}) => {
     <div className="ratings_breakdown">
       <RatingsChart ratingsArray={ratingsArray} numRatings={numRatings} onStarsClick={onStarsClick}/>
     </div>
+    <br/>
     <div className="ratings_factors">
       <Factors metaReviews={metaReviews}/>
     </div>
