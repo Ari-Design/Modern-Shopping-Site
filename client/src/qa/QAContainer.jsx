@@ -9,10 +9,12 @@ class QAContainer extends React.Component {
     super(props)
     this.state = {
       searchTerm: '',
-      currentQuestion: null
+      qListLength: 4,
+      buttonLabel: 'MORE ANSWERED QUESTIONS',
+      allQuestions: false
     }
     this.handleSearchInputChange =  this.handleSearchInputChange.bind(this);
-    this.selectQuestion= this.selectQuestion.bind(this);
+    this.handleMoreQuestions = this.handleMoreQuestions.bind(this);
   }
 
   componentDidMount(){
@@ -28,11 +30,19 @@ class QAContainer extends React.Component {
       searchTerm: e.target.value
     })
   }
-
-  selectQuestion(question) {
-    this.setState({
-      currentQuestion: question
-    })
+  handleMoreQuestions(e) {
+    if (e.target.id === 'MoreQuestions' && this.state.buttonLabel === 'MORE ANSWERED QUESTIONS') {
+      this.setState({
+        qListLength: this.props.data.results.length,
+        buttonLabel: 'FEWER QUESTIONS',
+      })
+    }
+    if (e.target.id === 'MoreQuestions' && this.state.buttonLabel === 'FEWER QUESTIONS') {
+      this.setState({
+        qListLength: 4,
+        buttonLabel: 'MORE ANSWERED QUESTIONS',
+      })
+    }
   }
 
   render() {
@@ -53,13 +63,15 @@ class QAContainer extends React.Component {
               key={this.props.data.product_id}
               data={this.props.data}
               handleHandR={this.props.handleHandR}
-              selectQuestion={this.selectQuestion}
+              selectQuestion={this.props.selectQuestion}
               openAnswerForm={this.props.openAnswerForm}
               term={this.state.searchTerm}
+              qListLength={this.state.qListLength}
+              updateQaData={this.props.updateQaData}
             />
           </div>
           <div>
-            <button className="question_button" id="MoreQuestions">MORE ANSWERED QUESTIONS</button>
+            <button onClick={(e) => this.handleMoreQuestions(e)} className="question_button" id="MoreQuestions">{this.state.buttonLabel}</button>
             <button onClick={() => this.props.openAnswerForm('questionForm')} className="question_button" id="AddQuesion">ADD A QUESTION +</button>
           </div>
         </div>

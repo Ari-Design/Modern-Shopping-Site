@@ -10,36 +10,41 @@ class AnswerForm extends React.Component {
       nickname: ''
     }
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleAnswerSubmit = this.handleAnswerSubmit.bind(this);
   }
 
   handleChange(e) {
     this.setState({
-      [e.target.name]: [e.target.value]
+      [e.target.name]: e.target.value
     })
   }
 
-  handleSubmit() {
+  handleAnswerSubmit(e) {
     console.log('submitted')
-    axios.post('/qa/questions/:question_id/answers', {
-      question: this.state.question,
-      email: this.state.email,
-      nickname: this.state.nickname
-    })
-    .then((res) => {
-      console.log(res)
-    })
-    .catch((err) => {
-      console.log(`error: ${err}`)
-    })
+    var id = this.props.currentQuestion.question_id
+    if (e.target.id === 'a_submit') {
+      axios.post(`/qa/questions/${id}/answers`, {
+        body: this.state.answer,
+        name: this.state.nickname,
+        email: this.state.email,
+        photos: []
+      })
+      .then((res) => {
+        console.log("update from question submit")
+        this.props.updateQaData(this.props.productInfo.id)
+      })
+      .catch((err) => {
+        console.log(`error: ${err}`)
+      })
+    }
   }
 
   render() {
     return (
       <div className="answer_form">
-      <form onSubmit={this.handleSubmit}>
+      <form>
         <h2 className="answer_form_header">Submit Your Answer</h2>
-        <h3 className="answer-form_subheader">Product - Question</h3>
+        <h3 className="answer-form_subheader">{this.props.productInfo.name}: {this.props.currentQuestion.question_body}</h3>
         <label className="a_email_label">
           Email:&nbsp;&nbsp;
           <input
@@ -71,12 +76,12 @@ class AnswerForm extends React.Component {
             cols="75"
             rows="14"
             name="answer"
-            value={this.state.question}
+            value={this.state.answer}
             onChange={this.handleChange}>
           </textarea>
         </label>
         <button onClick={this.props.onClick} className="a_cancel">Cancel</button>
-        <input className="answer_submit" type="submit" value="Submit" />
+        <button onClick={(e) => this.handleAnswerSubmit(e)} className="answer_submit" id="a_submit">Submit</button>
       </form>
     </div>
     )

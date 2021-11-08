@@ -1,7 +1,7 @@
 import React from 'react';
 import Question from './Question.jsx';
 
-var QuestionList = ({ data, handleHandR, term, openAnswerForm, selectQuestion}) => (
+var QuestionList = ({ data, handleHandR, term, openAnswerForm, selectQuestion, qListLength, updateQaData}) => (
   <div>
     {data.results.sort((a, b) =>b.question_helpfulness - a.question_helpfulness).filter((value) => {
       if (term.length < 3) {
@@ -9,13 +9,15 @@ var QuestionList = ({ data, handleHandR, term, openAnswerForm, selectQuestion}) 
       } else if (value.question_body.toLowerCase().includes(term.toLowerCase())){
         return value;
       }
-    }).map((question) => (
+    }).slice(0, qListLength).map((question) => (
       <Question
         key={`${question.question_id}`}
+        productId={data.product_id}
         openAnswerForm={openAnswerForm}
         question={question}
         selectQuestion={selectQuestion}
         handleHandR={handleHandR}
+        updateQaData={updateQaData}
       />
     ))}
   </div>
