@@ -5,12 +5,10 @@ import moment from 'moment';
 var ReviewTile = ({review}) => {
   return (
     <>
-    <div className="stars_and_reviewers">
-    <div className="review_stars" style={{float:'left'}}><h4><Star numStars={review.rating}/></h4></div>
-    <div className="review_reviewer" style={{float:'right'}}><h5>&#9745; {review.reviewer_name}, {moment(review.date).format("MMMM Do, YYYY")}</h5></div>
-    </div>
+    <span className="review_stars" style={{float:'left'}} y='100%'><Star numStars={review.rating}/></span>
+    <span className="review_reviewer" style={{float:'right'}}>&#9745; {review.reviewer_name}, {moment(review.date).format("MMMM Do, YYYY")}</span>
     <br/>
-    <span className="review_summary"><br/><h4><br/>{review.summary}</h4></span>
+    <span className="review_summary"><h4>{review.summary}</h4></span>
     <div className="review_body">{review.body}</div>
     {review.recommend ? <div className="review_recommend"><br/><i>&#10003; I recommend this product</i></div> : null}
     <br/>
