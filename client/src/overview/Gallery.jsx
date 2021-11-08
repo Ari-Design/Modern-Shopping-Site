@@ -30,9 +30,6 @@ class Gallery extends React.Component {
     this.getLastImg = this.getLastImg.bind(this);
     this.changeCurrentImg = this.changeCurrentImg.bind(this);
   }
-  componentDidMount() {
-    this.onUpdate();
-  }
 
   componentDidUpdate(prevProps) {
     var { name } = prevProps.currentStyle;

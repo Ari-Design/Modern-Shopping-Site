@@ -121,16 +121,24 @@ header {
   grid-column-start: 2;
 }
 
-.style_price {
+.style_price_container {
   grid-row-start: 5;
   grid-column-start: 2;
   margin: 0;
-  font-size: 28px;
+  font-size: 24px;
+}
+
+.style_price {
+  display: inline;
+  color: black;
+  text-decoration: line-through black;
+  font-size: 24px;
 }
 
 .sale_price {
   display: inline;
   color: red;
+  font-size: 24px;
 }
 
 .style_style {

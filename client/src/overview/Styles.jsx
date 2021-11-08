@@ -25,10 +25,6 @@ class Styles extends React.Component {
     this.changeErrorT = this.changeErrorT.bind(this);
   }
 
-  componentDidMount() {
-    //this.onUpdate();
-  }
-
   componentDidUpdate(prevProps) {
     if (prevProps.currentStyle !== this.props.currentStyle) {
       this.onUpdate();
@@ -54,7 +50,7 @@ class Styles extends React.Component {
       salePrice: currentStyle.sale_price,
       styleName: currentStyle.name,
       skus: tempArray,
-      sizes: tempArray2.lenght === 0 ? ['OUT OF STOCK'] : tempArray2,
+      sizes: tempArray2.length === 0 ? ['OUT OF STOCK'] : tempArray2,
     });
   }
 
@@ -94,7 +90,7 @@ class Styles extends React.Component {
         </div>
         <h3 className="style_category">{category}</h3>
         <h1 className="style_name">{name}</h1>
-        {typeof salePrice === 'string' ? <h3 style={{textDecoration: 'line'}} className="style_price">{price} <p className="sale_price">{salePrice}</p></h3> : <h3 className="style_price">{price}</h3>}
+        {typeof salePrice === 'string' ? <div className="style_price_container"><h3 style={{textDecoration: 'line-through'}} className="style_price" >{price} </h3><h3 className="sale_price">{salePrice}</h3></div> : <h3 className="style_price_container">{price}</h3>}
         <span className="style_style">STYLE > {styleName}</span>
         <div className="style_selector">
           <StyleSelector styles={productStyles}
@@ -111,7 +107,7 @@ class Styles extends React.Component {
           <Dropdown title={'select_qty'} optionsArr={['-']} disabled={true} />}
         </div>
         <div className="style_buttons">
-          {sizes[0] === 'OUT OF STOCK' ? null : <button onClick={() => {this.changeErrorT(); document.getElementById('select_size').select()}}>add to bag button</button>}
+          {sizes[0] === 'OUT OF STOCK' ? null : <button onClick={() => {this.changeErrorT() ? this.changeErrorT() : console.log('added') }}>add to bag button</button>}
           <button>favorite</button>
         </div>
       </>
