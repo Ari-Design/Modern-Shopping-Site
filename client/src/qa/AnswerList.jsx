@@ -2,7 +2,7 @@ import React from 'react';
 import Answer from './Answer.jsx';
 
 
-var AnswerList = ({ answers, handleHandR, qId, productId }) => {
+var AnswerList = ({ answers, handleHandR, qId, productId, updateQaData }) => {
   let answersArray = [];
   for (var id in answers) {
     answersArray.push(answers[id])
@@ -16,6 +16,7 @@ var AnswerList = ({ answers, handleHandR, qId, productId }) => {
           answers={answersArray}
           handleHandR={handleHandR}
           productId={productId}
+          updateQaData={updateQaData}
           qId={qId}
         />
       ))}

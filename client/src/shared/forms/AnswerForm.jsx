@@ -19,8 +19,7 @@ class AnswerForm extends React.Component {
     })
   }
 
-  handleAnswerSubmit(e) {
-    console.log('submitted')
+  handleAnswerSubmit(e, callback) {
     var id = this.props.currentQuestion.question_id
     if (e.target.id === 'a_submit') {
       axios.post(`/qa/questions/${id}/answers`, {
@@ -30,8 +29,7 @@ class AnswerForm extends React.Component {
         photos: []
       })
       .then((res) => {
-        console.log("update from question submit")
-        this.props.updateQaData(this.props.productInfo.id)
+        callback
       })
       .catch((err) => {
         console.log(`error: ${err}`)
@@ -81,7 +79,7 @@ class AnswerForm extends React.Component {
           </textarea>
         </label>
         <button onClick={this.props.onClick} className="a_cancel">Cancel</button>
-        <button onClick={(e) => this.handleAnswerSubmit(e)} className="answer_submit" id="a_submit">Submit</button>
+        <button onClick={(e) => this.handleAnswerSubmit(e, this.props.updateQaData(this.props.productInfo.id))} className="answer_submit" id="a_submit">Submit</button>
       </form>
     </div>
     )

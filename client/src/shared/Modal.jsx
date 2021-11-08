@@ -2,6 +2,7 @@ import React from 'react';
 import AnswerForm from './forms/AnswerForm.jsx';
 import QuestionForm from './forms/QuestionForm.jsx';
 import AddReviewForm from './forms/AddReviewForm.jsx';
+import Expanded from './forms/Expanded.jsx';
 
 
 const close = (e, onClose) => {
@@ -55,7 +56,7 @@ const Modal = (props) => {
     return (
       <div>
         <div style={fullscreenStyle}>
-          <img style={styles.media} src={props.currentImg.url}></img>
+          <Expanded currentStyle={props.currentImg} />
         </div>
         <div style={backdropStyle} onClick={e => close(e, props.onClose.bind(this, 'fullscreen'))} />
       </div>

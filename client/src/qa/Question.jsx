@@ -10,7 +10,8 @@ var Question = ({ question, handleHandR, openAnswerForm, selectQuestion, updateQ
       </span>
       <span className="question_options">
         <span className="question_helpfulness">
-          Helpful <span
+          Helpful
+          <span
             className="link_word"
             onClick={() => handleHandR(`/qa/questions/${question.question_id}/helpful`, { "question_helpfulness": question.question_helpfulness }, updateQaData(productId))}
             >Yes
@@ -33,6 +34,7 @@ var Question = ({ question, handleHandR, openAnswerForm, selectQuestion, updateQ
         handleHandR={handleHandR}
         qId={question.question_id}
         productId={productId}
+        updateQaData={updateQaData}
       />
     </div>
   </div>

@@ -1,8 +1,7 @@
 import React from 'react';
-import Carousel from './Carousel.jsx';
-import left_arrow from '../../../dist/assets/images/left_arrow.png';
-import right_arrow from '../../../dist/assets/images/right_arrow.png';
-import full_screen_icon from '../../../dist/assets/images/full-screen-icon.png';
+import left_arrow from '../../../../dist/assets/images/left_arrow.png';
+import right_arrow from '../../../../dist/assets/images/right_arrow.png';
+import full_screen_icon from '../../../../dist/assets/images/full-screen-icon.png';
 
 const styles = {
   media: {
@@ -12,7 +11,7 @@ const styles = {
   }
 };
 
-class Gallery extends React.Component {
+class Expanded extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,19 +30,15 @@ class Gallery extends React.Component {
     this.changeCurrentImg = this.changeCurrentImg.bind(this);
   }
 
-  componentDidUpdate(prevProps) {
-    var { name } = prevProps.currentStyle;
-    var { currentStyle } = this.props;
-    if (name !== currentStyle.name) {
-      this.onUpdate();
-    }
+  componentDidMount() {
+    this.onUpdate();
   }
 
   onUpdate() {
     var { page, imgIndex } = this.state;
     var index = 0;
     var myArray = this.props.currentStyle.photos;
-    var arrayLength = myArray.length;
+    var arrayLength = myArray.length || 0;
     var tempArray = [];
 
     for (index = 0; index < arrayLength; index += 7) {
@@ -55,6 +50,7 @@ class Gallery extends React.Component {
       currentImg: tempArray[page][imgIndex] ? tempArray[page][imgIndex] : myArray[imgIndex],
       pages: tempArray,
       downShow: page > 0 && !tempArray[page + 1] ? false : tempArray.length > 1 ? true : false,
+      imgIndex: 0,
     });
   }
 
@@ -119,16 +115,6 @@ class Gallery extends React.Component {
     var { downShow, upShow, page, pages, currentImg, imgIndex} = this.state;
     return (
       <>
-        <Carousel downArrow={downShow}
-          upArrow={upShow}
-          page={pages[page]}
-          pageIndex={page}
-          onClickLastPage={this.getLastPage}
-          onClickNextPage={this.getNextPage}
-          currentImg={currentImg}
-          onClickCurrentImg={this.changeCurrentImg}
-        />
-
         {imgIndex !== 0 || page !== 0 ? <img
           className="arrowLeft"
           onClick={this.getLastImg}
@@ -141,11 +127,10 @@ class Gallery extends React.Component {
           src={right_arrow}
         ></img> : null}
 
-        <img className="fullscreen" src={full_screen_icon} onClick={() => { this.props.getCurrentImg(this.props.currentStyle); this.props.openFullscreen('fullscreen'); }}></img>
-        <img className="media" onClick={() => { this.props.getCurrentImg(currentImg); this.props.openFullscreen('fullscreen'); }} src={currentImg.url}></img>
+        <img className="media" src={currentImg.url}></img>
       </>
     );
   }
 };
 
-export default Gallery;
+export default Expanded;

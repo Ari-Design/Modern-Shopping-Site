@@ -119,12 +119,12 @@ class Styles extends React.Component {
             }, function (response) { });
           }}>F</button>
           <button>
-            <a class="twitter-share-button"
+            <a className="twitter-share-button"
             href="https://twitter.com/intent/tweet?text=Hello%20world">
             T</a>
           </button>
           <button>
-            <a class="pintrest-share-button"
+            <a className="pintrest-share-button"
             href="https://pintrest.com/">
             P</a>
           </button>
