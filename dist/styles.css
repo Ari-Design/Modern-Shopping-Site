@@ -288,9 +288,7 @@ header {
 
 .qa_inner_container {
   grid-column-start: 2;
-  border: black solid 1px;
-  margin: 20px;
-  background-color: rgb(161, 222, 224);
+  margin: 10px;
   padding: 20px;
 }
 
@@ -305,16 +303,17 @@ header {
 
 .qa_search_placement::after {
   content: '\1F50D';
-  font-size: 40px;
+  font-size: 35px;
   position: relative;
-  right: 55px;
-  top: 5px;
+  right: 45px;
+  top: 2px
+
 }
 
 .question_search {
   grid-column-start: 2;
   padding-top: 5px;
-  height: 50px;
+  height: 40px;
   font-size: 18px;
 }
 
@@ -328,7 +327,7 @@ input.question_search {
 **************************************************************/
 
 .question_button {
-  height: 50px;
+  height: 40px;
   font-size: 18px;
   border: black solid 1px;
   padding-left: 15px;
@@ -338,22 +337,22 @@ input.question_search {
 }
 
 .question {
-  margin-top: 22px;
-  margin-bottom: 12px;
+  margin-top: 18px;
+  margin-bottom: 8px;
   display: grid;
   grid-template-columns: 4% 76% 20%;
 }
 
 .question_label {
   font-weight: bold;
-  font-size: 22px;
+  font-size: 20px;
   grid-column-start: 1;
 }
 
 .question_body {
   padding-top: 2px;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 20px;
   grid-column-start: 2;
 }
 

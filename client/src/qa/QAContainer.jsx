@@ -9,8 +9,12 @@ class QAContainer extends React.Component {
     super(props)
     this.state = {
       searchTerm: '',
+      qListLength: 4,
+      buttonLabel: 'MORE ANSWERED QUESTIONS',
+      allQuestions: false
     }
     this.handleSearchInputChange =  this.handleSearchInputChange.bind(this);
+    this.handleMoreQuestions = this.handleMoreQuestions.bind(this);
   }
 
   componentDidMount(){
@@ -26,7 +30,20 @@ class QAContainer extends React.Component {
       searchTerm: e.target.value
     })
   }
-
+  handleMoreQuestions(e) {
+    if (e.target.id === 'MoreQuestions' && this.state.buttonLabel === 'MORE ANSWERED QUESTIONS') {
+      this.setState({
+        qListLength: this.props.data.results.length,
+        buttonLabel: 'FEWER QUESTIONS',
+      })
+    }
+    if (e.target.id === 'MoreQuestions' && this.state.buttonLabel === 'FEWER QUESTIONS') {
+      this.setState({
+        qListLength: 4,
+        buttonLabel: 'MORE ANSWERED QUESTIONS',
+      })
+    }
+  }
 
   render() {
     return (
@@ -49,10 +66,12 @@ class QAContainer extends React.Component {
               selectQuestion={this.props.selectQuestion}
               openAnswerForm={this.props.openAnswerForm}
               term={this.state.searchTerm}
+              qListLength={this.state.qListLength}
+              updateQaData={this.props.updateQaData}
             />
           </div>
           <div>
-            <button className="question_button" id="MoreQuestions">MORE ANSWERED QUESTIONS</button>
+            <button onClick={(e) => this.handleMoreQuestions(e)} className="question_button" id="MoreQuestions">{this.state.buttonLabel}</button>
             <button onClick={() => this.props.openAnswerForm('questionForm')} className="question_button" id="AddQuesion">ADD A QUESTION +</button>
           </div>
         </div>

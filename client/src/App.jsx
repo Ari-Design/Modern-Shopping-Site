@@ -88,11 +88,12 @@ class App extends React.Component {
       })
   }
 
-  updateQaData() {
+  updateQaData(id) {
     axios.get('/qa/questions', { params: { product_id: id }})
       .then((res) => {
+        console.log(res.data)
         this.setState({
-          qaData: res.body
+          qaData: res.data
         })
       })
       .catch((err) => {
@@ -100,10 +101,11 @@ class App extends React.Component {
       })
   }
 
-  handleIsHelpfulAndReport(url, data) {
+  handleIsHelpfulAndReport(url, data, callback) {
     axios.put(url, data)
       .then((res) => {
         console.log(res)
+        callback
       })
       .catch((err) => {
         console.log(`error: ${err}`)
@@ -154,6 +156,7 @@ class App extends React.Component {
             openAnswerForm={this.changeModal}
             productInfo={this.state.productInfo}
             selectQuestion={this.selectQuestion}
+            updateQaData={this.updateQaData}
             />
 
           <ReviewsList currentProductId={this.state.currentProductId}

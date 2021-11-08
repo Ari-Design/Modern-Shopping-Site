@@ -84,25 +84,59 @@ app.post('/qa/questions', (req, res) => {
   axios.post(`${apiUrl}/qa/questions`, req.body, options)
     .then((response) => {
       console.log(response.data)
-    res.sendStatus(200);
+      res.status(200).json(response.data);
     })
     .catch((err) => {
       console.log(`error: ${err}`);
     })
 })
 
-app.post('/qa/questions/:question_id/asnwer', (req, res) => {
+app.post('/qa/questions/:question_id/answers', (req, res) => {
+  var id = req.params.question_id;
   console.log(req.body)
+  axios.post(`${apiUrl}/qa/questions/${id}/answers`, req.body, options)
+    .then((response) => {
+      console.log(response.data)
+      res.status(200).json(response.data);
+    })
+    .catch((err) => {
+      console.log(`error: ${err}`);
+    })
 })
+
+
 
 app.put('/qa/questions/:question_id/helpful', (req, res) => {
-  console.log(req.body)
+  var id = req.params.question_id;
+  var count = req.body.question_helpfulness
+  count++
+  var data = { question_helpfulness: count}
+  axios.put(`${apiUrl}/qa/questions/${id}/helpful`, data, options)
+    .then((response) => {
+      res.sendStatus(204);
+    })
+    .catch((err) => {
+      console.log(`error: ${err}`);
+    })
 })
-
 
 app.put('/qa/answers/:answer_id/helpful', (req, res) => {
   console.log(req.body)
+  var id = req.params.answer_id;
+  var count = req.body.helpfulness
+  count++
+  var data = { helpfulness: count}
+  console.log(data)
+  axios.put(`${apiUrl}/qa/answers/${id}/helpful`, data, options)
+    .then((response) => {
+      res.sendStatus(204);
+    })
+    .catch((err) => {
+      console.log(`error: ${err}`);
+    })
 })
+
+
 
 app.put('/qa/answers/:answer_id/report', (req, res) => {
   console.log(req.body)

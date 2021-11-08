@@ -67,6 +67,7 @@ const Modal = (props) => {
           <AnswerForm
             productInfo={props.productInfo}
             currentQuestion={props.currentQuestion}
+            updateQaData={props.updateQaData}
             onClick={e => close(e, props.onClose.bind(this, 'answerForm'))}/>
         </div>
         <div style={backdropStyle}/>
