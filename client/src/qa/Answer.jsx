@@ -2,7 +2,7 @@ import React from 'react';
 import moment from 'moment';
 
 
-var Answer = ({answer, answers, handleHandR, productId}) => (
+var Answer = ({answer, answers, handleHandR, productId, updateQaData}) => (
   <div className="answer_component">
     <div className="answer">
       {answers.indexOf(answer) === 0 ? <span className="answer_label">A:</span> : null}
@@ -15,9 +15,10 @@ var Answer = ({answer, answers, handleHandR, productId}) => (
         <span
           className="answer_helpfulness"
           >&nbsp;&nbsp;&nbsp;Helpful? &nbsp;
-          <span className="link_word"
+          <span
+            className="link_word"
             onClick={() => handleHandR(`/qa/answers/${answer.id}/helpful`, { "helpfulness": answer.helpfulness }, updateQaData(productId))}
-            >Yes
+            > Yes
           </span>
           &nbsp;{`(${answer.helpfulness})`}&nbsp;&nbsp;&nbsp;
         </span>
@@ -26,7 +27,7 @@ var Answer = ({answer, answers, handleHandR, productId}) => (
           className="report_answer"
           >&nbsp;&nbsp;&nbsp;
           <span className="link_word"
-            onClick={() => handleHandR(`/qa/answers/${answer.id}/report`, { "reported": true })}
+            onClick={() => handleHandR(`/qa/answers/${answer.id}/report`, { "reported": true }, updateQaData(productId))}
             >Report
           </span>
         </span>
