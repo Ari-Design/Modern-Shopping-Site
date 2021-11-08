@@ -20,6 +20,7 @@ class ReviewsList extends React.Component{
     this.handleClick = this.handleClick.bind(this);
     this.onSortChange = this.onSortChange.bind(this);
     this.onStarsClick = this.onStarsClick.bind(this);
+    console.log(this.props.reviewData);
   }
 
   componentDidUpdate(prevProps) {
@@ -28,7 +29,7 @@ class ReviewsList extends React.Component{
         allReviews: this.props.reviewData.results,
         reviewsToDisplay: this.props.reviewData.results.slice(0, 2),
         metaReviews: this.props.reviewMeta,
-        count: this.props.reviewData.count
+        count: this.props.reviewData.results.length
       });
     }
   }

@@ -39,7 +39,7 @@ class AddReviewForm extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <div className="add_review_form_header">
           <h1>Write Your Review</h1>
-          <h2 >About the {this.props.productInfo.name}</h2>
+          <h3>About the {this.props.productInfo.name}</h3>
           </div>
           <label className="overall_rating_label">
             Stars Here

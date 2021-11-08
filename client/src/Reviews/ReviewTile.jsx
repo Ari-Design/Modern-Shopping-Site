@@ -13,6 +13,7 @@ var ReviewTile = ({review}) => {
     <div className="review_footer">
     Helpful? <a id="helpful_button" className="helpful_button"><u>Yes</u> ({review.helpfulness})  |  </a>
     <a id="report_button" className="repot_button"><u>Report</u></a>
+    <hr />
     </div>
     </>
   )
