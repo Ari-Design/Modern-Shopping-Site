@@ -19,7 +19,7 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentProductId: 37311,
+      currentProductId: '',
       products: [],
       productInfo: productInfo,
       productStyles: productStyles,
@@ -61,9 +61,15 @@ class App extends React.Component {
     // console.log('FETCH DATA FROM DID MOUNTCALLED')
   }
 
-  // componentDidUpdate() {
-  //   console.log('COMPONENT DID UPDATE RAN')
-  // }
+  /*
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state !== prevState) {
+      console.log('component did update')
+      console.log(this.state.currentProductId);
+      //this.fetchData(this.state.currentProductId);
+    }
+  }
+  */
 
   chooseProduct(e) {
     var id = Number(e.target.value)

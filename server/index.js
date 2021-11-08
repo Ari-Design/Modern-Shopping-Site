@@ -68,6 +68,18 @@ app.get('/reviews/meta', (req, res) => {
     })
 })
 
+app.put('/reviews/:review_id/helpful', (req, res) => {
+  var review_id = req.params.review_id;
+  var url = `${apiUrl}/reviews/${review_id}/helpful`;
+  axios.put(url, null, options)
+  .then((result) => {
+    res.status(200).send('OK');
+  })
+  .catch((err) => {
+    console.log('no go > ', err);
+  })
+})
+
 app.get('/qa/questions', (req, res) => {
   var id = req.query.product_id
   axios.get(`${apiUrl}/qa/questions?product_id=${id}`, options)
@@ -78,8 +90,6 @@ app.get('/qa/questions', (req, res) => {
       console.log(`error: ${err}`);
     })
 })
-
-
 
 app.post('/qa/questions', (req, res) => {
   console.log(req.body)

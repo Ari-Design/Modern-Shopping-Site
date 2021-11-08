@@ -15,16 +15,16 @@ class ReviewsList extends React.Component{
       metaReviews: this.props.reviewMeta,
       count: this.props.reviewData.count,
       sortChoice: 'relevance',
-      sorting: false
+      sorting: false,
     }
     this.handleClick = this.handleClick.bind(this);
     this.onSortChange = this.onSortChange.bind(this);
     this.onStarsClick = this.onStarsClick.bind(this);
-    console.log(this.props.reviewData);
+    this.onHelpfulClick = this.onHelpfulClick.bind(this);
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.currentProductId !== prevProps.currentProductId) {
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.currentProductId !== prevProps.currentProductId || this.props.allReviews !== prevProps.allReviews) {
       this.setState({
         allReviews: this.props.reviewData.results,
         reviewsToDisplay: this.props.reviewData.results.slice(0, 2),
@@ -47,6 +47,7 @@ class ReviewsList extends React.Component{
   handleSubmit(e) {
     console.log(e.target);
   }
+
   onStarsClick(e) {
     var target = e.target.innerHTML.slice(0, 1);
     var currentDisplay = this.state.reviewsToDisplay;
@@ -76,6 +77,16 @@ class ReviewsList extends React.Component{
     }
   }
 
+  onHelpfulClick(e) {
+    var choiceId = Number(e.target.closest('a').id);
+    axios.put(`/reviews/${choiceId}/helpful`)
+    .then(() => {
+      console.log('congrats')
+    })
+    .catch((err) => {
+      console.log('error: ', err)
+    })
+  }
 
   render() {
     var dropdownOptions=['Relevance', 'Helpfulness', 'Newest'];
@@ -91,7 +102,7 @@ class ReviewsList extends React.Component{
         <div className="reviews_list">
           <h4>{this.state.count} reviews, sorted by <Dropdown title="sortReviewsBy" optionsArr={dropdownOptions} onChange={this.onSortChange}/></h4>
         {this.state.reviewsToDisplay.map((review) => (
-          <ReviewTile key={review.review_id} review={review}/>
+          <ReviewTile key={review.review_id} review={review} onHelpfulClick={this.onHelpfulClick}/>
         ))}
         <button className="review_buttons" id="More_Reviews" onClick={(e) => this.handleClick(e)}>More Reviews</button>
         <button onClick={() => this.props.openReviewForm('reviewForm')} className="review_buttons" id="Add_Review+" >Add A Review +</button>
