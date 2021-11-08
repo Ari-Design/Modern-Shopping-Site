@@ -94,7 +94,7 @@ class ReviewsList extends React.Component{
     if(this.state.allReviews.length > 0) {
       return(
         <>
-        <div className="ratings_container">
+        <div className="ratings_container" id="ratings_container">
         <div className="ratings_breakdown">
           <h3>Ratings & Reviews</h3>
           <RatingsBreakdown metaReviews={this.state.metaReviews} onStarsClick={this.onStarsClick}/>
