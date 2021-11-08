@@ -25,6 +25,7 @@ class App extends React.Component {
       reviewData: reviewSample,
       reviewMeta: reviewMeta,
       qaData: qaSample,
+      currentQuestion: null,
       fullscreen: false,
       answerForm: false,
       questionForm: false,
@@ -37,10 +38,11 @@ class App extends React.Component {
     this.getProducts = this.getProducts.bind(this);
     this.chooseProduct = this.chooseProduct.bind(this);
     this.fetchData = this.fetchData.bind(this);
+    this.selectQuestion = this.selectQuestion.bind(this);
+    this.updateQaData = this.updateQaData.bind(this);
   }
 
   getProducts() {
-    // console.log("GET PRODUCTS WAS CALLED")
     axios.get('/products')
       .then((res) => {
         this.setState({
@@ -53,12 +55,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // console.log('COMPONENT DID MOUNT CALLED')
     this.getProducts();
-    // console.log('GET PRODUCTS FROM DID MOUNT CALLED')
     this.fetchData(37311)
-    // console.log('FETCH DATA FROM DID MOUNTCALLED')
   }
+
 
   /*
   componentDidUpdate(prevProps, prevState) {
@@ -70,14 +70,14 @@ class App extends React.Component {
   }
   */
 
+
+
   chooseProduct(e) {
     var id = Number(e.target.value)
     this.fetchData(id)
   }
 
   fetchData(id) {
-    // console.log('INSIDE FETCH DATA')
-    // console.log(this.state)
     const getInfo = axios.get(`/products/${id}`);
     const getStyles = axios.get(`/products/${id}/styles`);
     const getReviewData = axios.get('/reviews', { params: { product_id: id }});
@@ -86,11 +86,6 @@ class App extends React.Component {
 
     axios.all([getInfo, getStyles, getReviewData, getReviewMeta, getQaData])
       .then(axios.spread((...data) => {
-        // console.log(typeof data[0].data)
-        // console.log(`product styles from fetch ${data[1].data}`)
-        // console.log(`product review from fetch ${data[2].data}`)
-        // console.log(`product reviewmeta from fetch ${data[3].data}`)
-        // console.log(`product qadata from fetch ${data[4].data}`)
         this.setState({
           currentProductId: id,
           productInfo: data[0].data,
@@ -99,21 +94,40 @@ class App extends React.Component {
           reviewMeta: data[3].data,
           qaData: data[4].data
         })
-        // console.log(`AFTER FETCH `)
       }))
       .catch((err) => {
         console.log(`error: ${err}`)
       })
   }
 
-  handleIsHelpfulAndReport(url, data) {
-    axios.put(url, data)
+  updateQaData(id) {
+    axios.get('/qa/questions', { params: { product_id: id }})
       .then((res) => {
-        console.log(res)
+        console.log(res.data)
+        this.setState({
+          qaData: res.data
+        })
       })
       .catch((err) => {
         console.log(`error: ${err}`)
       })
+  }
+
+  handleIsHelpfulAndReport(url, data, callback) {
+    axios.put(url, data)
+      .then((res) => {
+        console.log(res)
+        callback
+      })
+      .catch((err) => {
+        console.log(`error: ${err}`)
+      })
+  }
+
+  selectQuestion(question) {
+    this.setState({
+      currentQuestion: question
+    })
   }
 
   changeModal(state) {
@@ -152,7 +166,10 @@ class App extends React.Component {
             id={this.state.currentProductId}
             handleHandR={this.handleIsHelpfulAndReport}
             openAnswerForm={this.changeModal}
-            productInfo={this.state.productInfo} />
+            productInfo={this.state.productInfo}
+            selectQuestion={this.selectQuestion}
+            updateQaData={this.updateQaData}
+            />
 
           <ReviewsList currentProductId={this.state.currentProductId}
             reviewData={this.state.reviewData}
@@ -168,6 +185,8 @@ class App extends React.Component {
             reviewForm={reviewForm}
             fullscreen={fullscreen}
             qaData={this.state.qaData}
+            updateQaData={this.updateQaData}
+            currentQuestion={this.state.currentQuestion}
             productInfo={this.state.productInfo}/> : null}
         </main>
       </div>
