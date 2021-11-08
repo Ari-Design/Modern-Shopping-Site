@@ -207,18 +207,75 @@ header {
   display: grid;
   grid-template-columns: 0.5fr .5fr 2fr 0.5fr;
   grid-template-rows: 1fr;
-  gap: 0px 0px;
+  gap: 25px 25px;
   margin-bottom: 100px;
   grid-template-areas:
     ". ratings_breakdown reviews_list .";
 }
 
-
-
 .ratings_breakdown { grid-area: ratings_breakdown; }
 
 .reviews_list { grid-area: reviews_list; }
 
+.stars_outer {
+  display: inline-block;
+  position: relative;
+}
+
+.stars_outer::before {
+  content: "\2606 \2606 \2606 \2606 \2606";
+}
+
+.stars_inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.stars_inner::before {
+  content: "\2605 \2605 \2605 \2605 \2605";
+}
+
+.review_buttons {
+  height: 50px;
+  font-size: 18px;
+  border: black solid 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  margin: 10px;
+}
+
+.add_review_form {
+  background-color: rgb(166, 206, 240);
+  border: black solid 1px;
+  border-radius: 10px;
+  padding: 15px;
+  padding-left:27px;
+  padding-bottom: 22px;
+  width: 790px;
+  height: 450px;
+  margin: 40px;
+}
+
+.review_summary_input_label {
+
+
+}
+
+.review_body_input_label {
+
+}
+.review_cancel {
+
+}
+
+.review_submit {
+
+}
 
 /**************************************************************
   Q/A CONTAINER

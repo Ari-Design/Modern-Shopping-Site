@@ -4,26 +4,37 @@ import RatingsBreakdown from './RatingsBreakdown.jsx';
 import Dropdown from '../shared/Dropdown.jsx';
 import Modal from '../shared/Modal.jsx';
 import AddReviewForm from '../shared/forms/AddReviewForm.jsx';
+import axios from 'axios';
 
 class ReviewsList extends React.Component{
   constructor(props) {
     super(props);
-    /* console.log('ReviewsList props > ', this.props);
-    console.log('metaReviews props > ', this.props.reviewMeta); */
     this.state = {
       allReviews: this.props.reviewData.results,
       reviewsToDisplay: this.props.reviewData.results.slice(0, 2),
       metaReviews: this.props.reviewMeta,
       count: this.props.reviewData.count,
-      sortChoice: 'relevance'
+      sortChoice: 'relevance',
+      sorting: false
     }
     this.handleClick = this.handleClick.bind(this);
     this.onSortChange = this.onSortChange.bind(this);
     this.onStarsClick = this.onStarsClick.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.currentProductId !== prevProps.currentProductId) {
+      this.setState({
+        allReviews: this.props.reviewData.results,
+        reviewsToDisplay: this.props.reviewData.results.slice(0, 2),
+        metaReviews: this.props.reviewMeta,
+        count: this.props.reviewData.count
+      });
+    }
+  }
+
   handleClick(e) {
-    if(e.target.id === "More_Reviews") {
+    if (e.target.id === "More_Reviews") {
       var displayLength = this.state.reviewsToDisplay.length + 2;
       var newDisplay = this.state.allReviews.slice(0, displayLength);
       this.setState({
@@ -32,6 +43,9 @@ class ReviewsList extends React.Component{
     }
   }
 
+  handleSubmit(e) {
+    console.log(e.target);
+  }
   onStarsClick(e) {
     var target = e.target.innerHTML.slice(0, 1);
     var currentDisplay = this.state.reviewsToDisplay;
@@ -49,12 +63,14 @@ class ReviewsList extends React.Component{
     } else if (choice === 'Helpfulness') {
       var sortedDisplay = currentDisplay.sort((a, b) => a.helpfulness > b.helpfulness ? -1: 1);
       this.setState({
-        reviewsToDisplay: sortedDisplay
+        reviewsToDisplay: sortedDisplay,
+        sorting: true
       })
     } else if (choice === 'Newest') {
       var sortedDisplay = currentDisplay.sort((a, b) => a.date > b.date ? -1 : 1);
       this.setState({
-        reviewsToDisplay: sortedDisplay
+        reviewsToDisplay: sortedDisplay,
+        sorting: true
       })
     }
   }
@@ -76,8 +92,8 @@ class ReviewsList extends React.Component{
         {this.state.reviewsToDisplay.map((review) => (
           <ReviewTile key={review.review_id} review={review}/>
         ))}
-        <button id="More_Reviews" onClick={(e) => this.handleClick(e)}>More Reviews</button>
-        <button onClick={() => this.props.openReviewForm('reviewForm')} id="Add_Review+" >Add A Review +</button>
+        <button className="review_buttons" id="More_Reviews" onClick={(e) => this.handleClick(e)}>More Reviews</button>
+        <button onClick={() => this.props.openReviewForm('reviewForm')} className="review_buttons" id="Add_Review+" >Add A Review +</button>
         </div>
         </div>
         </>
