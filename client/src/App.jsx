@@ -140,7 +140,7 @@ class App extends React.Component {
 
   render() {
     var { productInfo, productStyles, qaData, currentProductId, reviewData, reviewMeta,
-      fullscreen, answerForm, currentImg, questionForm, reviewForm } = this.state;
+      fullscreen, answerForm, currentImg, questionForm, reviewForm, currentQuestion } = this.state;
 
     var products = this.state.products.map((product) => product.id)
 
@@ -156,25 +156,26 @@ class App extends React.Component {
           </nav>
         </header>
         <main>
-          <Container productInfo={this.state.productInfo}
-            productStyles={this.state.productStyles}
+          <Container productInfo={productInfo}
+            productStyles={productStyles}
             getCurrentImg={this.getCurrentImg}
-            openFullscreen={this.changeModal} />
+            openFullscreen={this.changeModal}
+            reviewData={reviewData}/>
 
           <QAContainer
-            data={this.state.qaData}
-            id={this.state.currentProductId}
+            data={qaData}
+            id={currentProductId}
             handleHandR={this.handleIsHelpfulAndReport}
             openAnswerForm={this.changeModal}
-            productInfo={this.state.productInfo}
+            productInfo={productInfo}
             selectQuestion={this.selectQuestion}
             updateQaData={this.updateQaData}
             />
 
-          <ReviewsList currentProductId={this.state.currentProductId}
-            reviewData={this.state.reviewData}
+          <ReviewsList currentProductId={currentProductId}
+            reviewData={reviewData}
             openReviewForm={this.changeModal}
-            reviewMeta={this.state.reviewMeta}
+            reviewMeta={reviewMeta}
             />
 
           {fullscreen || answerForm || questionForm || reviewForm ? <Modal
@@ -186,8 +187,8 @@ class App extends React.Component {
             fullscreen={fullscreen}
             qaData={this.state.qaData}
             updateQaData={this.updateQaData}
-            currentQuestion={this.state.currentQuestion}
-            productInfo={this.state.productInfo}/> : null}
+            currentQuestion={currentQuestion}
+            productInfo={productInfo}/> : null}
         </main>
       </div>
     );
