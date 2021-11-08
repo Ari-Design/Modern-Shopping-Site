@@ -24,8 +24,9 @@ class Styles extends React.Component {
     this.selectedQty = this.selectedQty.bind(this);
     this.changeErrorT = this.changeErrorT.bind(this);
   }
+
   componentDidMount() {
-    this.onUpdate();
+    //this.onUpdate();
   }
 
   componentDidUpdate(prevProps) {
