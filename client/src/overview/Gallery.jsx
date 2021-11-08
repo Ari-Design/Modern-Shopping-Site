@@ -141,7 +141,7 @@ class Gallery extends React.Component {
           src={right_arrow}
         ></img> : null}
 
-        <img className="fullscreen" src={full_screen_icon} onClick={() => { this.props.getCurrentImg(currentImg); this.props.openFullscreen('fullscreen'); }}></img>
+        <img className="fullscreen" src={full_screen_icon} onClick={() => { this.props.getCurrentImg(this.props.currentStyle); this.props.openFullscreen('fullscreen'); }}></img>
         <img className="media" onClick={() => { this.props.getCurrentImg(currentImg); this.props.openFullscreen('fullscreen'); }} src={currentImg.url}></img>
       </>
     );
