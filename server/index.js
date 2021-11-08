@@ -123,6 +123,7 @@ app.put('/qa/questions/:question_id/helpful', (req, res) => {
   var count = req.body.question_helpfulness
   count++
   var data = { question_helpfulness: count}
+
   axios.put(`${apiUrl}/qa/questions/${id}/helpful`, data, options)
     .then((response) => {
       res.sendStatus(204);
@@ -133,12 +134,11 @@ app.put('/qa/questions/:question_id/helpful', (req, res) => {
 })
 
 app.put('/qa/answers/:answer_id/helpful', (req, res) => {
-  console.log(req.body)
   var id = req.params.answer_id;
   var count = req.body.helpfulness
   count++
   var data = { helpfulness: count}
-  console.log(data)
+
   axios.put(`${apiUrl}/qa/answers/${id}/helpful`, data, options)
     .then((response) => {
       res.sendStatus(204);
@@ -152,4 +152,15 @@ app.put('/qa/answers/:answer_id/helpful', (req, res) => {
 
 app.put('/qa/answers/:answer_id/report', (req, res) => {
   console.log(req.body)
+  var id = req.params.answer_id;
+
+  axios.put(`${apiUrl}/qa/answers/${id}/report`, req.body, options)
+    .then((response) => {
+      console.log(response.data)
+      console.log(response.status)
+      res.sendStatus(204);
+    })
+    .catch((err) => {
+      console.log(`error: ${err}`);
+    })
 })
