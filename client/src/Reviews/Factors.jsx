@@ -7,7 +7,7 @@ var Factors = ({metaReviews}) => {
       return (
         <div key={characteristics[factor[0]].id}>
           <span>{factor[0]}</span>
-          <svg viewBox="0 0 100% 100%" width='100%' height='24px' style={{display: 'inline-block'}}>
+          <svg width='100%' height='24px' style={{display: 'inline-block'}}>
             <g>
             <rect fill='#ebebeb' width='32%' height='8px' x='0%'></rect>
             <text x='0%' y='95%' fontSize='10'>{factor[1]}</text>
