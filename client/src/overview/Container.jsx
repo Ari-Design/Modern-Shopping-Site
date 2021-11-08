@@ -43,6 +43,7 @@ class Container extends React.Component {
             currentStyle={this.state.currentStyle}
             onClick={this.changeStyle}
             productInfo={this.props.productInfo}
+            reviews={this.props.reviewData.results.length}
           />
         </section>
 
