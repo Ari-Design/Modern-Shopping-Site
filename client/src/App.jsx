@@ -26,6 +26,7 @@ class App extends React.Component {
       reviewData: reviewSample,
       reviewMeta: reviewMeta,
       qaData: qaSample,
+      currentQuestion: null,
       fullscreen: false,
       answerForm: false,
       questionForm: false,
@@ -38,6 +39,8 @@ class App extends React.Component {
     this.getProducts = this.getProducts.bind(this);
     this.chooseProduct = this.chooseProduct.bind(this);
     this.fetchData = this.fetchData.bind(this);
+    this.selectQuestion = this.selectQuestion.bind(this);
+    this.updateQaData = this.updateQaData.bind(this);
   }
 
   getProducts() {
@@ -85,6 +88,18 @@ class App extends React.Component {
       })
   }
 
+  updateQaData() {
+    axios.get('/qa/questions', { params: { product_id: id }})
+      .then((res) => {
+        this.setState({
+          qaData: res.body
+        })
+      })
+      .catch((err) => {
+        console.log(`error: ${err}`)
+      })
+  }
+
   handleIsHelpfulAndReport(url, data) {
     axios.put(url, data)
       .then((res) => {
@@ -93,6 +108,12 @@ class App extends React.Component {
       .catch((err) => {
         console.log(`error: ${err}`)
       })
+  }
+
+  selectQuestion(question) {
+    this.setState({
+      currentQuestion: question
+    })
   }
 
   changeModal(state) {
@@ -131,7 +152,9 @@ class App extends React.Component {
             id={this.state.currentProductId}
             handleHandR={this.handleIsHelpfulAndReport}
             openAnswerForm={this.changeModal}
-            productInfo={this.state.productInfo} />
+            productInfo={this.state.productInfo}
+            selectQuestion={this.selectQuestion}
+            />
 
           <ReviewsList currentProductId={this.state.currentProductId}
             reviewData={this.state.reviewData}
@@ -146,6 +169,8 @@ class App extends React.Component {
             reviewForm={reviewForm}
             fullscreen={fullscreen}
             qaData={this.state.qaData}
+            updateQaData={this.updateQaData}
+            currentQuestion={this.state.currentQuestion}
             productInfo={this.state.productInfo}/> : null}
         </main>
       </div>

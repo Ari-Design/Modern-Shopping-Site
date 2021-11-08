@@ -15,19 +15,22 @@ class QuestionForm extends React.Component {
 
   handleChange(e) {
     this.setState({
-      [e.target.name]: [e.target.value]
+      [e.target.name]: e.target.value
     })
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
     console.log('submitted')
+
     axios.post('/qa/questions', {
-      email: this.state.email,
-      nickname: this.state.nickname,
-      question: this.state.question
+      body: this.state.question.toString(),
+      name: this.state.nickname.toString(),
+      email: this.state.email.toString(),
+      product_id: this.props.productInfo.id
     })
     .then((res) => {
-      console.log(res)
+      console.log("update from question submit")
+      this.props.updateQaData()
     })
     .catch((err) => {
       console.log(`error: ${err}`)
@@ -75,7 +78,7 @@ class QuestionForm extends React.Component {
             </textarea>
           </label>
           <button onClick={this.props.onClick} className="q_cancel">Cancel</button>
-          <input className="question_submit" type="submit" value="Submit" />
+          <button className="question_submit" type="submit" value="Submit" />
         </form>
       </div>
     )

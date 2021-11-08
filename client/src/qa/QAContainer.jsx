@@ -9,10 +9,8 @@ class QAContainer extends React.Component {
     super(props)
     this.state = {
       searchTerm: '',
-      currentQuestion: null
     }
     this.handleSearchInputChange =  this.handleSearchInputChange.bind(this);
-    this.selectQuestion= this.selectQuestion.bind(this);
   }
 
   componentDidMount(){
@@ -29,11 +27,6 @@ class QAContainer extends React.Component {
     })
   }
 
-  selectQuestion(question) {
-    this.setState({
-      currentQuestion: question
-    })
-  }
 
   render() {
     return (
@@ -53,7 +46,7 @@ class QAContainer extends React.Component {
               key={this.props.data.product_id}
               data={this.props.data}
               handleHandR={this.props.handleHandR}
-              selectQuestion={this.selectQuestion}
+              selectQuestion={this.props.selectQuestion}
               openAnswerForm={this.props.openAnswerForm}
               term={this.state.searchTerm}
             />

@@ -39,7 +39,7 @@ class AnswerForm extends React.Component {
       <div className="answer_form">
       <form onSubmit={this.handleSubmit}>
         <h2 className="answer_form_header">Submit Your Answer</h2>
-        <h3 className="answer-form_subheader">Product - Question</h3>
+        <h3 className="answer-form_subheader">{this.props.productInfo.name}: {this.props.currentQuestion.question_body}</h3>
         <label className="a_email_label">
           Email:&nbsp;&nbsp;
           <input

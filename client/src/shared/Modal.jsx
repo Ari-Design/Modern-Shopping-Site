@@ -64,7 +64,10 @@ const Modal = (props) => {
     return (
       <div>
         <div style={modalStyle}>
-          <AnswerForm onClick={e => close(e, props.onClose.bind(this, 'answerForm'))}/>
+          <AnswerForm
+            productInfo={props.productInfo}
+            currentQuestion={props.currentQuestion}
+            onClick={e => close(e, props.onClose.bind(this, 'answerForm'))}/>
         </div>
         <div style={backdropStyle}/>
       </div>
@@ -75,6 +78,7 @@ const Modal = (props) => {
         <div style={modalStyle}>
           <QuestionForm
             productInfo={props.productInfo}
+            updateQaData={props.updateQaData}
             onClick={e => close(e, props.onClose.bind(this, 'questionForm'))}/>
         </div>
         <div style={backdropStyle}/>

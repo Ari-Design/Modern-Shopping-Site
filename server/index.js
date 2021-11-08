@@ -79,10 +79,16 @@ app.get('/qa/questions', (req, res) => {
     })
 })
 
-
-
 app.post('/qa/questions', (req, res) => {
   console.log(req.body)
+  axios.post(`${apiUrl}/qa/questions`, req.body, options)
+    .then((response) => {
+      console.log(response.data)
+    res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(`error: ${err}`);
+    })
 })
 
 app.post('/qa/questions/:question_id/asnwer', (req, res) => {
