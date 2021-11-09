@@ -1,7 +1,8 @@
 import React from 'react';
 import AnswerList from './AnswerList.jsx';
 
-var Question = ({ question, handleHandR, openAnswerForm, selectQuestion, updateQaData, productId }) => (
+var Question = ({ allAnswers, handleHandR, handleMoreAnswers, moreAnswers, openAnswerForm,
+  productId, question, selectQuestion, updateQaData }) => (
   <div className="qa_component">
     <div className="question">
       <span className="question_label">Q:</span>
@@ -29,14 +30,17 @@ var Question = ({ question, handleHandR, openAnswerForm, selectQuestion, updateQ
     </div>
     <div>
       <AnswerList
-        key={`ANS-${question.question_id}`}
+        allAnswers={allAnswers}
         answers={question.answers}
         handleHandR={handleHandR}
-        qId={question.question_id}
+        key={`ANS-${question.question_id}`}
+        moreAnswers={moreAnswers}
         productId={productId}
+        qId={question.question_id}
         updateQaData={updateQaData}
       />
     </div>
+    <span className="more_answers" onClick={(e) => handleMoreAnswers(e)}>{moreAnswers}</span>
   </div>
 
 )

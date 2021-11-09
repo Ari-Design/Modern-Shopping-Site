@@ -1,7 +1,6 @@
 import React from 'react';
 import moment from 'moment';
 
-
 var Answer = ({answer, answers, handleHandR, productId, updateQaData}) => (
   <div className="answer_component">
     <div className="answer">

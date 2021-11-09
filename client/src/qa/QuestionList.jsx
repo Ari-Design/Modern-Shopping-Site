@@ -1,7 +1,9 @@
 import React from 'react';
 import Question from './Question.jsx';
 
-var QuestionList = ({ data, handleHandR, term, openAnswerForm, selectQuestion, qListLength, updateQaData}) => (
+var QuestionList = ({ allAnswers, data, handleHandR, handleMoreAnswers, moreAnswers, openAnswerForm, qListLength,
+  selectQuestion, term, updateQaData, }) => (
+
   <div>
     {data.results.sort((a, b) =>b.question_helpfulness - a.question_helpfulness).filter((value) => {
       if (term.length < 3) {
@@ -11,12 +13,15 @@ var QuestionList = ({ data, handleHandR, term, openAnswerForm, selectQuestion, q
       }
     }).slice(0, qListLength).map((question) => (
       <Question
+        allAnswers={allAnswers}
+        handleHandR={handleHandR}
+        handleMoreAnswers={handleMoreAnswers}
         key={`${question.question_id}`}
-        productId={data.product_id}
+        moreAnswers={moreAnswers}
         openAnswerForm={openAnswerForm}
+        productId={data.product_id}
         question={question}
         selectQuestion={selectQuestion}
-        handleHandR={handleHandR}
         updateQaData={updateQaData}
       />
     ))}

@@ -482,6 +482,7 @@ input.question_search {
 }
 
 .q_cancel {
+  grid-row-start: 7;
   height: 30px;
   font-size: 18px;
   border: black solid 1px;
@@ -494,6 +495,7 @@ input.question_search {
 }
 
 .question_submit {
+  grid-row-start: 7;
   height: 30px;
   font-size: 18px;
   border: black solid 1px;
@@ -575,6 +577,7 @@ input.question_search {
 }
 
 .a_cancel {
+  grid-row-start: 7;
   height: 30px;
   font-size: 18px;
   border: black solid 1px;
@@ -587,6 +590,7 @@ input.question_search {
 }
 
 .answer_submit {
+  grid-row-start: 7;
   height: 30px;
   font-size: 18px;
   border: black solid 1px;

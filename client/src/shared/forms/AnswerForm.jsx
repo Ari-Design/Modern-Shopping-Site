@@ -19,22 +19,20 @@ class AnswerForm extends React.Component {
     })
   }
 
-  handleAnswerSubmit(e, callback) {
+  handleAnswerSubmit(callback) {
     var id = this.props.currentQuestion.question_id
-    if (e.target.id === 'a_submit') {
-      axios.post(`/qa/questions/${id}/answers`, {
-        body: this.state.answer,
-        name: this.state.nickname,
-        email: this.state.email,
-        photos: []
-      })
-      .then((res) => {
-        callback
-      })
-      .catch((err) => {
-        console.log(`error: ${err}`)
-      })
-    }
+    axios.post(`/qa/questions/${id}/answers`, {
+      body: this.state.answer,
+      name: this.state.nickname,
+      email: this.state.email,
+      photos: []
+    })
+    .then((res) => {
+      callback
+    })
+    .catch((err) => {
+      console.log(`error: ${err}`)
+    })
   }
 
   render() {
@@ -49,11 +47,11 @@ class AnswerForm extends React.Component {
             className="a_email_input"
             type="email"
             maxLength="60"
-            placeholder="Why did you like the product or not?"
             name="email"
+            placeholder="person@email.com"
             value={this.state.email}
             onChange={this.handleChange}
-          />
+            />
         </label>
         <label className="a_nickname_label">
           Nickname:&nbsp;&nbsp;
@@ -65,7 +63,7 @@ class AnswerForm extends React.Component {
             name="nickname"
             value={this.state.nickname}
             onChange={this.handleChange}
-          />
+            />
         </label>
         <label className="a_input_label">
           Question:
@@ -74,12 +72,21 @@ class AnswerForm extends React.Component {
             cols="75"
             rows="14"
             name="answer"
+            placeholder="Why did you like the product or not?"
             value={this.state.answer}
             onChange={this.handleChange}>
           </textarea>
         </label>
-        <button onClick={this.props.onClick} className="a_cancel">Cancel</button>
-        <button onClick={(e) => this.handleAnswerSubmit(e, this.props.updateQaData(this.props.productInfo.id))} className="answer_submit" id="a_submit">Submit</button>
+        <button
+          className="a_cancel"
+          onClick={this.props.onClick}
+          >Cancel
+        </button>
+        <button
+          className="answer_submit"
+          onClick={() => {this.handleAnswerSubmit(this.props.updateQaData(this.props.productInfo.id)); this.props.onClick}}
+          >Submit
+        </button>
       </form>
     </div>
     )

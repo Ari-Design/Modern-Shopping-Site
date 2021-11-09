@@ -8,21 +8,33 @@ class QAContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      searchTerm: '',
-      qListLength: 4,
+      allAnswers: false,
+      moreAnswers: 'See More Answers',
+      allQuestions: false,
       buttonLabel: 'MORE ANSWERED QUESTIONS',
-      allQuestions: false
+      qListLength: 4,
+      searchTerm: ''
+
     }
-    this.handleSearchInputChange =  this.handleSearchInputChange.bind(this);
+    this.handleMoreAnswers = this.handleMoreAnswers.bind(this);
     this.handleMoreQuestions = this.handleMoreQuestions.bind(this);
+    this.handleSearchInputChange =  this.handleSearchInputChange.bind(this);
   }
 
   componentDidMount(){
     // console.log('QA Container Mounted')
   }
 
-  componentDidUpdate() {
-    // console.log('QA Container Updated')
+  componentDidUpdate(prevProps) {
+    if(prevProps.id !== this.props.id) {
+      this.setState({
+        allAnswers: false,
+        moreAnswers: 'See More Answers',
+        allQuestions: false,
+        buttonLabel: 'MORE ANSWERED QUESTIONS',
+        qListLength: 4
+      })
+    }
   }
 
   handleSearchInputChange(e) {
@@ -31,16 +43,33 @@ class QAContainer extends React.Component {
     })
   }
   handleMoreQuestions(e) {
-    if (e.target.id === 'MoreQuestions' && this.state.buttonLabel === 'MORE ANSWERED QUESTIONS') {
+    if (this.state.allQuestions === false) {
       this.setState({
+        allQuestions: true,
         qListLength: this.props.data.results.length,
         buttonLabel: 'FEWER QUESTIONS',
       })
     }
-    if (e.target.id === 'MoreQuestions' && this.state.buttonLabel === 'FEWER QUESTIONS') {
+    if (this.state.allQuestions === true) {
       this.setState({
+        allQuestions: false,
         qListLength: 4,
         buttonLabel: 'MORE ANSWERED QUESTIONS',
+      })
+    }
+  }
+
+  handleMoreAnswers() {
+    if(this.state.allAnswers === false) {
+      this.setState({
+        moreAnswers: 'Close Answer Window',
+        allAnswers: true
+      })
+    }
+    if(this.state.allAnswers === true) {
+      this.setState({
+        moreAnswers: 'See More Answers',
+        allAnswers: false
       })
     }
   }
@@ -60,18 +89,26 @@ class QAContainer extends React.Component {
           </div>
           <div>
             <QuestionList
-              key={this.props.data.product_id}
+              allAnswers={this.state.allAnswers}
               data={this.props.data}
+              handleMoreAnswers={this.handleMoreAnswers}
               handleHandR={this.props.handleHandR}
-              selectQuestion={this.props.selectQuestion}
+              key={this.props.data.product_id}
+              moreAnswers={this.state.moreAnswers}
               openAnswerForm={this.props.openAnswerForm}
-              term={this.state.searchTerm}
               qListLength={this.state.qListLength}
+              selectQuestion={this.props.selectQuestion}
+              term={this.state.searchTerm}
               updateQaData={this.props.updateQaData}
             />
           </div>
           <div>
-            <button onClick={(e) => this.handleMoreQuestions(e)} className="question_button" id="MoreQuestions">{this.state.buttonLabel}</button>
+            <button
+              onClick={(e) => this.handleMoreQuestions(e)}
+              className="question_button"
+              id="MoreQuestions">
+              {this.state.buttonLabel}
+            </button>
             <button onClick={() => this.props.openAnswerForm('questionForm')} className="question_button" id="AddQuesion">ADD A QUESTION +</button>
           </div>
         </div>
