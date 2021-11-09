@@ -27,27 +27,27 @@ class Container extends React.Component {
   }
 
   render() {
-    // console.log(this.props)
+    var { getCurrentImg, openFullscreen, productStyles, productInfo, reviewData } = this.props;
     return (
       <div className="overview_container" >
         <div className="gallery_container">
-          <Gallery key={this.props.productStyles.product_id}
-            openFullscreen={this.props.openFullscreen}
-            getCurrentImg={this.props.getCurrentImg}
+          <Gallery key={productStyles.product_id}
+            openFullscreen={openFullscreen}
+            getCurrentImg={getCurrentImg}
             currentStyle={this.state.currentStyle}
           />
         </div>
 
         <section className="styles_container" >
-          <Styles productStyles={this.props.productStyles.results}
+          <Styles productStyles={productStyles.results}
             currentStyle={this.state.currentStyle}
             onClick={this.changeStyle}
-            productInfo={this.props.productInfo}
-            reviews={this.props.reviewData.results.length}
+            productInfo={productInfo}
+            reviews={reviewData.results.length}
           />
         </section>
 
-        <section className="productInfo_container"><ProductInfo productInfo={this.props.productInfo}/></section>
+        <section className="productInfo_container"><ProductInfo productInfo={productInfo} /></section>
       </div>
     );
   }

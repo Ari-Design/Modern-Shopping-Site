@@ -4,20 +4,12 @@ import left_arrow from '../../../dist/assets/images/left_arrow.png';
 import right_arrow from '../../../dist/assets/images/right_arrow.png';
 import full_screen_icon from '../../../dist/assets/images/full-screen-icon.png';
 
-const styles = {
-  media: {
-    height: '100%',
-    width: '100%',
-    objectFit: 'scale-down',
-  }
-};
-
 class Gallery extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       currentImg: { url: '' },
-      downShow: true, //change this
+      downShow: true,
       upShow: false,
       page: 0,
       pages: [[]],
@@ -66,6 +58,7 @@ class Gallery extends React.Component {
       page: page = page + 1,
     });
   }
+
   getLastPage() {
     var { page, pages } = this.state;
     this.setState({
@@ -116,7 +109,7 @@ class Gallery extends React.Component {
   }
 
   render() {
-    var { downShow, upShow, page, pages, currentImg, imgIndex} = this.state;
+    var { downShow, upShow, page, pages, currentImg, imgIndex } = this.state;
     return (
       <>
         <Carousel downArrow={downShow}
@@ -133,16 +126,16 @@ class Gallery extends React.Component {
           className="arrowLeft"
           onClick={this.getLastImg}
           src={left_arrow}
-        ></img> : null}
+        /> : null}
 
         {imgIndex !== pages[page].length - 1 || page !== pages.length - 1 ? <img
           className="arrowRight"
           onClick={this.getNextImg}
           src={right_arrow}
-        ></img> : null}
+        /> : null}
 
-        <img className="fullscreen" src={full_screen_icon} onClick={() => { this.props.getCurrentImg(currentImg); this.props.openFullscreen('fullscreen'); }}></img>
-        <img className="media" onClick={() => { this.props.getCurrentImg(currentImg); this.props.openFullscreen('fullscreen'); }} src={currentImg.url}></img>
+        <img className="fullscreen" src={full_screen_icon} onClick={() => { this.props.getCurrentImg(currentImg); this.props.openFullscreen('fullscreen'); }}/>
+        <img className="media" onClick={() => { this.props.getCurrentImg(currentImg); this.props.openFullscreen('fullscreen'); }} src={currentImg.url}/>
       </>
     );
   }

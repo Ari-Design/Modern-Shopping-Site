@@ -11,7 +11,6 @@ const ProductInfo = ({ productInfo }) => {
       </div>
       <div className="features">
         {productInfo.features.map(({ feature, value }, index) => {
-          // console.log(value)
           return <p style={{marginTop: 0}} key={index - 1}>{`${value} ${feature}`}</p>
         })}
       </div>

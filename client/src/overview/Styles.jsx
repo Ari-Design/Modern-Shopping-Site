@@ -90,12 +90,17 @@ class Styles extends React.Component {
         </div>
         <h3 className="style_category">{category}</h3>
         <h1 className="style_name">{name}</h1>
-        {typeof salePrice === 'string' ? <div className="style_price_container"><h3 style={{ textDecoration: 'line-through' }} className="style_price" >{price} </h3><h3 className="sale_price">{salePrice}</h3></div> : <h3 className="style_price_container">{price}</h3>}
+
+        {typeof salePrice === 'string' ?
+        <div className="style_price_container">
+          <h3 className="style_price">{price} </h3>
+          <h3 className="sale_price">{salePrice}</h3>
+        </div> : <h3 className="style_price_container">{price}</h3>}
+
         <span className="style_style">STYLE > {styleName}</span>
         <div className="style_selector">
           <StyleSelector styles={productStyles}
-            onClick={this.props.onClick}
-          />
+            onClick={this.props.onClick}/>
         </div>
         <div className="drop_downs">
           {error ? <p style={{ margin: 0 }}>*Please select a size</p> : null}
