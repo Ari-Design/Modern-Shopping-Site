@@ -1,13 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 
-
-
-import reviewSample from '../../sampleData/reviews/reviewSample.js';
-import reviewMeta from '../../sampleData/reviews/reviewsMeta.js';
-import qaSample from '../../sampleData/qaSample.js';
-
-
 import Container from './overview/Container.jsx';
 import QAContainer from './qa/QAContainer.jsx'
 import ReviewsList from './Reviews/ReviewsList.jsx';
@@ -20,11 +13,11 @@ class App extends React.Component {
     this.state = {
       currentProductId: '',
       products: [],
-      productInfo: {features: []},
-      productStyles: {results: [{photos: ['www']}, {skus : {'0' : {size: '', quantity: 0}}}]},
-      reviewData: reviewSample,
-      reviewMeta: reviewMeta,
-      qaData: qaSample,
+      productInfo: {},
+      productStyles: {results: [{'style_id': ''}]},
+      reviewData: {results: []},
+      reviewMeta: {},
+      qaData: {results: []},
       currentQuestion: null,
       fullscreen: false,
       answerForm: false,

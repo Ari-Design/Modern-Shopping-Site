@@ -7,7 +7,7 @@ class Container extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentStyle: this.props.productStyles.results[0]
+      currentStyle: this.props.productStyles.results[0],
     };
     this.changeStyle = this.changeStyle.bind(this);
   }

@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const ProductInfo = ({ productInfo }) => {
-
+  productInfo.features = productInfo.features || [];
   return (
     <>
       <div className="slogan_description">
