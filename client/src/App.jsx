@@ -1,13 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 
-
-
-import reviewSample from '../../sampleData/reviews/reviewSample.js';
-import reviewMeta from '../../sampleData/reviews/reviewsMeta.js';
-import qaSample from '../../sampleData/qaSample.js';
-
-
 import Container from './overview/Container.jsx';
 import QAContainer from './qa/QAContainer.jsx'
 import ReviewsList from './Reviews/ReviewsList.jsx';
@@ -20,11 +13,11 @@ class App extends React.Component {
     this.state = {
       currentProductId: '',
       products: [],
-      productInfo: {features: []},
-      productStyles: {results: [{photos: ['www']}, {skus : {'0' : {size: '', quantity: 0}}}]},
-      reviewData: reviewSample,
-      reviewMeta: reviewMeta,
-      qaData: qaSample,
+      productInfo: {},
+      productStyles: { results: [{ 'style_id': '' }] },
+      reviewData: { results: [] },
+      reviewMeta: {},
+      qaData: { results: [] },
       currentQuestion: null,
       fullscreen: false,
       answerForm: false,
@@ -60,19 +53,6 @@ class App extends React.Component {
     this.fetchData(37311)
   }
 
-
-  /*
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state !== prevState) {
-      console.log('component did update')
-      console.log(this.state.currentProductId);
-      //this.fetchData(this.state.currentProductId);
-    }
-  }
-  */
-
-
-
   chooseProduct(e) {
     var id = Number(e.target.value)
     this.fetchData(id)
@@ -81,9 +61,9 @@ class App extends React.Component {
   fetchData(id) {
     const getInfo = axios.get(`/products/${id}`);
     const getStyles = axios.get(`/products/${id}/styles`);
-    const getReviewData = axios.get('/reviews', { params: { product_id: id }});
-    const getReviewMeta = axios.get('/reviews/meta', { params: { product_id: id }});
-    const getQaData = axios.get('/qa/questions', { params: { product_id: id }});
+    const getReviewData = axios.get('/reviews', { params: { product_id: id } });
+    const getReviewMeta = axios.get('/reviews/meta', { params: { product_id: id } });
+    const getQaData = axios.get('/qa/questions', { params: { product_id: id } });
 
     axios.all([getInfo, getStyles, getReviewData, getReviewMeta, getQaData])
       .then(axios.spread((...data) => {
@@ -101,18 +81,18 @@ class App extends React.Component {
       })
   }
   updateReviewData() {
-    axios.get('/reviews', { params: { product_id: this.state.currentProductId }})
-    .then((res) => {
-      this.setState({
-        reviewData: res.data
+    axios.get('/reviews', { params: { product_id: this.state.currentProductId } })
+      .then((res) => {
+        this.setState({
+          reviewData: res.data
+        })
       })
-    })
-    .catch((err) => {
-      console.log('error')
-    })
+      .catch((err) => {
+        console.log('error')
+      })
   }
   updateQaData(id) {
-    axios.get('/qa/questions', { params: { product_id: id }})
+    axios.get('/qa/questions', { params: { product_id: id } })
       .then((res) => {
         console.log(res.data)
         this.setState({
@@ -152,7 +132,7 @@ class App extends React.Component {
     var { productInfo, productStyles, qaData, currentProductId, reviewData, reviewMeta,
       fullscreen, answerForm, currentImg, questionForm, reviewForm, currentQuestion } = this.state;
 
-    var products = this.state.products.map((product) => product.id)
+    var products = this.state.products.map((product) => product.id);
 
     return (
       <div>
@@ -161,7 +141,7 @@ class App extends React.Component {
             <span>Logo</span>
             <span>Search</span>
             <span className="product_search">
-            <Dropdown title="chooseProduct" optionsArr={products} onChange={this.chooseProduct}/>
+              <Dropdown title="chooseProduct" optionsArr={products} onChange={this.chooseProduct} />
             </span>
           </nav>
         </header>
@@ -170,7 +150,7 @@ class App extends React.Component {
             productStyles={productStyles}
             getCurrentImg={this.getCurrentImg}
             openFullscreen={this.changeModal}
-            reviewData={reviewData}/>
+            reviewData={reviewData} />
 
           <QAContainer
             data={qaData}
@@ -180,14 +160,14 @@ class App extends React.Component {
             productInfo={productInfo}
             selectQuestion={this.selectQuestion}
             updateQaData={this.updateQaData}
-            />
+          />
 
           <ReviewsList currentProductId={this.state.currentProductId}
-            reviewData={this.state.reviewData}
+            reviewData={reviewData}
             openReviewForm={this.changeModal}
-            reviewMeta={this.state.reviewMeta}
+            reviewMeta={reviewMeta}
             updateReviewData={this.updateReviewData}
-            />
+          />
 
           {fullscreen || answerForm || questionForm || reviewForm ? <Modal
             onClose={this.changeModal}
@@ -199,7 +179,7 @@ class App extends React.Component {
             qaData={this.state.qaData}
             updateQaData={this.updateQaData}
             currentQuestion={currentQuestion}
-            productInfo={productInfo}/> : null}
+            productInfo={productInfo} /> : null}
         </main>
       </div>
     );
