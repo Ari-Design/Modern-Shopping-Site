@@ -333,6 +333,11 @@ input.question_search {
   margin: 10px;
 }
 
+.question_scroll {
+  max-height: 500px;
+  overflow: auto;
+}
+
 .question {
   margin-top: 18px;
   margin-bottom: 8px;
@@ -379,7 +384,10 @@ input.question_search {
   display: grid;
   grid-template-columns: 4% 76% 20%;
 }
-
+.answer_scroll {
+  max-height: 250px;
+  overflow: auto;
+}
 .answer_component {
   margin-bottom: 10px;
 }
@@ -487,6 +495,7 @@ input.question_search {
 }
 
 .q_cancel {
+  grid-row-start: 7;
   height: 30px;
   font-size: 18px;
   border: black solid 1px;
@@ -499,6 +508,7 @@ input.question_search {
 }
 
 .question_submit {
+  grid-row-start: 7;
   height: 30px;
   font-size: 18px;
   border: black solid 1px;
@@ -580,6 +590,7 @@ input.question_search {
 }
 
 .a_cancel {
+  grid-row-start: 7;
   height: 30px;
   font-size: 18px;
   border: black solid 1px;
@@ -592,6 +603,7 @@ input.question_search {
 }
 
 .answer_submit {
+  grid-row-start: 7;
   height: 30px;
   font-size: 18px;
   border: black solid 1px;
