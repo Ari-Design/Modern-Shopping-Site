@@ -131,13 +131,16 @@ class App extends React.Component {
     this.setState({ [state]: !this.state[state] });
   }
 
-  getCurrentImg(obj) {
-    this.setState({ currentImg: obj })
+  getCurrentImg(img, pages) {
+    this.setState({
+      currentImg: img,
+      pages: pages,
+    })
   }
 
   render() {
     var { productInfo, productStyles, qaData, currentProductId, reviewData, reviewMeta,
-      fullscreen, answerForm, currentImg, questionForm, reviewForm, currentQuestion } = this.state;
+      fullscreen, answerForm, currentImg, questionForm, reviewForm, currentQuestion, pages } = this.state;
 
     var products = this.state.products.map((product) => product.id);
 
@@ -180,6 +183,7 @@ class App extends React.Component {
           {fullscreen || answerForm || questionForm || reviewForm ? <Modal
             onClose={this.changeModal}
             currentImg={currentImg}
+            pages={pages}
             answerForm={answerForm}
             questionForm={questionForm}
             reviewForm={reviewForm}
