@@ -26,7 +26,7 @@ var Answer = ({answer, answers, handleHandR, productId, updateQaData}) => (
           className="report_answer"
           >&nbsp;&nbsp;&nbsp;
           <span className="link_word"
-            onClick={() => handleHandR(`/qa/answers/${answer.id}/report`, { "reported": true }, updateQaData(productId))}
+            onClick={() => handleHandR(`/qa/answers/${answer.id}/report`, { "reported": true })}
             >Report
           </span>
         </span>

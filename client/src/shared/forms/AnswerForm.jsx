@@ -19,7 +19,7 @@ class AnswerForm extends React.Component {
     })
   }
 
-  handleAnswerSubmit(callback) {
+  handleAnswerSubmit(callback, callback2) {
     var id = this.props.currentQuestion.question_id
     axios.post(`/qa/questions/${id}/answers`, {
       body: this.state.answer,
@@ -29,6 +29,9 @@ class AnswerForm extends React.Component {
     })
     .then((res) => {
       callback
+    })
+    .then(() => {
+      callback2
     })
     .catch((err) => {
       console.log(`error: ${err}`)
@@ -84,7 +87,8 @@ class AnswerForm extends React.Component {
         </button>
         <button
           className="answer_submit"
-          onClick={() => {this.handleAnswerSubmit(this.props.updateQaData(this.props.productInfo.id)); this.props.onClick}}
+          type="button"
+          onClick={() => {this.handleAnswerSubmit(this.props.updateQaData(this.props.productInfo.id),   this.props.onClick())}}
           >Submit
         </button>
       </form>

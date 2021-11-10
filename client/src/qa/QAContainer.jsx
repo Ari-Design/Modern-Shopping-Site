@@ -12,7 +12,7 @@ class QAContainer extends React.Component {
       moreAnswers: 'See More Answers',
       allQuestions: false,
       buttonLabel: 'MORE ANSWERED QUESTIONS',
-      qListLength: 4,
+      qListLength: 2,
       searchTerm: ''
 
     }
@@ -25,16 +25,21 @@ class QAContainer extends React.Component {
     // console.log('QA Container Mounted')
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if(prevProps.id !== this.props.id) {
       this.setState({
         allAnswers: false,
         moreAnswers: 'See More Answers',
         allQuestions: false,
         buttonLabel: 'MORE ANSWERED QUESTIONS',
-        qListLength: 4
+        qListLength: 2,
+        listClass: 'q_list'
       })
     }
+    if(prevProps.data != this.props.data)
+      this.setState({
+        allAnswers: prevState.allAnswers
+      })
   }
 
   handleSearchInputChange(e) {
@@ -48,27 +53,27 @@ class QAContainer extends React.Component {
         allQuestions: true,
         qListLength: this.props.data.results.length,
         buttonLabel: 'FEWER QUESTIONS',
+        listClass: 'question_scroll'
       })
     }
     if (this.state.allQuestions === true) {
       this.setState({
         allQuestions: false,
-        qListLength: 4,
+        qListLength: 2,
         buttonLabel: 'MORE ANSWERED QUESTIONS',
+        listClass: 'q_list'
       })
     }
   }
 
-  handleMoreAnswers() {
-    if(this.state.allAnswers === false) {
+  handleMoreAnswers(question) {
+    if(!this.state.allAnswers) {
       this.setState({
-        moreAnswers: 'Close Answer Window',
         allAnswers: true
       })
     }
-    if(this.state.allAnswers === true) {
+    if(this.state.allAnswers && question == this.props.currentQuestion) {
       this.setState({
-        moreAnswers: 'See More Answers',
         allAnswers: false
       })
     }
@@ -90,6 +95,7 @@ class QAContainer extends React.Component {
           <div>
             <QuestionList
               allAnswers={this.state.allAnswers}
+              currentQuestion={this.props.currentQuestion}
               data={this.props.data}
               handleMoreAnswers={this.handleMoreAnswers}
               handleHandR={this.props.handleHandR}
