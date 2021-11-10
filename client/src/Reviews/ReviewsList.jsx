@@ -24,7 +24,7 @@ class ReviewsList extends React.Component{
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.currentProductId !== prevProps.currentProductId || this.props !== prevProps) {
+    if (this.props !== prevProps) {
       this.setState({
         allReviews: this.props.reviewData.results,
         reviewsToDisplay: this.props.reviewData.results.slice(0, 2),
