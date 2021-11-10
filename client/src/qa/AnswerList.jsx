@@ -2,15 +2,16 @@ import React from 'react';
 import Answer from './Answer.jsx';
 
 
-var AnswerList = ({ answers, handleHandR, qId, productId, updateQaData }) => {
+var AnswerList = ({ allAnswers, answers, currentQuestion, handleHandR, moreAnswers, productId, question, qId, updateQaData, }) => {
   let answersArray = [];
   for (var id in answers) {
     answersArray.push(answers[id])
   }
-  return (
-    <div>
-      {answersArray.sort((a, b) => b.helpfulness - a.helpfulness).slice(0,2).map((answer) => (
-        <Answer
+  if(allAnswers && question == currentQuestion) {
+    return (
+      <div className="answer_scroll">
+        {answersArray.sort((a, b) => b.helpfulness - a.helpfulness).map((answer) => (
+          <Answer
           key={answer.id}
           answer={answer}
           answers={answersArray}
@@ -18,11 +19,26 @@ var AnswerList = ({ answers, handleHandR, qId, productId, updateQaData }) => {
           productId={productId}
           updateQaData={updateQaData}
           qId={qId}
+          />
+          ))}
+      </div>
+      )
+  }
+  return (
+    <div>
+      {answersArray.sort((a, b) => b.helpfulness - a.helpfulness).slice(0,2).map((answer) => (
+        <Answer
+          answer={answer}
+          answers={answersArray}
+          handleHandR={handleHandR}
+          key={answer.id}
+          productId={productId}
+          qId={qId}
+          updateQaData={updateQaData}
         />
       ))}
     </div>
   )
-
 }
 
 export default AnswerList;

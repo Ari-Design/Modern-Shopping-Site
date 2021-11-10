@@ -82,7 +82,7 @@ app.put('/reviews/:review_id/helpful', (req, res) => {
 
 app.get('/qa/questions', (req, res) => {
   var id = req.query.product_id
-  axios.get(`${apiUrl}/qa/questions?product_id=${id}`, options)
+  axios.get(`${apiUrl}/qa/questions?product_id=${id}&count=100`, options)
     .then((response) => {
       res.status(200).json(response.data);
     })

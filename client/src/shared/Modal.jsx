@@ -27,8 +27,8 @@ const Modal = (props) => {
       <div>
         <div className='modalStyle'>
           <AnswerForm
-            productInfo={props.productInfo}
             currentQuestion={props.currentQuestion}
+            productInfo={props.productInfo}
             updateQaData={props.updateQaData}
             onClick={e => close(e, props.onClose.bind(this, 'answerForm'))}/>
         </div>

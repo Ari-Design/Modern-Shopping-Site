@@ -1,7 +1,7 @@
 import React from 'react';
 import AnswerList from './AnswerList.jsx';
 
-var Question = ({ question, handleHandR, openAnswerForm, selectQuestion, updateQaData, productId }) => (
+var Question = ({ allAnswers, currentQuestion, handleHandR, handleMoreAnswers, moreAnswers, openAnswerForm, productId, question, selectQuestion, updateQaData }) => (
   <div className="qa_component">
     <div className="question">
       <span className="question_label">Q:</span>
@@ -29,14 +29,29 @@ var Question = ({ question, handleHandR, openAnswerForm, selectQuestion, updateQ
     </div>
     <div>
       <AnswerList
-        key={`ANS-${question.question_id}`}
+        allAnswers={allAnswers}
         answers={question.answers}
+        currentQuestion={currentQuestion}
         handleHandR={handleHandR}
-        qId={question.question_id}
+        key={`ANS-${question.question_id}`}
+        moreAnswers={moreAnswers}
         productId={productId}
+        question={question}
+        qId={question.question_id}
         updateQaData={updateQaData}
       />
     </div>
+    {(allAnswers && question == currentQuestion) ?
+      <h4
+        className="answer_window"
+        onClick={() => {selectQuestion(question); handleMoreAnswers(question)}}
+        >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Collapse Answers
+      </h4> : (Object.keys(question.answers).length > 2) ?
+      <h4
+        className="more_answers"
+        onClick={() => {selectQuestion(question); handleMoreAnswers(question)}}
+        >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;See More Answers
+      </h4> : null}
   </div>
 
 )

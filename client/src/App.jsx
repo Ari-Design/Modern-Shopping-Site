@@ -52,6 +52,13 @@ class App extends React.Component {
     this.getProducts();
     this.fetchData(37311)
   }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.qaData != this.state.qaData) {
+      this.setState({
+        currentQuestion: prevState.currentQuestion
+      })
+    }
+  }
 
   chooseProduct(e) {
     var id = Number(e.target.value)
@@ -107,7 +114,7 @@ class App extends React.Component {
   handleIsHelpfulAndReport(url, data, callback) {
     axios.put(url, data)
       .then((res) => {
-        callback
+        if (callback) {callback}
       })
       .catch((err) => {
         console.log(`error: ${err}`)
@@ -156,6 +163,7 @@ class App extends React.Component {
             reviewData={reviewData} />
 
           <QAContainer
+            currentQuestion={this.state.currentQuestion}
             data={qaData}
             id={currentProductId}
             handleHandR={this.handleIsHelpfulAndReport}
