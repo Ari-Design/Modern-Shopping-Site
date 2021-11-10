@@ -2,13 +2,13 @@ import React from 'react';
 import AnswerForm from './forms/AnswerForm.jsx';
 import QuestionForm from './forms/QuestionForm.jsx';
 import AddReviewForm from './forms/AddReviewForm.jsx';
-
+import Expanded from './forms/Expanded.jsx';
 
 const close = (e, onClose) => {
   e.preventDefault()
 
   if (onClose) {
-    onClose()
+    onClose();
   }
 };
 
@@ -17,7 +17,7 @@ const Modal = (props) => {
     return (
       <div>
         <div className='fullscreenStyle'>
-          <img className='media' src={props.currentImg.url}></img>
+          <Expanded img={props.currentImg} pages={props.pages}/>
         </div>
         <div className='backdropStyle' onClick={e => close(e, props.onClose.bind(this, 'fullscreen'))} />
       </div>
