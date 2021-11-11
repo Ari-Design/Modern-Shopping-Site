@@ -55,7 +55,8 @@ class App extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevState.qaData != this.state.qaData) {
       this.setState({
-        currentQuestion: prevState.currentQuestion
+        currentQuestion: prevState.currentQuestion,
+        currentProductId: prevState.currentProductId
       })
     }
   }

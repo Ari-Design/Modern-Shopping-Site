@@ -19,23 +19,25 @@ class AnswerForm extends React.Component {
     })
   }
 
-  handleAnswerSubmit(callback, callback2) {
-    var id = this.props.currentQuestion.question_id
-    axios.post(`/qa/questions/${id}/answers`, {
-      body: this.state.answer,
-      name: this.state.nickname,
-      email: this.state.email,
-      photos: []
-    })
-    .then((res) => {
-      callback
-    })
-    .then(() => {
-      callback2
-    })
-    .catch((err) => {
-      console.log(`error: ${err}`)
-    })
+  handleAnswerSubmit(e) {
+    if (e.target.id === 'a_submit') {
+      var id = this.props.currentQuestion.question_id
+      axios.post(`/qa/questions/${id}/answers`, {
+        body: this.state.answer,
+        name: this.state.nickname,
+        email: this.state.email,
+        photos: []
+      })
+      .then(() => {
+        this.props.onClick()
+      })
+      .then(() => {
+        this.props.updateQaData(this.props.productInfo.name)
+      })
+      .catch((err) => {
+        console.log(`error: ${err}`)
+      })
+    }
   }
 
   render() {
@@ -62,7 +64,7 @@ class AnswerForm extends React.Component {
             className="a_nickname_input"
             type="text"
             maxLength="60"
-            placeholder="Example: jackson11!"
+            placeholder="Example: jack543!"
             name="nickname"
             value={this.state.nickname}
             onChange={this.handleChange}
@@ -87,8 +89,8 @@ class AnswerForm extends React.Component {
         </button>
         <button
           className="answer_submit"
-          type="button"
-          onClick={() => {this.handleAnswerSubmit(this.props.updateQaData(this.props.productInfo.id),   this.props.onClick())}}
+          id="a_submit"
+          onClick={(e) => this.handleAnswerSubmit(e)}
           >Submit
         </button>
       </form>
