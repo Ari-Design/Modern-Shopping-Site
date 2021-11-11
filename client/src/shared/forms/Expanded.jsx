@@ -6,10 +6,12 @@ import left_arrow from '../../../../dist/assets/images/left_arrow.png';
 class Expanded extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { active: true };
 
     this.changeImg = this.changeImg.bind(this);
     this.changePage = this.changePage.bind(this);
+    this.changeCurrentImg = this.changeCurrentImg.bind(this);
+    this.onMouseMove = this.onMouseMove.bind(this);
   }
 
   componentDidMount() {
@@ -75,18 +77,46 @@ class Expanded extends React.Component {
     }
   }
 
+  changeCurrentImg(obj, index, page) {
+    this.setState({
+      currentImg: obj,
+      imgIndex: index,
+      page: page,
+    });
+  }
+
+  onMouseMove(event) {
+    const img = document.getElementsByClassName("zoom")[0];
+    const el = document.getElementById("zoom");
+    img.addEventListener("mousemove", (e) => {
+      console.log(e.offsetX)
+      el.style.backgroundPositionX = -e.offsetX * 1.35 + "px";
+      el.style.backgroundPositionY = -e.offsetY * 1.65 + "px";
+    });
+  }
+
   render() {
-    var { currentImg = { url: '' }, downShow, index, pages = [[]], page = 0, upShow } = this.state;
+    var { currentImg = { url: '' }, downShow, index, pages = [[]], page = 0, upShow, active } = this.state;
     return (
       <>
         {index !== 0 || page !== 0 ? <img className="arrowLeft" onClick={() => this.changeImg(false)} src={left_arrow} /> : null}
+        <div className='z_container'>
+          <img className='zoom' src={currentImg.url}></img>
+        </div>
 
-        <img className='media' src={currentImg.url}></img>
+        {active ? <div id="zoom" style={{ backgroundImage: `url(${currentImg.url})` }} onMouseMove={this.onMouseMove}></div> : null}
 
         {index !== pages[page].length - 1 || page !== pages.length - 1 ? <img className="arrowRight" onClick={this.changeImg} src={right_arrow} /> : null}
 
         <div className='horizontal_carousel'>
-          {pages[page].map((photos) => <div>Hi</div>)}
+          {pages[page].map((photo, i) => {
+            return (
+              <div className="minis" id={'photo' + i} onClick={() => this.changeCurrentImg(photo, i, page)}>
+                {currentImg.url === photo.url ?
+                  <div className="mini" /> : null}
+              </div>
+            )
+          })}
         </div>
       </>
     );
@@ -94,4 +124,5 @@ class Expanded extends React.Component {
 }
 
 export default Expanded;
+
 

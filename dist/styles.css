@@ -71,6 +71,7 @@ header {
   top: 302.75px;
   left: 15%;
 }
+
 .arrowRight {
   left: 94%;
 }
@@ -174,6 +175,12 @@ header {
   grid-column-start: 2;
 }
 
+.select_size {
+  background-color: white;
+  border: 1px solid black;
+
+}
+
 .style_buttons {
   grid-row-start: 9;
   grid-column-start: 2;
@@ -182,6 +189,21 @@ header {
 .share {
   grid-row: 10;
   grid-column-start: 2;
+  width: 100px;
+  display: grid;
+  grid-auto-flow: column;
+}
+
+#shareBtn {
+  height: 30px;
+  width: 30px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  border: 1px solid black;
+  margin: 0;
+  padding: 0;
 }
 
 .productInfo_container {
@@ -640,35 +662,88 @@ input.question_search {
 
 .fullscreenStyle {
   position: fixed;
-  height: 80%;
+  height: 100%;
+  width: 100%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9998;
-  background: #fff;
+  background: black;
 }
 .horizontal_carousel {
   box-sizing: border-box;
-  background-color: white;
-  height: 10%;
-  width: 85%;
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  height: 90%;
+  width: 10%;
+  top: 0%;
   z-index: 9998;
   position: absolute;
   display: grid;
-  grid-auto-flow: column;
-  grid-template-rows: 1;
+  grid-template-rows: repeat(7, 1fr);
 }
 
 .minis {
   box-sizing: border-box;
-  border: 1px solid black;
+  border: 4px solid black;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  transform: translate(5%, 50%);
   background-color: white;
-  object-fit: cover;
-  height: 63px;
-  width: 60px;
-  grid-column-start: auto;
-  grid-row-start: 1;
+}
+
+.minis:hover {
+  background-color: gray;
+}
+
+.mini {
+  box-sizing: border-box;
+  background-color: black;
+  border: 4px solid black;
+  border-radius: 50%;
+  width: 50%;
+  height: 50%;
+  transform: translate(50%, 50%);
+}
+
+.z_container {
+
+}
+
+.zoom {
+  left: 15%;
+  position: fixed;
+  object-fit: scale-down;
+}
+
+#close {
+  z-index: 9999;
+  top: 3%;
+  left: 95%;
+  position: fixed;
+  color: white;
+}
+
+#close:hover {
+  background-color: gray;
+}
+
+#zoom {
+  border: 1px solid black;
+  width: 600px;
+  height: 600px;
+  display: block;
+  background-color: white;
+  left: 60%;
+  position: fixed;
+  z-index: 9999;
+  background-repeat: no-repeat;
+  background-size: 250%;
+  transform: translate(0%, 35%);
+}
+
+#close {
+  z-index: 9999;
+  top: 3%;
+  left: 95%;
+  position: fixed;
 }
