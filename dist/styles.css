@@ -415,11 +415,11 @@ input.question_search {
 }
 
 .link_word {
-  color: blue;
   text-decoration: underline;
+  color: #226C73;
 }
 .link_word:hover {
-  color: #226C73;
+  color: blue;
   font-size: 14px;
   font-weight: 500;
 }
