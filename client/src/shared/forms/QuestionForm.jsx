@@ -10,46 +10,51 @@ class QuestionForm extends React.Component {
       nickname: ''
     }
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleQuestionSubmit = this.handleQuestionSubmit.bind(this);
   }
 
   handleChange(e) {
     this.setState({
-      [e.target.name]: [e.target.value]
+      [e.target.name]: e.target.value
     })
   }
 
-  handleSubmit() {
-    console.log('submitted')
-    axios.post('/qa/questions', {
-      question: this.state.question,
-      email: this.state.email,
-      nickname: this.state.nickname
-    })
-    .then((res) => {
-      console.log(res)
-    })
-    .catch((err) => {
-      console.log(`error: ${err}`)
-    })
+  handleQuestionSubmit(e) {
+    if (e.target.id === 'q_submit') {
+      axios.post('/qa/questions', {
+        body: this.state.question,
+        name: this.state.nickname,
+        email: this.state.email,
+        product_id: this.props.productInfo.id
+      })
+      .then(() => {
+        this.props.onClick()
+      })
+      .then(() => {
+        this.props.updateQaData(this.props.productInfo.id)
+      })
+      .catch((err) => {
+        console.log(`error: ${err}`)
+      })
+    }
   }
 
   render() {
     return (
       <div className="question_form">
-        <form onSubmit={this.handleSubmit}>
-          <h2 className="question_form_header">Ask Your Question About the</h2>
+        <form >
+          <h2 className="question_form_header">Ask Your Question About the {this.props.productInfo.name}</h2>
           <label className="q_email_label">
             Email:&nbsp;&nbsp;
             <input
               className="q_email_input"
               type="email"
               maxLength="60"
-              placeholder="Why did you like the product or not?"
               name="email"
+              placeholder="person@email.com"
               value={this.state.email}
               onChange={this.handleChange}
-            />
+              />
           </label>
           <label className="q_nickname_label">
             Nickname:&nbsp;&nbsp;
@@ -61,12 +66,13 @@ class QuestionForm extends React.Component {
               name="nickname"
               value={this.state.nickname}
               onChange={this.handleChange}
-            />
+              />
           </label>
           <label className="q_input_label">
             Question:
             <textarea
               className="question_input"
+              placeholder="Why did you like the product or not?"
               cols="75"
               rows="14"
               name="question"
@@ -75,7 +81,11 @@ class QuestionForm extends React.Component {
             </textarea>
           </label>
           <button onClick={this.props.onClick} className="q_cancel">Cancel</button>
-          <input className="question_submit" type="submit" value="Submit" />
+          <button onClick={(e) => this.handleQuestionSubmit(e)}
+            className="question_submit"
+            id="q_submit"
+            >Submit
+          </button>
         </form>
       </div>
     )

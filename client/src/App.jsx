@@ -1,95 +1,198 @@
 import React from 'react';
 import axios from 'axios';
 
-import products from '../../sampleData/products/productList.js';
-import productInfo from '../../sampleData/products/productInfo.js';
-import productStyles from '../../sampleData/products/productStyle.js';
-import reviewSample from '../../sampleData/reviews/reviewSample.js';
-import reviewMeta from '../../sampleData/reviews/reviewsMeta.js';
-import qaSample from '../../sampleData/qaSample.js';
-
-
 import Container from './overview/Container.jsx';
 import QAContainer from './qa/QAContainer.jsx'
 import ReviewsList from './Reviews/ReviewsList.jsx';
 import Modal from './shared/Modal.jsx'
+import Dropdown from './shared/Dropdown.jsx';
+import mountainLogo from '../../dist/assets/images/mountain-logo.png';
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentProductId: 37311,
-      products: products,
-      productInfo: productInfo,
-      productStyles: productStyles,
-      reviewData: reviewSample,
-      reviewMeta: reviewMeta,
-      qaData: qaSample,
+      currentProductId: '',
+      products: [],
+      productInfo: {},
+      productStyles: { results: [{ 'style_id': '' }] },
+      reviewData: { results: [] },
+      reviewMeta: {},
+      qaData: { results: [] },
+      currentQuestion: null,
       fullscreen: false,
       answerForm: false,
       questionForm: false,
       reviewForm: false,
       currentImg: '',
+      Darkmode: {
+        backgroundColor: 'black',
+        color: 'white',
+      },
+      isDarkmode: false,
     }
-    this.handleIsHelpfulAndReport = this.handleIsHelpfulAndReport.bind(this);
+
     this.changeModal = this.changeModal.bind(this);
     this.getCurrentImg = this.getCurrentImg.bind(this);
+    this.getProducts = this.getProducts.bind(this);
+    this.chooseProduct = this.chooseProduct.bind(this);
+    this.fetchData = this.fetchData.bind(this);
+    this.selectQuestion = this.selectQuestion.bind(this);
+    this.updateQaData = this.updateQaData.bind(this);
+    this.updateReviewData = this.updateReviewData.bind(this);
   }
 
-  handleIsHelpfulAndReport(url, data) {
-    axios.put(url, data)
+  getProducts() {
+    axios.get('/products')
       .then((res) => {
-        console.log(res)
+        this.setState({
+          products: res.data
+        })
       })
       .catch((err) => {
         console.log(`error: ${err}`)
       })
   }
 
+  componentDidMount() {
+    this.getProducts();
+    this.fetchData(37311)
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.qaData != this.state.qaData) {
+      this.setState({
+        currentQuestion: prevState.currentQuestion,
+        currentProductId: prevState.currentProductId
+      })
+    }
+  }
+
+  chooseProduct(e) {
+    var id = Number(e.target.value)
+    this.fetchData(id)
+  }
+
+  fetchData(id) {
+    const getInfo = axios.get(`/products/${id}`);
+    const getStyles = axios.get(`/products/${id}/styles`);
+    const getReviewData = axios.get('/reviews', { params: { product_id: id } });
+    const getReviewMeta = axios.get('/reviews/meta', { params: { product_id: id } });
+    const getQaData = axios.get('/qa/questions', { params: { product_id: id } });
+
+    axios.all([getInfo, getStyles, getReviewData, getReviewMeta, getQaData])
+      .then(axios.spread((...data) => {
+        this.setState({
+          currentProductId: id,
+          productInfo: data[0].data,
+          productStyles: data[1].data,
+          reviewData: data[2].data,
+          reviewMeta: data[3].data,
+          qaData: data[4].data
+        })
+      }))
+      .catch((err) => {
+        console.log(`error: ${err}`)
+      })
+  }
+  updateReviewData() {
+    axios.get('/reviews', { params: { product_id: this.state.currentProductId } })
+      .then((res) => {
+        this.setState({
+          reviewData: res.data
+        })
+      })
+      .catch((err) => {
+        console.log('error')
+      })
+  }
+  updateQaData(id) {
+    axios.get('/qa/questions', { params: { product_id: id } })
+      .then((res) => {
+        console.log(res.data)
+        console.log("****** DATA UPDATED ********")
+        this.setState({
+          qaData: res.data
+        })
+      })
+      .catch((err) => {
+        console.log(`error: ${err}`)
+      })
+  }
+
+  selectQuestion(question) {
+    this.setState({
+      currentQuestion: question
+    })
+  }
+
   changeModal(state) {
     this.setState({ [state]: !this.state[state] });
   }
 
-  getCurrentImg(obj) {
-    this.setState({ currentImg: obj })
+  getCurrentImg(img, pages) {
+    this.setState({
+      currentImg: img,
+      pages: pages,
+    })
   }
 
   render() {
     var { productInfo, productStyles, qaData, currentProductId, reviewData, reviewMeta,
-      fullscreen, answerForm, currentImg, questionForm, reviewForm } = this.state;
+      fullscreen, answerForm, currentImg, questionForm, reviewForm, currentQuestion, pages, isDarkmode} = this.state;
+
+    var products = this.state.products.map((product) => product.id);
+
     return (
       <div>
         <header>
-          <nav>
-            <span>Logo</span>
+          <nav className="page_top">
+            <img src={mountainLogo} />
+            <button onClick={() => this.setState({isDarkmode: !isDarkmode})}>DARKMODE</button>
             <span>Search</span>
+            <span className="product_search">
+              <Dropdown title="chooseProduct" optionsArr={products} onChange={this.chooseProduct} />
+            </span>
           </nav>
         </header>
         <main>
           <Container productInfo={productInfo}
             productStyles={productStyles}
             getCurrentImg={this.getCurrentImg}
-            openFullscreen={this.changeModal} />
+            openFullscreen={this.changeModal}
+            reviewData={reviewData} />
 
           <QAContainer
+            currentQuestion={this.state.currentQuestion}
             data={qaData}
             id={currentProductId}
             handleHandR={this.handleIsHelpfulAndReport}
             openAnswerForm={this.changeModal}
-            productInfo={productInfo} />
+            productInfo={productInfo}
+            selectQuestion={this.selectQuestion}
+            updateQaData={this.updateQaData}
+          />
 
-          <ReviewsList currentProductId={currentProductId}
+          <ReviewsList currentProductId={this.state.currentProductId}
             reviewData={reviewData}
             openReviewForm={this.changeModal}
-            reviewMeta={reviewMeta} />
+            reviewMeta={reviewMeta}
+            updateReviewData={this.updateReviewData}
+          />
 
           {fullscreen || answerForm || questionForm || reviewForm ? <Modal
             onClose={this.changeModal}
             currentImg={currentImg}
+            pages={pages}
             answerForm={answerForm}
             questionForm={questionForm}
             reviewForm={reviewForm}
-            fullscreen={fullscreen} /> : null}
+            fullscreen={fullscreen}
+            qaData={this.state.qaData}
+            updateQaData={this.updateQaData}
+            currentQuestion={currentQuestion}
+            productInfo={productInfo}
+            reviewMeta={reviewMeta}
+            /> : null}
         </main>
       </div>
     );
