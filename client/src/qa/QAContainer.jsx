@@ -109,7 +109,7 @@ class QAContainer extends React.Component {
     return (
       <div className="qa_outer_container">
         <div className="qa_inner_container">
-          <h4>QUESTIONS AND ANSWERS</h4>
+          <h4 className="qa_header">QUESTIONS AND ANSWERS</h4>
           <div className="qa_search_placement">
             <input
               className="question_search"
