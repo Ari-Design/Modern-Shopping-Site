@@ -146,8 +146,8 @@ class App extends React.Component {
     return (
       <div>
         <header>
-          <nav>
-            <img src={mountainLogo}/>
+          <nav className="page_top">
+            <img src={mountainLogo} />
             <span>Search</span>
             <span className="product_search">
               <Dropdown title="chooseProduct" optionsArr={products} onChange={this.chooseProduct} />
