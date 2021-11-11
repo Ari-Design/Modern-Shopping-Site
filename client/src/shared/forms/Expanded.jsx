@@ -100,10 +100,10 @@ class Expanded extends React.Component {
       <>
         {index !== 0 || page !== 0 ? <img className="arrowLeft" onClick={() => this.changeImg(false)} src={left_arrow} /> : null}
         <div className='z_container'>
-          <img className='zoom' src={currentImg.url}></img>
+          <img className='zoom' src={currentImg.url} onMouseEnter={this.onMouseMove} ></img>
         </div>
 
-        {active ? <div id="zoom" style={{ backgroundImage: `url(${currentImg.url})` }} onMouseMove={this.onMouseMove}></div> : null}
+        <div id="zoom" style={{ backgroundImage: `url(${currentImg.url})`}} ></div>
 
         {index !== pages[page].length - 1 || page !== pages.length - 1 ? <img className="arrowRight" onClick={this.changeImg} src={right_arrow} /> : null}
 
