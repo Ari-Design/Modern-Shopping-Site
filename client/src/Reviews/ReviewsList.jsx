@@ -104,8 +104,10 @@ class ReviewsList extends React.Component{
         {this.state.reviewsToDisplay.map((review) => (
           <ReviewTile key={review.review_id} review={review} onHelpfulClick={this.onHelpfulClick}/>
         ))}
+        <div className="review_footer">
         <button className="review_buttons" id="More_Reviews" onClick={(e) => this.handleClick(e)}>More Reviews</button>
         <button onClick={() => this.props.openReviewForm('reviewForm')} className="review_buttons" id="Add_Review+" >Add A Review +</button>
+        </div>
         </div>
         </div>
         </>
