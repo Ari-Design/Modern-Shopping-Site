@@ -110,7 +110,7 @@ class Expanded extends React.Component {
         <div className='horizontal_carousel'>
           {pages[page].map((photo, i) => {
             return (
-              <div className="minis" id={'photo' + i} onClick={() => this.changeCurrentImg(photo, i, page)}>
+              <div className="minis" id={'photo' + i} key={'photo' + i} onClick={() => this.changeCurrentImg(photo, i, page)}>
                 {currentImg.url === photo.url ?
                   <div className="mini" /> : null}
               </div>

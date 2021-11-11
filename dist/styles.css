@@ -705,13 +705,9 @@ input.question_search {
   transform: translate(50%, 50%);
 }
 
-.z_container {
-
-}
-
 .zoom {
   left: 15%;
-  height: 100%;
+  height: 90%;
   position: fixed;
   object-fit: scale-down;
 }
