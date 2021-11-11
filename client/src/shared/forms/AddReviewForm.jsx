@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Star from '../Star.jsx';
+import AddCharacteristics from '../../Reviews/AddCharacteristics.jsx'
 
 class AddReviewForm extends React.Component {
   constructor(props) {
@@ -47,10 +48,6 @@ class AddReviewForm extends React.Component {
     .catch((err) => {
       console.log(err);
     })
-
-    console.log(reviewBody);
-    console.log(reviewEmail);
-    // axios.post
   }
 
   render() {
@@ -97,7 +94,7 @@ class AddReviewForm extends React.Component {
             />
           </label>
           <br/>
-          <div className="review_characteristics">**Characteristics Here**</div>
+          <div className="review_characteristics"><AddCharacteristics /></div>
           <label className="review_summary_input_label">
           Summary:&nbsp;&nbsp;
             <input
