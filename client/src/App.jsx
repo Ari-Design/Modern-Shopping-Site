@@ -118,8 +118,6 @@ class App extends React.Component {
       })
   }
 
-
-
   selectQuestion(question) {
     this.setState({
       currentQuestion: question
@@ -139,7 +137,7 @@ class App extends React.Component {
 
   render() {
     var { productInfo, productStyles, qaData, currentProductId, reviewData, reviewMeta,
-      fullscreen, answerForm, currentImg, questionForm, reviewForm, currentQuestion, pages } = this.state;
+      fullscreen, answerForm, currentImg, questionForm, reviewForm, currentQuestion, pages, isDarkmode} = this.state;
 
     var products = this.state.products.map((product) => product.id);
 
@@ -148,6 +146,7 @@ class App extends React.Component {
         <header>
           <nav className="page_top">
             <img src={mountainLogo} />
+            <button onClick={() => this.setState({isDarkmode: !isDarkmode})}>DARKMODE</button>
             <span>Search</span>
             <span className="product_search">
               <Dropdown title="chooseProduct" optionsArr={products} onChange={this.chooseProduct} />
