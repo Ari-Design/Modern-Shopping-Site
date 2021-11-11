@@ -89,9 +89,8 @@ class Expanded extends React.Component {
     const img = document.getElementsByClassName("zoom")[0];
     const el = document.getElementById("zoom");
     img.addEventListener("mousemove", (e) => {
-      console.log(e.offsetX)
-      el.style.backgroundPositionX = -e.offsetX * 1.35 + "px";
-      el.style.backgroundPositionY = -e.offsetY * 1.65 + "px";
+      el.style.backgroundPositionX = e.offsetX / e.target.offsetWidth * 100 + "%";
+      el.style.backgroundPositionY = e.offsetY / e.target.offsetHeight * 100 + "%";
     });
   }
 

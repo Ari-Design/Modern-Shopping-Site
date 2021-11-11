@@ -711,6 +711,7 @@ input.question_search {
 
 .zoom {
   left: 15%;
+  height: 100%;
   position: fixed;
   object-fit: scale-down;
 }
