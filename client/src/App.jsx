@@ -184,7 +184,9 @@ class App extends React.Component {
             qaData={this.state.qaData}
             updateQaData={this.updateQaData}
             currentQuestion={currentQuestion}
-            productInfo={productInfo} /> : null}
+            productInfo={productInfo}
+            reviewMeta={reviewMeta}
+            /> : null}
         </main>
       </div>
     );
