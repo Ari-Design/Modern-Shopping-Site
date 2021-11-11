@@ -1,5 +1,6 @@
 import React from 'react';
 var Factors = ({metaReviews}) => {
+  console.log(metaReviews.characteristics)
   var characteristics = metaReviews.characteristics;
   return [['Size', 'Small', 'Perfect', 'Big'], ['Width', 'Narrow', 'Perfect', 'Wide'], ['Comfort', 'Uncomfortable', '', 'Perfect'], ['Quality', 'Low', '', 'High'], ['Length', 'Too Short', 'Perfect', 'Too Long'], ['Fit', 'Too Small', 'Perfect', 'Too Big']].map((factor) => {
     if (characteristics[factor[0]]) {

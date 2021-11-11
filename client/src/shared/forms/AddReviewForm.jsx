@@ -6,31 +6,50 @@ class AddReviewForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      overallRating:'',
+      overallRating: 3,
       recommend: '',
-      size: '',
-      width: '',
-      comfort: '',
-      quality: '',
-      length: '',
-      fit: '',
+      characteristics: '',
       reviewSummary: '',
       reviewBody: '',
       reviewNickname: '',
-      reviewEmail: ''
+      reviewEmail: '',
+      photos: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
+    console.log(e.target.className);
     this.setState({
       [e.target.className]: [e.target.value]
     })
   }
 
   handleSubmit(e) {
-    console.log(this.state.reviewBody);
+
+    var {reviewBody, overallRating, recommend, reviewSummary, reviewNickname, reviewEmail, characteristics, photos} = this.state;
+    axios.post('/reviews', null, {
+      product_id : this.props.productInfo.id,
+      rating : overallRating,
+      summary : recommend,
+      body : reviewBody,
+      recommend : recommend,
+      name : reviewNickname,
+      email : reviewEmail,
+      photos : photos,
+      characteristics : characteristics
+    })
+    .then((res) => {
+      console.log(res.body);
+
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+
+    console.log(reviewBody);
+    console.log(reviewEmail);
     // axios.post
   }
 

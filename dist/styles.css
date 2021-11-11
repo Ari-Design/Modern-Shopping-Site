@@ -227,7 +227,10 @@ header {
 
 .ratings_breakdown { grid-area: ratings_breakdown; }
 
-.reviews_list { grid-area: reviews_list; }
+.reviews_list {
+  max-height: 500px;
+  overflow: auto;
+  grid-area: reviews_list; }
 
 .stars_outer {
   display: inline-block;
