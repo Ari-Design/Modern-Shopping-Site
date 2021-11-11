@@ -92,15 +92,15 @@ class Styles extends React.Component {
         <h1 className="style_name">{name}</h1>
 
         {typeof salePrice === 'string' ?
-        <div className="style_price_container">
-          <h3 className="style_price">{price} </h3>
-          <h3 className="sale_price">{salePrice}</h3>
-        </div> : <h3 className="style_price_container">{price}</h3>}
+          <div className="style_price_container">
+            <h3 className="style_price">{price} </h3>
+            <h3 className="sale_price">{salePrice}</h3>
+          </div> : <h3 className="style_price_container">{price}</h3>}
 
         <span className="style_style">STYLE > {styleName}</span>
         <div className="style_selector">
           <StyleSelector styles={productStyles}
-            onClick={this.props.onClick}/>
+            onClick={this.props.onClick} />
         </div>
         <div className="drop_downs">
           {error ? <p style={{ margin: 0 }}>*Please select a size</p> : null}
@@ -116,23 +116,14 @@ class Styles extends React.Component {
           <button>favorite</button>
         </div>
         <div className="share">
-          <button id="shareBtn" style={{backgroundImage: "url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/800px-2021_Facebook_icon.svg.png)"}} onClick={() => {
-            FB.ui({
-              display: 'popup',
-              method: 'share',
-              href: '/',
-            }, function (response) { });
-          }}></button>
-          <button id="shareBtn" style={{backgroundImage: "url(https://cdn-icons-png.flaticon.com/512/124/124021.png)"}}>
-            <a className="twitter-share-button"
-            href="https://twitter.com/intent/tweet?text=Hello%20world">
-            </a>
-          </button>
-          <button id="shareBtn">
-            <a className="pintrest-share-button"
-            href="https://pintrest.com/">
-            P</a>
-          </button>
+          <a className="button" id="shareBtn" style={{ backgroundImage: "url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/800px-2021_Facebook_icon.svg.png)" }} target="_blank" rel="noopener noreferrer" href={`http://www.facebook.com/sharer.php?u=${'/'}&p${name}=testtile`}>
+          </a>
+          <a className="button" id="shareBtn" style={{ backgroundImage: "url(https://cdn-icons-png.flaticon.com/512/124/124021.png)" }}
+            target="_blank" rel="noopener noreferrer" href={`http://twitter.com/share?text=${name}&url=${'/'}`}>
+          </a>
+          <a id="shareBtn" style={{ backgroundImage: "url(https://cdn2.iconfinder.com/data/icons/metro-ui-icon-set/512/Pinterest_alt.png)" }}
+            target="_blank" rel="noopener noreferrer" href={`http://pinterest.com/pin/create/button/?url=${'/'}&description=${name}`}>
+          </a>
         </div>
       </>
     )

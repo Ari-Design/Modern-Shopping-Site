@@ -766,13 +766,11 @@ input.question_search {
   transform: translate(50%, 50%);
 }
 
-.z_container {
-
-}
-
 .zoom {
-  left: 15%;
-  height: 100%;
+  left: 8%;
+  top: 10%;
+  height: 80%;
+  width: 40%;
   position: fixed;
   object-fit: scale-down;
 }
@@ -810,7 +808,15 @@ input.question_search {
   position: fixed;
 }
 
+a.button {
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+
+  text-decoration: none;
+  color: initial;
+}
 .page_top{
-  height: 75px;
+/*   height: 75px; */
 }
 

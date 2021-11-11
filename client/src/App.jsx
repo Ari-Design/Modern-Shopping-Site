@@ -6,6 +6,7 @@ import QAContainer from './qa/QAContainer.jsx'
 import ReviewsList from './Reviews/ReviewsList.jsx';
 import Modal from './shared/Modal.jsx'
 import Dropdown from './shared/Dropdown.jsx';
+import mountainLogo from '../../dist/assets/images/mountain-logo.png';
 
 class App extends React.Component {
   constructor(props) {
@@ -24,6 +25,11 @@ class App extends React.Component {
       questionForm: false,
       reviewForm: false,
       currentImg: '',
+      Darkmode: {
+        backgroundColor: 'black',
+        color: 'white',
+      },
+      isDarkmode: false,
     }
 
     this.changeModal = this.changeModal.bind(this);
@@ -141,7 +147,7 @@ class App extends React.Component {
       <div>
         <header>
           <nav className="page_top">
-            <span>Logo</span>
+            <img src={mountainLogo} />
             <span>Search</span>
             <span className="product_search">
               <Dropdown title="chooseProduct" optionsArr={products} onChange={this.chooseProduct} />
