@@ -140,7 +140,7 @@ class App extends React.Component {
     return (
       <div>
         <header>
-          <nav>
+          <nav className="page_top">
             <span>Logo</span>
             <span>Search</span>
             <span className="product_search">

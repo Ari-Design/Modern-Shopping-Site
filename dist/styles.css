@@ -314,6 +314,9 @@ header {
   padding: 20px;
 }
 
+.qa_header {
+  color: #226C73;
+}
 /**************************************************************
    Q/A SEARCH
 **************************************************************/
@@ -338,11 +341,17 @@ header {
   padding-top: 5px;
   height: 40px;
   font-size: 18px;
+  color: #226C73;
 }
 
 input.question_search {
   padding-left: 20px;
-  border: black solid 1px
+  color: #226C73;
+  border:  #226C73 solid 3px;
+}
+
+::placeholder {
+  color: #226C73;
 }
 
 /**************************************************************
@@ -351,8 +360,11 @@ input.question_search {
 
 .question_button {
   height: 40px;
+  background-color: #FFFFFF;
   font-size: 18px;
-  border: black solid 1px;
+  font-weight: 500;
+  color: #226C73;
+  border: #226C73 solid 3px;
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 5px;
@@ -372,12 +384,14 @@ input.question_search {
 }
 
 .question_label {
+  color: #226C73;
   font-weight: bold;
   font-size: 20px;
   grid-column-start: 1;
 }
 
 .question_body {
+  color: #226C73;
   padding-top: 2px;
   font-weight: bold;
   font-size: 20px;
@@ -389,7 +403,12 @@ input.question_search {
   grid-column-start: 3;
 }
 
+.question_helpfulness {
+  color: #226C73;
+}
+
 .divider {
+  color: #226C73;
   font-size: 30px;
   line-height: 30px;
   vertical-align: middle
@@ -400,27 +419,37 @@ input.question_search {
   text-decoration: underline;
 }
 .link_word:hover {
-  color:#179717;
+  color: #226C73;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .helpful {
-  color: #00ff00;
+  color: #008f00;
   font-size: 14px;
-  font-weight: 450;
-  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+  font-weight: 550;
+
 }
 
 .report:hover {
   color: red;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .reported {
   color: red;
-  font-weight: 450;
-  font-size:14px;
-  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+  font-weight: 550;
+  font-size: 14px;
 }
 
+.answer_window {
+  color: #226C73;
+}
+
+.more_answers {
+  color: #226C73;
+}
 
 
 /**************************************************************
@@ -443,12 +472,14 @@ input.question_search {
 }
 
 .answer_label {
+  color: #226C73;
   font-weight: bold;
   font-size: 22px;
   grid-column-start: 1;
 }
 
 .answer_body {
+  color: #226C73;
   font-size: 18px;
   padding-top: 3px;
   grid-column-start: 2;
@@ -464,10 +495,12 @@ input.question_search {
 }
 
 .answerer_name {
+  color: #226C73;
   font-size: 13px;
 }
 
 .answer_helpfulness {
+  color: #226C73;
   font-size: 13px;
 }
 
@@ -776,3 +809,8 @@ input.question_search {
   left: 95%;
   position: fixed;
 }
+
+.page_top{
+  height: 75px;
+}
+
