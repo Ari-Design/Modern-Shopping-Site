@@ -334,6 +334,7 @@ header {
 
 .question_search {
   grid-column-start: 2;
+  margin-bottom: 5px;
   padding-top: 5px;
   height: 40px;
   font-size: 18px;
@@ -367,7 +368,7 @@ input.question_search {
   margin-top: 18px;
   margin-bottom: 8px;
   display: grid;
-  grid-template-columns: 4% 76% 20%;
+  grid-template-columns: 4% 67% 29%;
 }
 
 .question_label {
@@ -395,8 +396,32 @@ input.question_search {
 }
 
 .link_word {
+  color: blue;
   text-decoration: underline;
 }
+.link_word:hover {
+  color:#179717;
+}
+
+.helpful {
+  color: #00ff00;
+  font-size: 14px;
+  font-weight: 450;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
+.report:hover {
+  color: red;
+}
+
+.reported {
+  color: red;
+  font-weight: 450;
+  font-size:14px;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
+
 
 /**************************************************************
   ANSWERS

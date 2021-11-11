@@ -25,7 +25,7 @@ class App extends React.Component {
       reviewForm: false,
       currentImg: '',
     }
-    this.handleIsHelpfulAndReport = this.handleIsHelpfulAndReport.bind(this);
+
     this.changeModal = this.changeModal.bind(this);
     this.getCurrentImg = this.getCurrentImg.bind(this);
     this.getProducts = this.getProducts.bind(this);
@@ -102,6 +102,7 @@ class App extends React.Component {
     axios.get('/qa/questions', { params: { product_id: id } })
       .then((res) => {
         console.log(res.data)
+        console.log("****** DATA UPDATED ********")
         this.setState({
           qaData: res.data
         })
@@ -111,15 +112,7 @@ class App extends React.Component {
       })
   }
 
-  handleIsHelpfulAndReport(url, data, callback) {
-    axios.put(url, data)
-      .then((res) => {
-        if (callback) {callback}
-      })
-      .catch((err) => {
-        console.log(`error: ${err}`)
-      })
-  }
+
 
   selectQuestion(question) {
     this.setState({
