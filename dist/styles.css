@@ -253,7 +253,8 @@ header {
 .ratings_breakdown { grid-area: ratings_breakdown; }
 
 .reviews_list {
-  max-height: 600px;
+  max-height: 650px;
+  width: 600px;
   overflow: auto;
   grid-area: reviews_list;
   color: #226C73;
@@ -302,7 +303,7 @@ header {
   padding-left:27px;
   padding-bottom: 22px;
   width: 700px;
-  height: 500px;
+  height: 625px;
   margin: 40px;
 }
 

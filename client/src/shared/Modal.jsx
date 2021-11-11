@@ -52,6 +52,7 @@ const Modal = (props) => {
       <div>
         <div className='modalStyle'>
           <AddReviewForm
+          reviewMeta={props.reviewMeta}
           productInfo={props.productInfo}
           onClick={e => close(e, props.onClose.bind(this, 'reviewForm'))}/>
         </div>

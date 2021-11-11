@@ -65,7 +65,7 @@ class AddReviewForm extends React.Component {
           <label className="recommend_label">
             Would You Recommend This Product? <input
               className="recommend"
-              type="radio"
+              type="checkbox"
               >
             </input>
           </label>
@@ -77,6 +77,7 @@ class AddReviewForm extends React.Component {
               type="email"
               maxLength="60"
               placeholder="For authentication reasons, you will not be emailed"
+              size="60"
               value={this.state.email}
               onChange={this.handleChange}
             />
@@ -94,13 +95,14 @@ class AddReviewForm extends React.Component {
             />
           </label>
           <br/>
-          <div className="review_characteristics"><AddCharacteristics /></div>
+          <div className="review_characteristics"><AddCharacteristics metaReviews={this.props.reviewMeta}/></div>
           <label className="review_summary_input_label">
           Summary:&nbsp;&nbsp;
             <input
               className="reviewSummary"
               type="text"
               maxLength="60"
+              size="60"
               placeholder="Example: Best purchase ever!"
               value={this.state.summary}
               onChange={this.handleChange}
