@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios'
 import QuestionList from './QuestionList.jsx';
 import QuestionForm from '../shared/forms/QuestionForm.jsx';
 import AnswerForm from '../shared/forms/AnswerForm.jsx';
@@ -17,6 +18,8 @@ class QAContainer extends React.Component {
 
     }
     this.handleMoreAnswers = this.handleMoreAnswers.bind(this);
+    this.handleQaHelpful = this.handleQaHelpful.bind(this);
+    this.handleQaReport = this.handleQaReport.bind(this);
     this.handleMoreQuestions = this.handleMoreQuestions.bind(this);
     this.handleSearchInputChange =  this.handleSearchInputChange.bind(this);
   }
@@ -26,6 +29,7 @@ class QAContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+
     if(prevProps.id !== this.props.id) {
       this.setState({
         allAnswers: false,
@@ -47,6 +51,28 @@ class QAContainer extends React.Component {
       searchTerm: e.target.value
     })
   }
+
+  handleQaHelpful(url, data, id) {
+    axios.put(url, data)
+      .then((res) => {
+        console.log('HELPFUL FUNCTION TRIGGERED')
+        this.props.updateQaData(id)
+      })
+      .catch((err) => {
+        console.log(`error: ${err}`)
+      })
+  }
+
+  handleQaReport(url, data) {
+    axios.put(url, data)
+      .then((res) => {
+        console.log('HELPFUL FUNCTION TRIGGERED')
+      })
+      .catch((err) => {
+        console.log(`error: ${err}`)
+      })
+  }
+
   handleMoreQuestions(e) {
     if (this.state.allQuestions === false) {
       this.setState({
@@ -98,7 +124,8 @@ class QAContainer extends React.Component {
               currentQuestion={this.props.currentQuestion}
               data={this.props.data}
               handleMoreAnswers={this.handleMoreAnswers}
-              handleHandR={this.props.handleHandR}
+              handleQaHelpful={this.handleQaHelpful}
+              handleQaReport={this.handleQaReport}
               key={this.props.data.product_id}
               moreAnswers={this.state.moreAnswers}
               openAnswerForm={this.props.openAnswerForm}
