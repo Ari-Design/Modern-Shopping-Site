@@ -14,6 +14,7 @@ header {
 .overview_container {
   box-sizing: border-box;
   background: linear-gradient(#206D73, white);
+  color: #4d1b17;
   height: 865px;
   position: relative;
   display: grid;
@@ -214,6 +215,8 @@ header {
   grid-template-rows: auto;
   margin-bottom: 60px;
   margin-top: 60px;
+  color: #226C73;
+  text-shadow: none;
 }
 
 .slogan_description {
@@ -252,7 +255,9 @@ header {
 .reviews_list {
   max-height: 600px;
   overflow: auto;
-  grid-area: reviews_list; }
+  grid-area: reviews_list;
+  color: #226C73;
+}
 
 .stars_outer {
   display: inline-block;
@@ -279,11 +284,14 @@ header {
 .review_buttons {
   height: 50px;
   font-size: 18px;
-  border: black solid 1px;
+  font-weight: 500;
+  background-color: white;
+  border:  #226C73 solid 3px;
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 5px;
   margin: 10px;
+  color: #226C73;
 }
 
 .add_review_form {
@@ -514,29 +522,35 @@ input.question_search {
 
 .question_form {
   background-color: white;
-  border: black solid 1px;
-  border-radius: 10px;
+  border:  #226C73 ridge 10px;
   padding: 15px;
   padding-left:27px;
   padding-bottom: 22px;
   width: 790px;
-  height: 450px;
+  height: 475px;
   margin: 40px;
   display: grid;
   grid-template-rows: 10% 10% 10% 10% 10% 40% 10%;
 }
 
+.question_form_header {
+  color: #226C73;
+
+}
+
 .q_email_label {
   grid-row-start: 2;
   font-size: 19px;
+  color: #226C73;
   font-weight: bold
 }
 
 .q_email_input {
-  border: black solid 1px;
-  border-radius: 10px;
+  border:  #226C73 solid 3px;
+  color: #226C73;
   height: 23px;
   font-size: 16px;
+  font-weight: 500;
   padding-left: 20px;
   padding: 4px;
   width: 280px;
@@ -547,14 +561,16 @@ input.question_search {
 .q_nickname_label {
   grid-row-start: 3;
   font-size: 19px;
+  color: #226C73;
   font-weight: bold
 }
 
 .q_nickname_input {
-  border: black solid 1px;
-  border-radius: 10px;
+  border:  #226C73 solid 3px;
+  color: #226C73;
   height: 23px;
   font-size: 16px;
+  font-weight: 500;
   padding: 4px;
   padding-left: 10px;
   width: 280px;
@@ -564,26 +580,33 @@ input.question_search {
 
 .q_input_label {
   font-size: 19px;
+  color: #226C73;
   font-weight: bold;
   padding-bottom: 10px;
 }
 
 .question_input {
-  border: black solid 1px;
-  border-radius: 10px;
+  border:  #226C73 solid 3px;
+  color: #226C73;
+  font-weight: 500;
   margin-top: 7px;
   padding-top: 7px;
   padding-left: 7px;
   font-size: 16px;
+  resize: none;
 }
 
 .q_cancel {
   grid-row-start: 7;
-  height: 30px;
+  height: 40px;
   font-size: 18px;
-  border: black solid 1px;
+  font-weight: 500;
+  border:  #226C73 solid 3px;
+  color: #226C73;
+  background-color: white;
   padding-left: 15px;
   padding-right: 15px;
+  padding-top: 5px;
   margin: 10px;
   margin-bottom: 15px;
   position: relative;
@@ -592,11 +615,15 @@ input.question_search {
 
 .question_submit {
   grid-row-start: 7;
-  height: 30px;
+  height: 40px;
   font-size: 18px;
-  border: black solid 1px;
+  font-weight: 500;
+  border:  #226C73 solid 3px;
+  color: #226C73;
+  background-color: white;
   padding-left: 15px;
   padding-right: 15px;
+  padding-top: 5px;
   margin: 10px;
   margin-bottom: 15px;
   position: relative;
@@ -609,13 +636,13 @@ input.question_search {
 
 .answer_form {
   background-color: white;
-  border: black solid 1px;
-  border-radius: 10px;
+  border:  #226C73 ridge 10px;
+  color: #226C73;
   padding: 15px;
   padding-left:27px;
   padding-bottom: 22px;
   width: 790px;
-  height: 492px;
+  height: 515px;
   margin: 40px;
   display: grid;
   grid-template-rows: 10% 10% 10% 10% 10% 40% 10%;
@@ -628,9 +655,10 @@ input.question_search {
 }
 
 .a_email_input {
-  border: black solid 1px;
-  border-radius: 10px;
+  border:  #226C73 solid 3px;
   height: 23px;
+  color: #226C73;
+  font-weight: 500;
   font-size: 16px;
   padding-left: 20px;
   padding: 4px;
@@ -646,9 +674,10 @@ input.question_search {
 }
 
 .a_nickname_input {
-  border: black solid 1px;
-  border-radius: 10px;
+  border:  #226C73 solid 3px;
   height: 23px;
+  color: #226C73;
+  font-weight: 500;
   font-size: 16px;
   padding: 4px;
   padding-left: 10px;
@@ -664,21 +693,27 @@ input.question_search {
 }
 
 .answer_input {
-  border: black solid 1px;
-  border-radius: 10px;
+  border:  #226C73 solid 3px;
   margin-top: 7px;
   padding-top: 7px;
   padding-left: 7px;
+  color: #226C73;
+  font-weight: 500;
   font-size: 16px;
+  resize: none;
 }
 
 .a_cancel {
   grid-row-start: 7;
-  height: 30px;
+  height: 40px;
   font-size: 18px;
-  border: black solid 1px;
+  font-weight: 500;
+  border:  #226C73 solid 3px;
+  color: #226C73;
+  background-color: white;
   padding-left: 15px;
   padding-right: 15px;
+  padding-top: 5px;
   margin: 10px;
   margin-bottom: 15px;
   position: relative;
@@ -687,11 +722,15 @@ input.question_search {
 
 .answer_submit {
   grid-row-start: 7;
-  height: 30px;
+  height: 40px;
   font-size: 18px;
-  border: black solid 1px;
+  font-weight: 500;
+  border:  #226C73 solid 3px;
+  color: #226C73;
+  background-color: white;
   padding-left: 15px;
   padding-right: 15px;
+  padding-top: 5px;
   margin: 10px;
   margin-bottom: 15px;
   position: relative;
@@ -820,3 +859,5 @@ a.button {
 /*   height: 75px; */
 }
 
+
+#A9C4C6

@@ -19,7 +19,7 @@ class QuestionForm extends React.Component {
     })
   }
 
-  handleQuestionSubmit(e, callback) {
+  handleQuestionSubmit(e) {
     if (e.target.id === 'q_submit') {
       axios.post('/qa/questions', {
         body: this.state.question,
@@ -27,8 +27,11 @@ class QuestionForm extends React.Component {
         email: this.state.email,
         product_id: this.props.productInfo.id
       })
-      .then((res) => {
-        callback
+      .then(() => {
+        this.props.onClick()
+      })
+      .then(() => {
+        this.props.updateQaData(this.props.productInfo.id)
       })
       .catch((err) => {
         console.log(`error: ${err}`)
@@ -47,11 +50,11 @@ class QuestionForm extends React.Component {
               className="q_email_input"
               type="email"
               maxLength="60"
-              placeholder="Why did you like the product or not?"
               name="email"
+              placeholder="person@email.com"
               value={this.state.email}
               onChange={this.handleChange}
-            />
+              />
           </label>
           <label className="q_nickname_label">
             Nickname:&nbsp;&nbsp;
@@ -63,12 +66,13 @@ class QuestionForm extends React.Component {
               name="nickname"
               value={this.state.nickname}
               onChange={this.handleChange}
-            />
+              />
           </label>
           <label className="q_input_label">
             Question:
             <textarea
               className="question_input"
+              placeholder="Why did you like the product or not?"
               cols="75"
               rows="14"
               name="question"
@@ -77,7 +81,11 @@ class QuestionForm extends React.Component {
             </textarea>
           </label>
           <button onClick={this.props.onClick} className="q_cancel">Cancel</button>
-          <button onClick={(e) => this.handleQuestionSubmit(e, this.props.updateQaData(this.props.productInfo.id))} className="question_submit" id="q_submit">Submit</button>
+          <button onClick={(e) => this.handleQuestionSubmit(e)}
+            className="question_submit"
+            id="q_submit"
+            >Submit
+          </button>
         </form>
       </div>
     )
