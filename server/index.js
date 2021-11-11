@@ -48,7 +48,7 @@ app.get('/products/:product_id/styles', (req, res) => {
 
 app.get('/reviews', (req, res) => {
   var id = req.query.product_id
-  axios.get(`${apiUrl}/reviews?product_id=${id}`, options)
+  axios.get(`${apiUrl}/reviews?product_id=${id}&count=100`, options)
     .then((response) => {
       res.status(200).json(response.data);
     })
@@ -59,7 +59,7 @@ app.get('/reviews', (req, res) => {
 
 app.get('/reviews/meta', (req, res) => {
   var id = req.query.product_id
-  axios.get(`${apiUrl}/reviews/meta?product_id=${id}`, options)
+  axios.get(`${apiUrl}/reviews/meta?product_id=${id}&count=100`, options)
     .then((response) => {
       res.status(200).json(response.data);
     })
@@ -78,6 +78,17 @@ app.put('/reviews/:review_id/helpful', (req, res) => {
   .catch((err) => {
     console.log('no go > ', err);
   })
+})
+
+app.post('/reviews', (req, res) => {
+  axios.post(`${apiUrl}/reviews`, req.body, options)
+  .then((response) => {
+    res.status(200).json(response.data)
+  })
+  .catch((err) => {
+    res.status(500).send(err);
+  })
+  console.log(req.body);
 })
 
 app.get('/qa/questions', (req, res) => {

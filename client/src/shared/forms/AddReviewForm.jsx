@@ -1,37 +1,53 @@
 import React from 'react';
 import axios from 'axios';
 import Star from '../Star.jsx';
+import AddCharacteristics from '../../Reviews/AddCharacteristics.jsx'
 
 class AddReviewForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      overallRating:'',
+      overallRating: 3,
       recommend: '',
-      size: '',
-      width: '',
-      comfort: '',
-      quality: '',
-      length: '',
-      fit: '',
+      characteristics: '',
       reviewSummary: '',
       reviewBody: '',
       reviewNickname: '',
-      reviewEmail: ''
+      reviewEmail: '',
+      photos: ''
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
+    console.log(e.target.className);
     this.setState({
       [e.target.className]: [e.target.value]
     })
   }
 
   handleSubmit(e) {
-    console.log(this.state.reviewBody);
-    // axios.post
+
+    var {reviewBody, overallRating, recommend, reviewSummary, reviewNickname, reviewEmail, characteristics, photos} = this.state;
+    axios.post('/reviews', null, {
+      product_id : this.props.productInfo.id,
+      rating : overallRating,
+      summary : recommend,
+      body : reviewBody,
+      recommend : recommend,
+      name : reviewNickname,
+      email : reviewEmail,
+      photos : photos,
+      characteristics : characteristics
+    })
+    .then((res) => {
+      console.log(res.body);
+
+    })
+    .catch((err) => {
+      console.log(err);
+    })
   }
 
   render() {
@@ -78,7 +94,7 @@ class AddReviewForm extends React.Component {
             />
           </label>
           <br/>
-          <div className="review_characteristics">**Characteristics Here**</div>
+          <div className="review_characteristics"><AddCharacteristics /></div>
           <label className="review_summary_input_label">
           Summary:&nbsp;&nbsp;
             <input

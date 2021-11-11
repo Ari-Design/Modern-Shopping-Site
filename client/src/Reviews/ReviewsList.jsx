@@ -24,7 +24,7 @@ class ReviewsList extends React.Component{
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (this.props.currentProductId !== prevProps.currentProductId || this.props !== prevProps) {
+    if (this.props !== prevProps) {
       this.setState({
         allReviews: this.props.reviewData.results,
         reviewsToDisplay: this.props.reviewData.results.slice(0, 2),
@@ -112,7 +112,7 @@ class ReviewsList extends React.Component{
       );
     } else /*if there are no reviews, prominently display Add_Review+ button*/ {
       return (
-        <div>Add_Review Button displays</div>
+        <button onClick={() => this.props.openReviewForm('reviewForm')} className="review_buttons" id="Add_Review+" >Be the first to review!</button>
       )
     }
   }
