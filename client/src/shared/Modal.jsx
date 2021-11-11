@@ -19,7 +19,7 @@ const Modal = (props) => {
         <div className='fullscreenStyle'>
           <Expanded img={props.currentImg} pages={props.pages}/>
         </div>
-        <div className='backdropStyle' onClick={e => close(e, props.onClose.bind(this, 'fullscreen'))} />
+        <span id="close" onClick={e => close(e, props.onClose.bind(this, 'fullscreen'))}>close</span>
       </div>
     );
   } else if (props.answerForm) {

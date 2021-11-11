@@ -116,19 +116,19 @@ class Styles extends React.Component {
           <button>favorite</button>
         </div>
         <div className="share">
-          <button id="shareBtn" onClick={() => {
+          <button id="shareBtn" style={{backgroundImage: "url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/800px-2021_Facebook_icon.svg.png)"}} onClick={() => {
             FB.ui({
               display: 'popup',
               method: 'share',
               href: '/',
             }, function (response) { });
-          }}>F</button>
-          <button>
+          }}></button>
+          <button id="shareBtn" style={{backgroundImage: "url(https://cdn-icons-png.flaticon.com/512/124/124021.png)"}}>
             <a className="twitter-share-button"
             href="https://twitter.com/intent/tweet?text=Hello%20world">
-            T</a>
+            </a>
           </button>
-          <button>
+          <button id="shareBtn">
             <a className="pintrest-share-button"
             href="https://pintrest.com/">
             P</a>
