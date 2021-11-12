@@ -116,13 +116,13 @@ class Styles extends React.Component {
           <button>favorite</button>
         </div>
         <div className="share">
-          <a className="button" id="shareBtn" style={{ backgroundImage: "url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/800px-2021_Facebook_icon.svg.png)" }} target="_blank" rel="noopener noreferrer" href={`http://www.facebook.com/sharer.php?u=${'/'}&p${name}=testtile`}>
+          <a className="button" id="shareBtn" style={{ backgroundImage: "url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/800px-2021_Facebook_icon.svg.png)" }} target="_blank" rel="noopener noreferrer" href={`http://www.facebook.com/sharer.php?u=${'54.221.47.130:8080'}&p${name}=testtile`}>
           </a>
           <a className="button" id="shareBtn" style={{ backgroundImage: "url(https://cdn-icons-png.flaticon.com/512/124/124021.png)" }}
-            target="_blank" rel="noopener noreferrer" href={`http://twitter.com/share?text=${name}&url=${'/'}`}>
+            target="_blank" rel="noopener noreferrer" href={`http://twitter.com/share?text=${name}&url=${'54.221.47.130:8080'}`}>
           </a>
           <a id="shareBtn" style={{ backgroundImage: "url(https://cdn2.iconfinder.com/data/icons/metro-ui-icon-set/512/Pinterest_alt.png)" }}
-            target="_blank" rel="noopener noreferrer" href={`http://pinterest.com/pin/create/button/?url=${'/'}&description=${name}`}>
+            target="_blank" rel="noopener noreferrer" href={`http://pinterest.com/pin/create/button/?url=${'54.221.47.130:8080'}&description=${name}`}>
           </a>
         </div>
       </>
