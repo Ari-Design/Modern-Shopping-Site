@@ -8,11 +8,20 @@ class ReviewTile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      review: this.props.review,
       helpful: false,
       reported: false
     }
     this.onHelpfulClick = this.onHelpfulClick.bind(this);
     this.onReportClick = this.onReportClick.bind(this);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(this.props !== prevProps) {
+      this.setState ({
+        review: this.props.review
+      })
+    }
   }
 
   onHelpfulClick(e) {
@@ -58,7 +67,7 @@ class ReviewTile extends React.Component {
       </>
       : <span
       className="helpful"
-      >&#9989;&nbsp;Helpful &nbsp;&nbsp;
+      >&#9989;&nbsp;Helpful ({review.helpfulness + 1})&nbsp;&nbsp;
       </span> }
 
       {this.state.reported === false ?

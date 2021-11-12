@@ -90,7 +90,7 @@ class ReviewsList extends React.Component{
         <div className="reviews_list">
           <h4>{this.state.count} reviews, sorted by <Dropdown title="sortReviewsBy" optionsArr={dropdownOptions} onChange={this.onSortChange}/></h4>
         {this.state.reviewsToDisplay.map((review) => (
-          <ReviewTile key={review.review_id} review={review} />
+          <ReviewTile key={review.review_id} review={review} updateReviewData={this.props.updateReviewData}/>
         ))}
         <div className="review_footer">
         {this.state.allReviews.length - this.state.reviewsToDisplay.length > 0 ?
