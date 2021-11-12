@@ -1,13 +1,43 @@
 import React from 'react';
+import RatingStar from './RatingStar.jsx';
 
-var StarRating = (props) => {
-  return (
-    <input type="radio" id='rating_5' name="rating" value="5" />
-    <form>
-      <span class="star_rating_review"></span>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+class StarRating extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      rating : 0,
+      selection: 0
+    }
+    this.onHover = this.onHover.bind(this);
+    this.onClick = this.onClick.bind(this);
+  }
 
-    </form>
-  )
+
+  onHover (e) {
+    this.setState({
+      selection: e.target.className
+    })
+  }
+  onClick (e) {
+    this.setState({
+      rating : e.target.className
+    })
+  }
+
+  render () {
+    return (
+      <div
+      onMouseOver={(e) => this.onHover(e)}
+      onClick={(e) => this.onClick(e)}
+      >
+      {[1, 2, 3, 4, 5].map((star, i) => (
+        <RatingStar id={star}
+        key={star}
+        full={this.state.selection ? this.state.selection >= i + 1 : this.state.rating >= i + 1} />
+      )
+    )}
+    </div>
+    )
+  }
 }
 export default StarRating;
