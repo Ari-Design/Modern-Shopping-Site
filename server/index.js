@@ -71,7 +71,7 @@ app.get('/reviews/meta', (req, res) => {
 app.put('/reviews/:review_id/helpful', (req, res) => {
   var review_id = req.params.review_id;
   var url = `${apiUrl}/reviews/${review_id}/helpful`;
-  axios.put(url, null, options)
+  axios.put(url, options)
   .then((result) => {
     res.status(200).send('OK');
   })

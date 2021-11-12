@@ -20,7 +20,6 @@ class ReviewsList extends React.Component{
     this.handleClick = this.handleClick.bind(this);
     this.onSortChange = this.onSortChange.bind(this);
     this.onStarsClick = this.onStarsClick.bind(this);
-    this.onHelpfulClick = this.onHelpfulClick.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -77,17 +76,6 @@ class ReviewsList extends React.Component{
     }
   }
 
-  onHelpfulClick(e) {
-    var choiceId = Number(e.target.closest('a').id);
-    axios.put(`/reviews/${choiceId}/helpful`)
-    .then(() => {
-      this.props.updateReviewData();
-    })
-    .catch((err) => {
-      console.log('error: ', err)
-    })
-  }
-
   render() {
     var dropdownOptions=['Relevance', 'Helpfulness', 'Newest'];
     // Only render reviews if there are reviews:
@@ -102,10 +90,11 @@ class ReviewsList extends React.Component{
         <div className="reviews_list">
           <h4>{this.state.count} reviews, sorted by <Dropdown title="sortReviewsBy" optionsArr={dropdownOptions} onChange={this.onSortChange}/></h4>
         {this.state.reviewsToDisplay.map((review) => (
-          <ReviewTile key={review.review_id} review={review} onHelpfulClick={this.onHelpfulClick}/>
+          <ReviewTile key={review.review_id} review={review} />
         ))}
         <div className="review_footer">
-        <button className="review_buttons" id="More_Reviews" onClick={(e) => this.handleClick(e)}>More Reviews</button>
+        {this.state.allReviews.length - this.state.reviewsToDisplay.length > 0 ?
+        <button className="review_buttons" id="More_Reviews" onClick={(e) => this.handleClick(e)}>More Reviews</button> : null}
         <button onClick={() => this.props.openReviewForm('reviewForm')} className="review_buttons" id="Add_Review+" >Add A Review +</button>
         </div>
         </div>
