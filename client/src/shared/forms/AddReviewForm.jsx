@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import Star from '../Star.jsx';
-import AddCharacteristics from '../../Reviews/AddCharacteristics.jsx'
+import AddCharacteristics from '../../Reviews/AddCharacteristics.jsx';
+import StarRating from '../../Reviews/StarRating.jsx';
 
 class AddReviewForm extends React.Component {
   constructor(props) {
@@ -59,7 +60,7 @@ class AddReviewForm extends React.Component {
           <h3>About the {this.props.productInfo.name}</h3>
           </div>
           <label className="overall_rating_label">
-            <Star />
+            <StarRating />
           </label>
           <br/>
           <label className="recommend_label">
