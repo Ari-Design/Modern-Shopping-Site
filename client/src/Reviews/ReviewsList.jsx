@@ -60,7 +60,11 @@ class ReviewsList extends React.Component{
     var choice = e.target.value;
     var currentDisplay = this.state.reviewsToDisplay;
     if (choice === 'Relevance') {
-      console.log('sorting by relevance');
+      var sortedDisplay = currentDisplay.sort((a, b) => a.helpfulness * new Date(a.date).getTime() > b.helpfulness * new Date(b.date).getTime() ? -1: 1);
+      this.setState({
+        reviewsToDisplay: sortedDisplay,
+        sorting: true
+      })
     } else if (choice === 'Helpfulness') {
       var sortedDisplay = currentDisplay.sort((a, b) => a.helpfulness > b.helpfulness ? -1: 1);
       this.setState({
@@ -88,7 +92,9 @@ class ReviewsList extends React.Component{
           <RatingsBreakdown metaReviews={this.state.metaReviews} onStarsClick={this.onStarsClick}/>
         </div>
         <div className="reviews_list">
+          <div className="sort_by">
           <h4>{this.state.count} reviews, sorted by <Dropdown title="sortReviewsBy" optionsArr={dropdownOptions} onChange={this.onSortChange}/></h4>
+          </div>
         {this.state.reviewsToDisplay.map((review) => (
           <ReviewTile key={review.review_id} review={review} updateReviewData={this.props.updateReviewData}/>
         ))}
