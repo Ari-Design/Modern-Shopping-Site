@@ -38,26 +38,12 @@ class App extends React.Component {
     this.updateReviewData = this.updateReviewData.bind(this);
   }
 
-  getProducts() {
-    axios.get('/products')
-      .then((res) => {
-        this.setState({
-          products: res.data
-        })
-      })
-      .catch((err) => {
-        console.log(`error: ${err}`)
-      })
-  }
-
   componentDidMount() {
-    this.getProducts();
     this.fetchData(37311)
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.qaData != this.state.qaData) {
       this.setState({
-        currentQuestion: prevState.currentQuestion,
         currentProductId: prevState.currentProductId
       })
     }
@@ -69,21 +55,23 @@ class App extends React.Component {
   }
 
   fetchData(id) {
+    const getProducts = axios.get('/products');
     const getInfo = axios.get(`/products/${id}`);
     const getStyles = axios.get(`/products/${id}/styles`);
     const getReviewData = axios.get('/reviews', { params: { product_id: id } });
     const getReviewMeta = axios.get('/reviews/meta', { params: { product_id: id } });
     const getQaData = axios.get('/qa/questions', { params: { product_id: id } });
 
-    axios.all([getInfo, getStyles, getReviewData, getReviewMeta, getQaData])
+    axios.all([getProducts, getInfo, getStyles, getReviewData, getReviewMeta, getQaData])
       .then(axios.spread((...data) => {
         this.setState({
           currentProductId: id,
-          productInfo: data[0].data,
-          productStyles: data[1].data,
-          reviewData: data[2].data,
-          reviewMeta: data[3].data,
-          qaData: data[4].data
+          products: data[0].data,
+          productInfo: data[1].data,
+          productStyles: data[2].data,
+          reviewData: data[3].data,
+          reviewMeta: data[4].data,
+          qaData: data[5].data
         })
       }))
       .catch((err) => {
@@ -104,8 +92,6 @@ class App extends React.Component {
   updateQaData(id) {
     axios.get('/qa/questions', { params: { product_id: id } })
       .then((res) => {
-        console.log(res.data)
-        console.log("****** DATA UPDATED ********")
         this.setState({
           qaData: res.data
         })
@@ -134,7 +120,7 @@ class App extends React.Component {
 
   render() {
     var { productInfo, productStyles, qaData, currentProductId, reviewData, reviewMeta,
-      fullscreen, answerForm, currentImg, questionForm, reviewForm, currentQuestion, pages, isDarkmode} = this.state;
+      fullscreen, answerForm, currentImg, questionForm, reviewForm, currentQuestion, pages, isDarkmode } = this.state;
 
     var products = this.state.products.map((product) => product.id);
 
@@ -148,6 +134,9 @@ class App extends React.Component {
             </span>
           </nav>
         </header>
+        <div className="announcement">
+          <span className="site_message">Site Wide Announcement - SHOP OUR PRODUCTS & Have a great day!</span>
+        </div>
         <main>
           <Container productInfo={productInfo}
             productStyles={productStyles}
@@ -156,10 +145,8 @@ class App extends React.Component {
             reviewData={reviewData} />
 
           <QAContainer
-            currentQuestion={this.state.currentQuestion}
             data={qaData}
             id={currentProductId}
-            handleHandR={this.handleIsHelpfulAndReport}
             openAnswerForm={this.changeModal}
             productInfo={productInfo}
             selectQuestion={this.selectQuestion}
@@ -186,7 +173,7 @@ class App extends React.Component {
             currentQuestion={currentQuestion}
             productInfo={productInfo}
             reviewMeta={reviewMeta}
-            /> : null}
+          /> : null}
         </main>
       </div>
     );

@@ -110,6 +110,7 @@ header {
 .style_ratings {
   grid-row-start: 2;
   grid-column-start: 2;
+  font-size: 20px;
 }
 
 .style_category {
@@ -132,8 +133,8 @@ header {
 
 .style_price {
   display: inline;
-  color: black;
-  text-decoration: line-through black;
+  color: #4d1b17;
+  text-decoration: line-through #4d1b17;
   font-size: 24px;
 }
 
@@ -185,6 +186,7 @@ header {
 .style_buttons {
   grid-row-start: 9;
   grid-column-start: 2;
+
 }
 
 .share {
@@ -926,4 +928,27 @@ a.button {
 .chooseProduct {
   width: 110%;
   height: 100%;
+}
+
+button,
+.styles,
+.arrowDown,
+.arrowLeft,
+.arrowRight,
+.arrowUp,
+.thumbnail,
+.button:hover {
+  cursor: pointer;
+}
+
+.announcement {
+  background-color: #206D73;
+  height: 60px;
+}
+
+.site_message {
+  display: block;
+  transform: translate(34%, 70%);
+  color: white;
+  font-size: 20px;
 }

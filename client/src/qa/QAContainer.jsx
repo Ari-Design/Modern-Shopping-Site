@@ -9,41 +9,23 @@ class QAContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      allAnswers: false,
-      moreAnswers: 'See More Answers',
-      allQuestions: false,
-      buttonLabel: 'MORE ANSWERED QUESTIONS',
-      qListLength: 2,
+      buttonLabel: 'MORE QUESTIONS',
+      qListLength: 4,
       searchTerm: ''
-
     }
-    this.handleMoreAnswers = this.handleMoreAnswers.bind(this);
     this.handleQaHelpful = this.handleQaHelpful.bind(this);
     this.handleQaReport = this.handleQaReport.bind(this);
     this.handleMoreQuestions = this.handleMoreQuestions.bind(this);
     this.handleSearchInputChange =  this.handleSearchInputChange.bind(this);
   }
 
-  componentDidMount(){
-    // console.log('QA Container Mounted')
-  }
-
   componentDidUpdate(prevProps, prevState) {
-
     if(prevProps.id !== this.props.id) {
       this.setState({
-        allAnswers: false,
-        moreAnswers: 'See More Answers',
-        allQuestions: false,
-        buttonLabel: 'MORE ANSWERED QUESTIONS',
-        qListLength: 2,
-        listClass: 'q_list'
+        buttonLabel: 'MORE QUESTIONS',
+        qListLength: 4,
       })
     }
-    if(prevProps.data != this.props.data)
-      this.setState({
-        allAnswers: prevState.allAnswers
-      })
   }
 
   handleSearchInputChange(e) {
@@ -55,7 +37,6 @@ class QAContainer extends React.Component {
   handleQaHelpful(url, data, id) {
     axios.put(url, data)
       .then((res) => {
-        console.log('HELPFUL FUNCTION TRIGGERED')
         this.props.updateQaData(id)
       })
       .catch((err) => {
@@ -66,7 +47,7 @@ class QAContainer extends React.Component {
   handleQaReport(url, data) {
     axios.put(url, data)
       .then((res) => {
-        console.log('HELPFUL FUNCTION TRIGGERED')
+        console.log('Success')
       })
       .catch((err) => {
         console.log(`error: ${err}`)
@@ -74,33 +55,16 @@ class QAContainer extends React.Component {
   }
 
   handleMoreQuestions(e) {
-    if (this.state.allQuestions === false) {
+    if (this.state.qListLength === 4) {
       this.setState({
-        allQuestions: true,
         qListLength: this.props.data.results.length,
         buttonLabel: 'FEWER QUESTIONS',
-        listClass: 'question_scroll'
       })
     }
-    if (this.state.allQuestions === true) {
+    if (this.state.qListLength > 4) {
       this.setState({
-        allQuestions: false,
-        qListLength: 2,
-        buttonLabel: 'MORE ANSWERED QUESTIONS',
-        listClass: 'q_list'
-      })
-    }
-  }
-
-  handleMoreAnswers(question) {
-    if(!this.state.allAnswers) {
-      this.setState({
-        allAnswers: true
-      })
-    }
-    if(this.state.allAnswers && question == this.props.currentQuestion) {
-      this.setState({
-        allAnswers: false
+        qListLength: 4,
+        buttonLabel: 'MORE QUESTIONS',
       })
     }
   }
@@ -114,35 +78,35 @@ class QAContainer extends React.Component {
             <input
               className="question_search"
               type="text"
-              onChange={this.handleSearchInputChange}
-              placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS...">
+              placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
+              onChange={this.handleSearchInputChange}>
             </input>
           </div>
           <div>
             <QuestionList
-              allAnswers={this.state.allAnswers}
-              currentQuestion={this.props.currentQuestion}
               data={this.props.data}
-              handleMoreAnswers={this.handleMoreAnswers}
               handleQaHelpful={this.handleQaHelpful}
               handleQaReport={this.handleQaReport}
               key={this.props.data.product_id}
-              moreAnswers={this.state.moreAnswers}
               openAnswerForm={this.props.openAnswerForm}
               qListLength={this.state.qListLength}
               selectQuestion={this.props.selectQuestion}
               term={this.state.searchTerm}
-              updateQaData={this.props.updateQaData}
             />
           </div>
           <div>
             <button
-              onClick={(e) => this.handleMoreQuestions(e)}
               className="question_button"
-              id="MoreQuestions">
+              id="MoreQuestions"
+              onClick={(e) => this.handleMoreQuestions(e)}>
               {this.state.buttonLabel}
             </button>
-            <button onClick={() => this.props.openAnswerForm('questionForm')} className="question_button" id="AddQuesion">ADD A QUESTION +</button>
+            <button
+              className="question_button"
+              id="AddQuesion"
+              onClick={() => this.props.openAnswerForm('questionForm')}
+              >ADD A QUESTION +
+            </button>
           </div>
         </div>
       </div>
