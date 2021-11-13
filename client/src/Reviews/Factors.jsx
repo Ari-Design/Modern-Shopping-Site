@@ -10,12 +10,12 @@ var Factors = ({metaReviews}) => {
           <svg width='100%' height='24px' style={{display: 'inline-block'}}>
             <g>
             <rect fill='#ebebeb' width='32%' height='8px' x='0%'></rect>
-            <text x='0%' y='95%' fontSize='10'>{factor[1]}</text>
+            <text x='0%' y='95%' fontSize='10' fill='#226C73'>{factor[1]}</text>
             <rect fill='#ebebeb' width='32%' height='8px'  x='33%'></rect>
-            <text x='33%' y='95%' fontSize='10'>{factor[2]}</text>
+            <text x='33%' y='95%' fontSize='10' fill='#226C73'>{factor[2]}</text>
             <rect fill='#ebebeb' width='32%' height='8px'  x='66%'></rect>
-            <text x='66%' y='95%' fontSize='10'>{factor[3]}</text>
-            <rect fill='#000000' width='5%' height='8px' x={markerPosition}></rect>
+            <text x='66%' y='95%' fontSize='10' fill='#226C73'>{factor[3]}</text>
+            <rect fill='#4d1b17' width='3.5%' height='8px' x={markerPosition}></rect>
             </g>
           </svg>
         </div>
