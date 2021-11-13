@@ -8,6 +8,7 @@ import Modal from './shared/Modal.jsx'
 import Dropdown from './shared/Dropdown.jsx';
 import mountainLogo from '../../dist/assets/images/mountain-logo.png';
 
+
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -139,10 +140,9 @@ class App extends React.Component {
 
     return (
       <div>
-        <header>
-          <nav className="page_top">
-            <img src={mountainLogo} />
-            <span>Search</span>
+        <header className="page_top">
+          <nav>
+            <img src={mountainLogo} className="logo" />
             <span className="product_search">
               <Dropdown title="chooseProduct" optionsArr={products} onChange={this.chooseProduct} />
             </span>
