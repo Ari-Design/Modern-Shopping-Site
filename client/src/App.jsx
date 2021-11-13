@@ -25,11 +25,6 @@ class App extends React.Component {
       questionForm: false,
       reviewForm: false,
       currentImg: '',
-      Darkmode: {
-        backgroundColor: 'black',
-        color: 'white',
-      },
-      isDarkmode: false,
     }
 
     this.changeModal = this.changeModal.bind(this);
@@ -147,7 +142,6 @@ class App extends React.Component {
         <header>
           <nav className="page_top">
             <img src={mountainLogo} />
-            <button onClick={() => this.setState({isDarkmode: !isDarkmode})}>DARKMODE</button>
             <span>Search</span>
             <span className="product_search">
               <Dropdown title="chooseProduct" optionsArr={products} onChange={this.chooseProduct} />
