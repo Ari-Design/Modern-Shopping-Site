@@ -120,7 +120,7 @@ class App extends React.Component {
 
   render() {
     var { productInfo, productStyles, qaData, currentProductId, reviewData, reviewMeta,
-      fullscreen, answerForm, currentImg, questionForm, reviewForm, currentQuestion, pages, isDarkmode} = this.state;
+      fullscreen, answerForm, currentImg, questionForm, reviewForm, currentQuestion, pages, isDarkmode } = this.state;
 
     var products = this.state.products.map((product) => product.id);
 
@@ -134,6 +134,9 @@ class App extends React.Component {
             </span>
           </nav>
         </header>
+        <div className="announcement">
+          <span className="site_message">Site Wide Announcement - SHOP OUR PRODUCTS & Have a great day!</span>
+        </div>
         <main>
           <Container productInfo={productInfo}
             productStyles={productStyles}
@@ -170,7 +173,7 @@ class App extends React.Component {
             currentQuestion={currentQuestion}
             productInfo={productInfo}
             reviewMeta={reviewMeta}
-            /> : null}
+          /> : null}
         </main>
       </div>
     );
