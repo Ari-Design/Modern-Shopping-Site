@@ -869,6 +869,26 @@ a.button {
   color: initial;
 }
 .page_top{
-/*   height: 75px; */
+  height: 75px;
+  /* background-color: white; */
 }
 
+.logo {
+  height: 75px;
+  width: auto;
+  object-fit: scale-down;
+  transform: translate(190%);
+}
+
+.product_search {
+  display: block;
+  position: absolute;
+  top: 3%;
+  left: 74%;
+  height: 30px;
+}
+
+.chooseProduct {
+  width: 110%;
+  height: 100%;
+}
