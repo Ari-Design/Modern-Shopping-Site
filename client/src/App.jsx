@@ -30,7 +30,6 @@ class App extends React.Component {
 
     this.changeModal = this.changeModal.bind(this);
     this.getCurrentImg = this.getCurrentImg.bind(this);
-    this.getProducts = this.getProducts.bind(this);
     this.chooseProduct = this.chooseProduct.bind(this);
     this.fetchData = this.fetchData.bind(this);
     this.selectQuestion = this.selectQuestion.bind(this);
