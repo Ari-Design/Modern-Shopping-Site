@@ -250,7 +250,10 @@ header {
     ". ratings_breakdown reviews_list .";
 }
 
-.ratings_breakdown { grid-area: ratings_breakdown; }
+.ratings_breakdown {
+  color: #4d1b17;
+  grid-area: ratings_breakdown;
+}
 
 .reviews_list {
   max-height: 650px;

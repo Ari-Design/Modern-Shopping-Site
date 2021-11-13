@@ -60,7 +60,7 @@ class ReviewsList extends React.Component{
     var choice = e.target.value;
     var currentDisplay = this.state.reviewsToDisplay;
     if (choice === 'Relevance') {
-      var sortedDisplay = currentDisplay.sort((a, b) => a.helpfulness * new Date(a.date).getTime() > b.helpfulness * new Date(b.date).getTime() ? -1: 1);
+      var sortedDisplay = currentDisplay.sort((a, b) => 2 * a.helpfulness + new Date(a.date).getTime()/100000000000 > 2 * b.helpfulness + new Date(b.date).getTime()/100000000000 ? -1: 1);
       this.setState({
         reviewsToDisplay: sortedDisplay,
         sorting: true
