@@ -87,22 +87,24 @@ class ReviewsList extends React.Component{
       return(
         <>
         <div id="ratings_container" className="ratings_container">
-        <div className="ratings_breakdown">
+          <div className="reviews_header">
           <h3>Ratings & Reviews</h3>
+          </div>
+          <div className="ratings_breakdown">
           <RatingsBreakdown metaReviews={this.state.metaReviews} onStarsClick={this.onStarsClick}/>
         </div>
-        <div className="reviews_list">
-          <div className="sort_by">
+        <div className="sort_by">
           <h4>{this.state.count} reviews, sorted by <Dropdown title="sortReviewsBy" optionsArr={dropdownOptions} onChange={this.onSortChange}/></h4>
           </div>
+        <div className="reviews_list">
         {this.state.reviewsToDisplay.map((review) => (
           <ReviewTile key={review.review_id} review={review} updateReviewData={this.props.updateReviewData}/>
         ))}
+        </div>
         <div className="review_footer">
         {this.state.allReviews.length - this.state.reviewsToDisplay.length > 0 ?
         <button className="review_buttons" id="More_Reviews" onClick={(e) => this.handleClick(e)}>More Reviews</button> : null}
         <button onClick={() => this.props.openReviewForm('reviewForm')} className="review_buttons" id="Add_Review+" >Add A Review +</button>
-        </div>
         </div>
         </div>
         </>

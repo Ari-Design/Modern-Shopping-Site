@@ -10,7 +10,7 @@ var RatingsChart = ({ratingsArray, numRatings, onStarsClick}) => {
       <svg width='70%' height='16px' x='10%'>
         <g className='bars'>
         <rect fill='#ebebeb' width='100%' height='8px' x='5%' y='50%'></rect>
-        <rect fill='#525252' width={width} height='8px'x='5%' y='50%'></rect>
+        <rect fill='#4d1b17' width={width} height='8px'x='5%' y='50%'></rect>
         </g>
       </svg>
       </div>
