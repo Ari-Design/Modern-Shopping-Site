@@ -33,7 +33,10 @@ class Answer extends React.Component {
         </div>
         <div className="answer_info_line">
           <div className="answer_info">
-            <span className="answerer_name">by {this.props.answer.answerer_name}, &nbsp;{moment(this.props.answer.date).format("MMMM Do, YYYY")}&nbsp;&nbsp;&nbsp;</span>
+            <span
+              className="answerer_name"
+              >by {this.props.answer.answerer_name}, &nbsp;{moment(this.props.answer.date).format("MMMM Do, YYYY")}&nbsp;&nbsp;&nbsp;
+            </span>
             <span className="divider">|</span>
             {this.state.answerHelpful === false ?
             <span
@@ -75,4 +78,4 @@ export default Answer;
 
 
 
-// ({answer, answers, handleHandR, productId, updateQaData}) => (
+
