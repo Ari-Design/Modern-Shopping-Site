@@ -11,13 +11,15 @@
 
 ## General Info
 
-MikesList is a non-profit website that allows users to donate tangible items to charities or other users.
+Ari-Design is the client side of an e-commerce site for clothing and accessories. The product page is made of a product overview component, a questions and answers component, and a ratings and reviews component.
 
 ## ⚜️ Demo
 
-## Login Page
+### Overview Component
 
-![](/readMeStuff/LoginPage.gif)
+### Questions and Answers Component
+
+### Ratings and Reviews Component
 
 ## 🧪 Technologies
 
@@ -44,7 +46,6 @@ MikesList is a non-profit website that allows users to donate tangible items to 
 - webpack : 5.61.0
 - webpack-cli : 4.9.1
 
-
 ## 🚀 Installation and Setup
 
 ```
@@ -55,12 +56,6 @@ $ npm install
 $ npm run watch
 $ npm start
 ```
-
-Set up a github.config.js with the following:
-
-- TOKEN (from GitHub):
-
-
 ## 🤝 Contributors
 
 - [Cameron Mrcurdy](https://www.linkedin.com/in/cmccurd/)
