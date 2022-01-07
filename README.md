@@ -17,7 +17,7 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 ### Overview Component
 
 ### Questions and Answers Component
-<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/YKqzzJ5TpHe6bAgjoO" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/YKqzzJ5TpHe6bAgjoO">via GIPHY</a></p>
+![](https://media.giphy.com/media/YKqzzJ5TpHe6bAgjoO/giphy.gif)
 ### Ratings and Reviews Component
 
 ## 🧪 Technologies
