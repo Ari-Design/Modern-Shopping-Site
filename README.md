@@ -19,6 +19,12 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 ### Questions and Answers Component
 
 
+#### Search bar dynamically filters questions.
+
+
+![](https://media.giphy.com/media/YKqzzJ5TpHe6bAgjoO/giphy.gif)
+
+
 #### Question list for each product can be expanded and collapsed
 
 
@@ -41,11 +47,6 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 
 ![](https://media.giphy.com/media/LTtCBmIBEOMo4vXoQq/giphy.gif)
 
-
-#### Search bar dynamically filters questions.
-
-
-![](https://media.giphy.com/media/YKqzzJ5TpHe6bAgjoO/giphy.gif)
 ---
 ### Ratings and Reviews Component
 
