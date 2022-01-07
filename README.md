@@ -15,6 +15,12 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 ## ⚜️ Demo
 
 ### Overview Component
+
+
+#### Users can share their favorite items on Facebook, Twitter, or Pintrest
+
+
+![](https://media.giphy.com/media/7jmqevBMiHwid10yVT/giphy.gif)
 ---
 ### Questions and Answers Component
 
