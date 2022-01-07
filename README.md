@@ -60,5 +60,5 @@ $ npm start
 ## 🤝 Contributors
 
 - [Cameron Mrcurdy](https://www.linkedin.com/in/cmccurd/)
-- [Phil Huynh]()
+- [Phil Huynh](https://www.github.com/phil-huynh/)
 - [Alex Carlman]()
