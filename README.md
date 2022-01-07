@@ -1,7 +1,7 @@
 # Modern-Shopping-Site
-
+---
 ## Table of Content
-
+---
 1. [General Info](#🌴-General-Info)
 2. [Demo](#⚜️-Demo)
 3. [Technologies](#🧪-Technologies)
