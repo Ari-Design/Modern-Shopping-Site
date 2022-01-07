@@ -18,12 +18,15 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 
 ### Questions and Answers Component
 
-Each Answer can expand into a scrollbox to view overflow answers
+
+####Each Answer can expand into a scrollbox to view overflow answers
 
 
 ![](https://media.giphy.com/media/eqt1S1Ye859jWRHimk/giphy.gif)
 
-Search bar dynamically filters questions
+
+
+####Search bar dynamically filters questions
 
 
 ![](https://media.giphy.com/media/YKqzzJ5TpHe6bAgjoO/giphy.gif)
