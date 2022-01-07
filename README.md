@@ -16,7 +16,7 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 
 ### Overview Component
 
-### Questions and Answers Component
+## Questions and Answers Component
 
 
 #### Each Answer can expand into a scrollbox to view overflow answers
