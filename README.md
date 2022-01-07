@@ -49,12 +49,15 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 ## 🚀 Installation and Setup
 
 ```
-$ git clone https://github.com/Ari-Design/Modern-Shopping-Site.git
 
-$ From the root directory, run ...
+`$ git clone https://github.com/Ari-Design/Modern-Shopping-Site.git`
+
+From the root directory, run ...
+`
 $ npm install
 $ npm run watch
 $ npm start
+`
 ```
 ## 🤝 Contributors
 
