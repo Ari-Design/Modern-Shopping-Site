@@ -23,13 +23,13 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 #### Page dynamically re-renders when a different product is selected.
 
 
-![](https://media.giphy.com/media/ovB7jDDERqLsZMzp7k/giphy.gif)
+![](https://media.giphy.com/media/ovB7jDDERqLsZMzp7k/giphy.gif) ![](https://media.giphy.com/media/1lL5VlO0ZNoM97pyBr/giphy.gif)
 
 
 #### Users can cycle through the photo carousel using the arrows or by clicking on a photo directly.
 
 
-![](https://media.giphy.com/media/1lL5VlO0ZNoM97pyBr/giphy.gif)
+
 
 
 
