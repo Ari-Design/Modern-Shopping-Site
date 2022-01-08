@@ -2,7 +2,7 @@
 
 ## Table of Content
 
-1. [General Info](#🌴-general-info)
+1. [General Info](https://github.com/Ari-Design/Modern-Shopping-Site/blob/main/README.md#general-info)
 2. [Demo](https://github.com/Ari-Design/Modern-Shopping-Site/blob/main/README.md#%EF%B8%8F-demo)
 3. [Technologies](#🧪-technologies)
 4. [Installation](#🚀-installation)
