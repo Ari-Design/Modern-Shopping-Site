@@ -1,4 +1,4 @@
-# Modern-Shopping-Site
+# Ari-Design Shopping site
 
 ## Table of Content
 
