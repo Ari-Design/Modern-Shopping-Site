@@ -20,50 +20,31 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 ### Overview Component
 
 
-#### Page dynamically re-renders when a different product is selected.
-
-
-![](https://media.giphy.com/media/ovB7jDDERqLsZMzp7k/giphy.gif) ![](https://media.giphy.com/media/1lL5VlO0ZNoM97pyBr/giphy.gif)
-
-
-#### Users can cycle through the photo carousel using the arrows or by clicking on a photo directly.
+#### Page dynamically re-renders when a different product is selected. 
 
 
 
+![](https://media.giphy.com/media/ovB7jDDERqLsZMzp7k/giphy.gif) 
+
+
+#### Users can cycle through the photo carousel using the arrows or by clicking on a photo directly. They can also choose from multiple styles for each available item.
+
+
+![](https://media.giphy.com/media/EWbhbJQRj7WnWQYEUg/giphy.gif) ![](https://media.giphy.com/media/1lL5VlO0ZNoM97pyBr/giphy.gif)
 
 
 
-#### Users can choose from multiple styles for each available item.
-
-
-![](https://media.giphy.com/media/EWbhbJQRj7WnWQYEUg/giphy.gif)
-
-
-
-#### Users can zoom in on an item's photos.
-#### Photos can be cycled through while in zoom mode.
+#### Users can zoom in on an item's photos. Photos can be cycled through while in zoom mode.
 
 
 ![](https://media.giphy.com/media/569wd5FwlwKZv8V2iZ/giphy.gif) ![](https://media.giphy.com/media/pPpvR9Jhi29LZ3qGZX/giphy.gif)
 
 
+#### Choosing a size dynamically updates the quanity menu to reflect the current quantity available. Users can share their favorite items on Facebook, Twitter, or Pintrest.
 
 
+![](https://media.giphy.com/media/vGCJXF0QfZTYZwwxN3/giphy.gif) ![](https://media.giphy.com/media/7jmqevBMiHwid10yVT/giphy.gif)
 
-
-
-
-#### Choosing a size dynamically updates the quanity menu to reflect the current quantity available.
-
-
-![](https://media.giphy.com/media/vGCJXF0QfZTYZwwxN3/giphy.gif)
-
-
-
-#### Users can share their favorite items on Facebook, Twitter, or Pintrest
-
-
-![](https://media.giphy.com/media/7jmqevBMiHwid10yVT/giphy.gif)
 
 ---
 ### Questions and Answers Component
