@@ -17,7 +17,7 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 ### Overview Component
 
 
-#### Page dynamically re-renders when a different product is selected
+#### Page dynamically re-renders when a different product is selected.
 
 
 ![](https://media.giphy.com/media/ovB7jDDERqLsZMzp7k/giphy.gif)
@@ -35,6 +35,12 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 
 ![](https://media.giphy.com/media/EWbhbJQRj7WnWQYEUg/giphy.gif)
 
+
+
+#### Users can zoom in on an item's photos.
+
+
+![](https://media.giphy.com/media/569wd5FwlwKZv8V2iZ/giphy.gif)
 
 
 #### Choosing a size dynamically updates the quanity menu to reflect the current quantity available.
