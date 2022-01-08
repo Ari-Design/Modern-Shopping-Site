@@ -5,7 +5,7 @@
 1. [General Info](https://github.com/Ari-Design/Modern-Shopping-Site/blob/main/README.md#general-info)
 2. [Demo](https://github.com/Ari-Design/Modern-Shopping-Site/blob/main/README.md#%EF%B8%8F-demo)
     - [Overview Component](https://github.com/Ari-Design/Modern-Shopping-Site/blob/main/README.md#overview-component)
-    - [Questions and Answers Component]()
+    - [Questions and Answers Component](https://github.com/Ari-Design/Modern-Shopping-Site/blob/main/README.md#questions-and-answers-component)
     - [Ratings and Reviews Component]()
 3. [Technologies](https://github.com/Ari-Design/Modern-Shopping-Site/blob/main/README.md#-technologies)
 4. [Installation](https://github.com/Ari-Design/Modern-Shopping-Site/blob/main/README.md#-installation-and-setup)
