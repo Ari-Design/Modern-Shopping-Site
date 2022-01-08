@@ -41,17 +41,16 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 
 
 #### Users can zoom in on an item's photos.
-
-
-![](https://media.giphy.com/media/569wd5FwlwKZv8V2iZ/giphy.gif)
-
-
-
 #### Photos can be cycled through while in zoom mode.
 
 
+![](https://media.giphy.com/media/569wd5FwlwKZv8V2iZ/giphy.gif) ![](https://media.giphy.com/media/pPpvR9Jhi29LZ3qGZX/giphy.gif)
 
-![](https://media.giphy.com/media/pPpvR9Jhi29LZ3qGZX/giphy.gif)
+
+
+
+
+
 
 
 #### Choosing a size dynamically updates the quanity menu to reflect the current quantity available.
