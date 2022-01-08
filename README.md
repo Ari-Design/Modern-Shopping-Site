@@ -3,7 +3,7 @@
 ## Table of Content
 
 1. [General Info](#🌴-general-info)
-2. [Demo](#⚜️-Demo)
+2. [Demo](#markdown-header-⚜️-Demo)
 3. [Technologies](#🧪-technologies)
 4. [Installation](#🚀-installation)
 5. [Contributors](#🤝-contributors) 
