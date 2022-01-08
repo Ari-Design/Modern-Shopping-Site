@@ -74,28 +74,18 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 ### Ratings and Reviews Component
 
 
-#### Users can add a review to a product
+#### Users can add a review to a product. They can also mark a review as helpful to increment the helpfulness count or report a review.
 
 
-![](https://media.giphy.com/media/klv6Bo0sVmqFlfIb2y/giphy.gif)
+![](https://media.giphy.com/media/klv6Bo0sVmqFlfIb2y/giphy.gif) ![](https://media.giphy.com/media/Nw9FvcLMKHptSHYcKL/giphy.gif)
 
 
-#### Reviews can be sorted by relevance, helpfulness, or date posted.
+#### Reviews can be sorted by relevance, helpfulness, or date posted. The reviews list can be expanded to show more reviews.
 
 
-![](https://media.giphy.com/media/pPORlVOOCJWSsbtFOm/giphy.gif)
+![](https://media.giphy.com/media/pPORlVOOCJWSsbtFOm/giphy.gif) ![](https://media.giphy.com/media/gF0I6akl8W0t4gguUX/giphy.gif)
 
 
-#### The reviews list can be expanded to show more reviews.
-
-
-![](https://media.giphy.com/media/gF0I6akl8W0t4gguUX/giphy.gif)
-
-
-#### Users can mark a review as helpful to increment the helpfulness count or report a review.
-
-
-![](https://media.giphy.com/media/Nw9FvcLMKHptSHYcKL/giphy.gif)
 ---
 ## 🧪 Technologies
 
