@@ -23,10 +23,12 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 ![](https://media.giphy.com/media/1lL5VlO0ZNoM97pyBr/giphy.gif)
 
 
+
 #### Users can choose from multiple styles for each available item.
 
 
 ![](https://media.giphy.com/media/EWbhbJQRj7WnWQYEUg/giphy.gif)
+
 
 
 #### Choosing a size dynamically updates the quanity menu to reflect the current quantity available.
@@ -35,10 +37,12 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 ![](https://media.giphy.com/media/vGCJXF0QfZTYZwwxN3/giphy.gif)
 
 
+
 #### Users can share their favorite items on Facebook, Twitter, or Pintrest
 
 
 ![](https://media.giphy.com/media/7jmqevBMiHwid10yVT/giphy.gif)
+
 ---
 ### Questions and Answers Component
 
@@ -49,10 +53,12 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 ![](https://media.giphy.com/media/YKqzzJ5TpHe6bAgjoO/giphy.gif)
 
 
+
 #### Question list for each product can be expanded and collapsed
 
 
 ![](https://media.giphy.com/media/FlGcgwYUv4j5eaHu6k/giphy.gif)
+
 
 
 #### Clicking Helpful for a question will dynamically increment the helpful count. If an answer is reported, it will be removed on the next re-render.
@@ -61,10 +67,13 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 ![](https://media.giphy.com/media/tYKArUvD78A8bKF41L/giphy.gif)
 
 
+
 #### Each Answer list can be expanded and collapsed.
 
 
 ![](https://media.giphy.com/media/eqt1S1Ye859jWRHimk/giphy.gif)
+
+
 
 #### Clicking Helpful for an answer will dynamically increment the helpful count. If an answer is reported, it will be removed on the next re-render.
 
