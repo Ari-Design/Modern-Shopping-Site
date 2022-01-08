@@ -2,11 +2,11 @@
 
 ## Table of Content
 
-1. [General Info](#🌴-General-Info)
+1. [General Info](#🌴-general-info)
 2. [Demo](#⚜️-Demo)
-3. [Technologies](#🧪-Technologies)
-4. [Installation](#🚀-Installation)
-5. [Contributors](#🤝-Contributors) 
+3. [Technologies](#🧪-technologies)
+4. [Installation](#🚀-installation)
+5. [Contributors](#🤝-contributors) 
 
 ## General Info
 
