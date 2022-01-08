@@ -50,46 +50,25 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 ### Questions and Answers Component
 
 
-#### Search bar dynamically filters questions.
+#### Search bar dynamically filters questions. Users can ask a question or add an answer to an existing question.
 
 
-![](https://media.giphy.com/media/YKqzzJ5TpHe6bAgjoO/giphy.gif)
-
-
-
-#### Users can ask a question or add an answer to an existing question.
+![](https://media.giphy.com/media/YKqzzJ5TpHe6bAgjoO/giphy.gif) ![](https://media.giphy.com/media/AWhox7RwSC75LgEJzA/giphy.gif)
 
 
 
-![](https://media.giphy.com/media/AWhox7RwSC75LgEJzA/giphy.gif)
+#### The question list for each product and each answer list can be expanded and collapsed
+
+
+![](https://media.giphy.com/media/FlGcgwYUv4j5eaHu6k/giphy.gif) ![](https://media.giphy.com/media/eqt1S1Ye859jWRHimk/giphy.gif)
 
 
 
-#### Question list for each product can be expanded and collapsed
+#### Clicking Helpful for a question or an answer will dynamically increment the helpful count. If a question or answer is reported, it will be removed on the next re-render.
 
 
-![](https://media.giphy.com/media/FlGcgwYUv4j5eaHu6k/giphy.gif)
+![](https://media.giphy.com/media/tYKArUvD78A8bKF41L/giphy.gif) ![](https://media.giphy.com/media/LTtCBmIBEOMo4vXoQq/giphy.gif)
 
-
-
-#### Clicking Helpful for a question will dynamically increment the helpful count. If an answer is reported, it will be removed on the next re-render.
-
-
-![](https://media.giphy.com/media/tYKArUvD78A8bKF41L/giphy.gif)
-
-
-
-#### Each Answer list can be expanded and collapsed.
-
-
-![](https://media.giphy.com/media/eqt1S1Ye859jWRHimk/giphy.gif)
-
-
-
-#### Clicking Helpful for an answer will dynamically increment the helpful count. If an answer is reported, it will be removed on the next re-render.
-
-
-![](https://media.giphy.com/media/LTtCBmIBEOMo4vXoQq/giphy.gif)
 
 ---
 ### Ratings and Reviews Component
