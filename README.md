@@ -120,6 +120,12 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 
 ![](https://media.giphy.com/media/klv6Bo0sVmqFlfIb2y/giphy.gif)
 
+
+#### Reviews can be sorted by relevance, helpfulness, or date posted.
+
+
+![](https://media.giphy.com/media/pPORlVOOCJWSsbtFOm/giphy.gif)
+
 ## 🧪 Technologies
 
 ### Dependencies
