@@ -16,7 +16,7 @@
 Ari-Design is the client side of an e-commerce site for clothing and accessories. The product page is composed of a product overview component, a questions and answers component, and a ratings and reviews component.
 
 ## <a name="demo"></a>⚜️ Demo
-
+---
 ### Overview Component
 
 
@@ -137,7 +137,7 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 
 
 ![](https://media.giphy.com/media/Nw9FvcLMKHptSHYcKL/giphy.gif)
-
+---
 ## 🧪 Technologies
 
 ### Dependencies
