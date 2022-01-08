@@ -114,6 +114,12 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 ---
 ### Ratings and Reviews Component
 
+
+#### Users can add a review to a product
+
+
+![](https://media.giphy.com/media/klv6Bo0sVmqFlfIb2y/giphy.gif)
+
 ## 🧪 Technologies
 
 ### Dependencies
