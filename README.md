@@ -24,26 +24,26 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 
 
 
-<img src="https://media.giphy.com/media/ovB7jDDERqLsZMzp7k/giphy.gif" width="400"/> 
+<img src="https://media.giphy.com/media/ovB7jDDERqLsZMzp7k/giphy.gif" width="440"/> 
 
 
 #### Users can cycle through the photo carousel using the arrows or by clicking on a photo directly. They can also choose from multiple styles for each available item.
 
 
-<img src="https://media.giphy.com/media/EWbhbJQRj7WnWQYEUg/giphy.gif" width="400"/> <img src="https://media.giphy.com/media/1lL5VlO0ZNoM97pyBr/giphy.gif" width="400"/>
+<img src="https://media.giphy.com/media/EWbhbJQRj7WnWQYEUg/giphy.gif" width="440"/> <img src="https://media.giphy.com/media/1lL5VlO0ZNoM97pyBr/giphy.gif" width="440"/>
 
 
 
 #### Users can zoom in on an item's photos. Photos can be cycled through while in zoom mode.
 
 
-<img src="https://media.giphy.com/media/569wd5FwlwKZv8V2iZ/giphy.gif" width="400"/> <img src="https://media.giphy.com/media/pPpvR9Jhi29LZ3qGZX/giphy.gif" width="400"/>
+<img src="https://media.giphy.com/media/569wd5FwlwKZv8V2iZ/giphy.gif" width="440"/> <img src="https://media.giphy.com/media/pPpvR9Jhi29LZ3qGZX/giphy.gif" width="440"/>
 
 
 #### Choosing a size dynamically updates the quanity menu to reflect the current quantity available. Users can share their favorite items on Facebook, Twitter, or Pintrest.
 
 
-<img src="https://media.giphy.com/media/vGCJXF0QfZTYZwwxN3/giphy.gif" width="400"/> <img src="https://media.giphy.com/media/7jmqevBMiHwid10yVT/giphy.gif" width="400"/>
+<img src="https://media.giphy.com/media/vGCJXF0QfZTYZwwxN3/giphy.gif" width="440"/> <img src="https://media.giphy.com/media/7jmqevBMiHwid10yVT/giphy.gif" width="440"/>
 
 
 ---
@@ -53,21 +53,21 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 #### Search bar dynamically filters questions. Users can ask a question or add an answer to an existing question.
 
 
-<img src="https://media.giphy.com/media/YKqzzJ5TpHe6bAgjoO/giphy.gif" width="400"/> <img src="https://media.giphy.com/media/AWhox7RwSC75LgEJzA/giphy.gif" width="400"/>
+<img src="https://media.giphy.com/media/YKqzzJ5TpHe6bAgjoO/giphy.gif" width="440"/> <img src="https://media.giphy.com/media/AWhox7RwSC75LgEJzA/giphy.gif" width="440"/>
 
 
 
 #### The question list for each product and each answer list can be expanded and collapsed
 
 
-<img src="https://media.giphy.com/media/FlGcgwYUv4j5eaHu6k/giphy.gif" width="400"/> <img src="https://media.giphy.com/media/eqt1S1Ye859jWRHimk/giphy.gif" width="400"/>
+<img src="https://media.giphy.com/media/FlGcgwYUv4j5eaHu6k/giphy.gif" width="440"/> <img src="https://media.giphy.com/media/eqt1S1Ye859jWRHimk/giphy.gif" width="440"/>
 
 
 
 #### Clicking Helpful for a question or an answer will dynamically increment the helpful count. If a question or answer is reported, it will be removed on the next re-render.
 
 
-<img src="https://media.giphy.com/media/tYKArUvD78A8bKF41L/giphy.gif" width="400"/> <img src="https://media.giphy.com/media/LTtCBmIBEOMo4vXoQq/giphy.gif" width="400"/>
+<img src="https://media.giphy.com/media/tYKArUvD78A8bKF41L/giphy.gif" width="440"/> <img src="https://media.giphy.com/media/LTtCBmIBEOMo4vXoQq/giphy.gif" width="440"/>
 
 
 ---
