@@ -17,10 +17,16 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 ### Overview Component
 
 
-#### Users can cycle through the photo carousel using the arrows or by clicking on a photo directly
+#### Users can cycle through the photo carousel using the arrows or by clicking on a photo directly.
 
 
 ![](https://media.giphy.com/media/1lL5VlO0ZNoM97pyBr/giphy.gif)
+
+
+#### Users can choose from multiple styles for each available item.
+
+
+![](https://media.giphy.com/media/EWbhbJQRj7WnWQYEUg/giphy.gif)
 
 
 #### Choosing a size dynamically updates the quanity menu to reflect the current quantity available.
