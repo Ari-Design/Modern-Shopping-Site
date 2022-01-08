@@ -24,7 +24,7 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 
 
 
-<img src="https://media.giphy.com/media/ovB7jDDERqLsZMzp7k/giphy.gif" width="250"/> 
+<img src="https://media.giphy.com/media/ovB7jDDERqLsZMzp7k/giphy.gif" width="400"/> 
 
 
 #### Users can cycle through the photo carousel using the arrows or by clicking on a photo directly. They can also choose from multiple styles for each available item.
