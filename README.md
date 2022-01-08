@@ -17,6 +17,12 @@ Ari-Design is the client side of an e-commerce site for clothing and accessories
 ### Overview Component
 
 
+#### Choosing a size dynamically updates the quanity menu to reflect the current quantity available.
+
+
+![](https://media.giphy.com/media/vGCJXF0QfZTYZwwxN3/giphy.gif)
+
+
 #### Users can share their favorite items on Facebook, Twitter, or Pintrest
 
 
