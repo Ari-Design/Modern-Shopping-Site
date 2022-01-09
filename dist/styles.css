@@ -110,6 +110,7 @@ header {
 .style_ratings {
   grid-row-start: 2;
   grid-column-start: 2;
+  font-size: 20px;
 }
 
 .style_category {
@@ -132,8 +133,8 @@ header {
 
 .style_price {
   display: inline;
-  color: black;
-  text-decoration: line-through black;
+  color: #4d1b17;
+  text-decoration: line-through #4d1b17;
   font-size: 24px;
 }
 
@@ -185,6 +186,7 @@ header {
 .style_buttons {
   grid-row-start: 9;
   grid-column-start: 2;
+
 }
 
 .share {
@@ -240,27 +242,55 @@ header {
 
 .ratings_container {
   width: 100%;
+  height:100%;
   position: relative;
   display: grid;
-  grid-template-columns: .66fr 1fr 2fr .5fr 1fr;
-  grid-template-rows: 1fr;
-  gap: 50px 50px;
-  margin-bottom: 100px;
+  grid-template-columns: .8fr 1.2fr 2fr 1fr .7fr;
+  grid-template-rows: .1fr 1fr .1fr;
+  gap: 0px 0px;
+  margin-bottom: 20px;
   grid-template-areas:
-    ". ratings_breakdown reviews_list .";
+    ". reviews_header sort_by ."
+    ". ratings_breakdown reviews_list ."
+    ". . review_footer .";
 }
 
-.ratings_breakdown { grid-area: ratings_breakdown; }
+.reviews_header {
+  grid-area: reviews_header;
+  width: 100%;
+  color: #226C73;
+  font-weight: 900;
+}
+
+.sort_by {
+  color: #226C73;
+  grid-area: sort_by;
+  height: 10px;
+  margin: 0px;
+  width: 600px;
+  padding-right:20px;
+}
+
+.ratings_breakdown {
+  color: #226C73;
+  grid-area: ratings_breakdown;
+}
+
+.ratings_factors {
+  width: 88.5%;
+}
 
 .reviews_list {
-  max-height: 650px;
+  max-height: 600px;
   width: 600px;
+  padding-right: 20px;
   overflow: auto;
   grid-area: reviews_list;
   color: #226C73;
 }
 
 .stars_outer {
+  color: #4d1b17;
   display: inline-block;
   position: relative;
 }
@@ -270,6 +300,7 @@ header {
 }
 
 .stars_inner {
+  color: #4d1b17;
   position: absolute;
   top: 0;
   left: 0;
@@ -290,8 +321,14 @@ header {
   overflow: hidden;
   width: 0;
 }
+
 .stars_inner_reactive::before {
   content: "\2605 \2605 \2605 \2605 \2605";
+}
+
+.review_footer {
+  width : 100%;
+  grid-area: review_footer;
 }
 
 .review_buttons {
@@ -309,7 +346,8 @@ header {
 
 .add_review_form {
   background-color: white;
-  border: black solid 1px;
+  border:  #226C73 solid 3px;
+  color: #226C73;
   border-radius: 10px;
   padding: 15px;
   padding-left:27px;
@@ -869,6 +907,49 @@ a.button {
   color: initial;
 }
 .page_top{
-/*   height: 75px; */
+  height: 75px;
+  /* background-color: white; */
 }
 
+.logo {
+  height: 75px;
+  width: auto;
+  object-fit: scale-down;
+  transform: translate(190%);
+}
+
+.product_search {
+  display: block;
+  position: absolute;
+  top: 3%;
+  left: 74%;
+  height: 30px;
+}
+
+.chooseProduct {
+  width: 110%;
+  height: 100%;
+}
+
+button,
+.styles,
+.arrowDown,
+.arrowLeft,
+.arrowRight,
+.arrowUp,
+.thumbnail,
+.button:hover {
+  cursor: pointer;
+}
+
+.announcement {
+  background-color: #206D73;
+  height: 60px;
+}
+
+.site_message {
+  display: block;
+  transform: translate(34%, 70%);
+  color: white;
+  font-size: 20px;
+}

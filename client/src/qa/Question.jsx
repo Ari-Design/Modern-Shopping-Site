@@ -5,7 +5,7 @@ class Question extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      ansExpand: false,
+      aListLength: 2,
       helpful: false,
       report: false
     }
@@ -15,9 +15,9 @@ class Question extends React.Component {
   }
 
   handleReSize () {
-    this.setState({
-      ansExpand: !this.state.ansExpand
-    })
+    this.state.aListLength === 2 ?
+    this.setState({ aListLength: Object.keys(this.props.question.answers).length }) :
+    this.setState({ aListLength: 2 })
   }
 
   handleQuestionHelpful () {
@@ -31,8 +31,6 @@ class Question extends React.Component {
       report: true
     })
   }
-
-// ({ allAnswers, currentQuestion, handleHandR, handleMoreAnswers, moreAnswers, openAnswerForm, productId, question, selectQuestion, updateQaData })
 
   render () {
     return (
@@ -84,21 +82,15 @@ class Question extends React.Component {
         </div>
         <div>
           <AnswerList
-            allAnswers={this.props.allAnswers}
+            aListLength={this.state.aListLength}
             answers={this.props.question.answers}
-            ansExpand={this.state.ansExpand}
-            currentQuestion={this.props.currentQuestion}
             handleQaHelpful={this.props.handleQaHelpful}
             handleQaReport={this.props.handleQaReport}
             key={`ANS-${this.props.question.question_id}`}
-            moreAnswers={this.props.moreAnswers}
             productId={this.props.productId}
-            question={this.props.question}
-            qId={this.props.question.question_id}
-            updateQaData={this.props.updateQaData}
           />
         </div>
-        {(this.state.ansExpand) ?
+        {(this.state.aListLength > 2) ?
           <h4
             className="answer_window"
             onClick={() => this.handleReSize()}

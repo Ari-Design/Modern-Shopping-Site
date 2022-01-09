@@ -1,46 +1,25 @@
 import React from 'react';
 import Answer from './Answer.jsx';
 
-
-var AnswerList = ({ allAnswers, answers, ansExpand, currentQuestion, handleQaHelpful, handleQaReport, moreAnswers, productId, question, qId, updateQaData, }) => {
+var AnswerList = ({ aListLength, answers, handleQaHelpful, handleQaReport, productId }) => {
 
   let answersArray = [];
   for (var id in answers) {
     answersArray.push(answers[id])
   }
+  var divClass;
+  aListLength > 2 ? divClass = 'answer_scroll' : divClass = 'a_list'
 
-  if(ansExpand) {
-    return (
-      <div className="answer_scroll">
-        {answersArray.sort((a, b) => b.helpfulness - a.helpfulness).map((answer) => (
-          <Answer
-          key={answer.id}
-          answer={answer}
-          answers={answersArray}
-          ansExpand={ansExpand}
-          handleQaHelpful={handleQaHelpful}
-          handleQaReport={handleQaReport}
-          productId={productId}
-          updateQaData={updateQaData}
-          qId={qId}
-          />
-          ))}
-      </div>
-      )
-  }
   return (
-    <div>
-      {answersArray.sort((a, b) => b.helpfulness - a.helpfulness).slice(0,2).map((answer) => (
+    <div className={divClass}>
+      {answersArray.sort((a, b) => b.helpfulness - a.helpfulness).slice(0, aListLength).map((answer) => (
         <Answer
           answer={answer}
           answers={answersArray}
-          ansExpand={ansExpand}
           handleQaHelpful={handleQaHelpful}
           handleQaReport={handleQaReport}
           key={answer.id}
           productId={productId}
-          qId={qId}
-          updateQaData={updateQaData}
         />
       ))}
     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Question from './Question.jsx';
 
-var QuestionList = ({ allAnswers, currentQuestion, data, handleQaHelpful, handleQaReport, handleMoreAnswers, moreAnswers, openAnswerForm, qListLength, selectQuestion, term, updateQaData }) => {
+var QuestionList = ({ data, handleQaHelpful, handleQaReport, openAnswerForm, qListLength, selectQuestion, term }) => {
 
   if (data.results.length === 0) {
     return null;
@@ -19,18 +19,13 @@ var QuestionList = ({ allAnswers, currentQuestion, data, handleQaHelpful, handle
         }
       }).slice(0, qListLength).map((question) => (
         <Question
-          allAnswers={allAnswers}
-          currentQuestion={currentQuestion}
           handleQaHelpful={handleQaHelpful}
           handleQaReport={handleQaReport}
-          handleMoreAnswers={handleMoreAnswers}
           key={`${question.question_id}`}
-          moreAnswers={moreAnswers}
           openAnswerForm={openAnswerForm}
           productId={data.product_id}
           question={question}
           selectQuestion={selectQuestion}
-          updateQaData={updateQaData}
         />
       ))}
     </div>

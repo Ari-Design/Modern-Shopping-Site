@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const compression = require('compression')
 const path = require('path');
 const port = 8080;
 const config = require('../config.js');
@@ -8,6 +9,7 @@ const apiUrl = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfe';
 const options = { headers: {'Authorization': `${config.TOKEN}`}};
 
 app.use(express.json());
+app.use(compression());
 app.use('/', express.static(path.join(__dirname, '../dist')));
 
 app.listen(port, () => {

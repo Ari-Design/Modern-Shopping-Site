@@ -2,6 +2,7 @@ import React from 'react';
 import StyleSelector from './StyleSelector.jsx';
 import Dropdown from '../shared/Dropdown.jsx';
 import Star from '../shared/Star.jsx';
+import ClickCounter from '../ClickCounter.jsx'
 
 
 class Styles extends React.Component {
@@ -86,7 +87,7 @@ class Styles extends React.Component {
       <>
         <div className="style_ratings">
           <Star avgRating={true} />
-          <a href="#ratings_container"> Read all {this.props.reviews} reviews</a>
+          <a href="#ratings_container" style={{color: "white", marginLeft: '8px', fontSize: '15px'}}>Read all {this.props.reviews} reviews</a>
         </div>
         <h3 className="style_category">{category}</h3>
         <h1 className="style_name">{name}</h1>
@@ -100,7 +101,7 @@ class Styles extends React.Component {
         <span className="style_style">STYLE > {styleName}</span>
         <div className="style_selector">
           <StyleSelector styles={productStyles}
-            onClick={this.props.onClick} />
+            onClick={this.props.onClick} styleName={styleName}/>
         </div>
         <div className="drop_downs">
           {error ? <p style={{ margin: 0 }}>*Please select a size</p> : null}
@@ -112,19 +113,19 @@ class Styles extends React.Component {
               <Dropdown title={'select_qty'} optionsArr={['-']} disabled={true} />}
         </div>
         <div className="style_buttons">
-          {sizes[0] === 'OUT OF STOCK' ? null : <button onClick={() => { this.changeErrorT() ? this.changeErrorT() : console.log('added') }}>add to bag button</button>}
-          <button>favorite</button>
+          {sizes[0] === 'OUT OF STOCK' ? null : <button onClick={() => { this.changeErrorT() ? this.changeErrorT() : console.log('added') }} className="question_button" style={{margin: 0}}>ADD TO CART</button>}
+          <a className="button" id="shareBtn" style={{ backgroundImage: "url(https://www.pngrepo.com/download/73307/favorite-button.png)", transform: "translate(50%, 25%)" }}/>
         </div>
-        <div className="share">
-          <a className="button" id="shareBtn" style={{ backgroundImage: "url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/800px-2021_Facebook_icon.svg.png)" }} target="_blank" rel="noopener noreferrer" href={`http://www.facebook.com/sharer.php?u=${'54.221.47.130:8080'}&p${name}=testtile`}>
-          </a>
-          <a className="button" id="shareBtn" style={{ backgroundImage: "url(https://cdn-icons-png.flaticon.com/512/124/124021.png)" }}
-            target="_blank" rel="noopener noreferrer" href={`http://twitter.com/share?text=${name}&url=${'54.221.47.130:8080'}`}>
-          </a>
-          <a id="shareBtn" style={{ backgroundImage: "url(https://cdn2.iconfinder.com/data/icons/metro-ui-icon-set/512/Pinterest_alt.png)" }}
-            target="_blank" rel="noopener noreferrer" href={`http://pinterest.com/pin/create/button/?url=${'54.221.47.130:8080'}&description=${name}`}>
-          </a>
-        </div>
+          <div className="share">
+            <a className="button" id="shareBtn" style={{ backgroundImage: "url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/2021_Facebook_icon.svg/800px-2021_Facebook_icon.svg.png)" }} target="_blank" rel="noopener noreferrer" href={`http://www.facebook.com/sharer.php?u=${'54.221.47.130:8080'}&p${name}=testtile`}>
+            </a>
+            <a className="button" id="shareBtn" style={{ backgroundImage: "url(https://cdn-icons-png.flaticon.com/512/124/124021.png)" }}
+              target="_blank" rel="noopener noreferrer" href={`http://twitter.com/share?text=${name}&url=${'54.221.47.130:8080'}`}>
+            </a>
+            <a id="shareBtn" style={{ backgroundImage: "url(https://cdn2.iconfinder.com/data/icons/metro-ui-icon-set/512/Pinterest_alt.png)" }}
+              target="_blank" rel="noopener noreferrer" href={`http://pinterest.com/pin/create/button/?url=${'54.221.47.130:8080'}&description=${name}`}>
+            </a>
+          </div>
       </>
     )
   }

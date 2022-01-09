@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import axios from 'axios';
 
 import Container from './overview/Container.jsx';
-import QAContainer from './qa/QAContainer.jsx'
-import ReviewsList from './Reviews/ReviewsList.jsx';
-import Modal from './shared/Modal.jsx'
 import Dropdown from './shared/Dropdown.jsx';
 import mountainLogo from '../../dist/assets/images/mountain-logo.png';
+const QAContainer = React.lazy(() => import('./qa/QAContainer.jsx'));
+const ReviewsList = React.lazy(() => import('./Reviews/ReviewsList.jsx'));
+import Modal from './shared/Modal.jsx';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -29,7 +30,6 @@ class App extends React.Component {
 
     this.changeModal = this.changeModal.bind(this);
     this.getCurrentImg = this.getCurrentImg.bind(this);
-    this.getProducts = this.getProducts.bind(this);
     this.chooseProduct = this.chooseProduct.bind(this);
     this.fetchData = this.fetchData.bind(this);
     this.selectQuestion = this.selectQuestion.bind(this);
@@ -37,26 +37,12 @@ class App extends React.Component {
     this.updateReviewData = this.updateReviewData.bind(this);
   }
 
-  getProducts() {
-    axios.get('/products')
-      .then((res) => {
-        this.setState({
-          products: res.data
-        })
-      })
-      .catch((err) => {
-        console.log(`error: ${err}`)
-      })
-  }
-
   componentDidMount() {
-    this.getProducts();
     this.fetchData(37311)
   }
   componentDidUpdate(prevProps, prevState) {
     if (prevState.qaData != this.state.qaData) {
       this.setState({
-        currentQuestion: prevState.currentQuestion,
         currentProductId: prevState.currentProductId
       })
     }
@@ -68,21 +54,23 @@ class App extends React.Component {
   }
 
   fetchData(id) {
+    const getProducts = axios.get('/products');
     const getInfo = axios.get(`/products/${id}`);
     const getStyles = axios.get(`/products/${id}/styles`);
     const getReviewData = axios.get('/reviews', { params: { product_id: id } });
     const getReviewMeta = axios.get('/reviews/meta', { params: { product_id: id } });
     const getQaData = axios.get('/qa/questions', { params: { product_id: id } });
 
-    axios.all([getInfo, getStyles, getReviewData, getReviewMeta, getQaData])
+    axios.all([getProducts, getInfo, getStyles, getReviewData, getReviewMeta, getQaData])
       .then(axios.spread((...data) => {
         this.setState({
           currentProductId: id,
-          productInfo: data[0].data,
-          productStyles: data[1].data,
-          reviewData: data[2].data,
-          reviewMeta: data[3].data,
-          qaData: data[4].data
+          products: data[0].data,
+          productInfo: data[1].data,
+          productStyles: data[2].data,
+          reviewData: data[3].data,
+          reviewMeta: data[4].data,
+          qaData: data[5].data
         })
       }))
       .catch((err) => {
@@ -103,8 +91,6 @@ class App extends React.Component {
   updateQaData(id) {
     axios.get('/qa/questions', { params: { product_id: id } })
       .then((res) => {
-        console.log(res.data)
-        console.log("****** DATA UPDATED ********")
         this.setState({
           qaData: res.data
         })
@@ -133,45 +119,47 @@ class App extends React.Component {
 
   render() {
     var { productInfo, productStyles, qaData, currentProductId, reviewData, reviewMeta,
-      fullscreen, answerForm, currentImg, questionForm, reviewForm, currentQuestion, pages, isDarkmode} = this.state;
+      fullscreen, answerForm, currentImg, questionForm, reviewForm, currentQuestion, pages, isDarkmode } = this.state;
 
     var products = this.state.products.map((product) => product.id);
 
     return (
       <div>
-        <header>
-          <nav className="page_top">
-            <img src={mountainLogo} />
-            <span>Search</span>
+        <header className="page_top">
+          <nav>
+            <img src={mountainLogo} className="logo" />
             <span className="product_search">
               <Dropdown title="chooseProduct" optionsArr={products} onChange={this.chooseProduct} />
             </span>
           </nav>
         </header>
+        <div className="announcement">
+          <span className="site_message">Site Wide Announcement - SHOP OUR PRODUCTS & Have a great day!</span>
+        </div>
         <main>
           <Container productInfo={productInfo}
             productStyles={productStyles}
             getCurrentImg={this.getCurrentImg}
             openFullscreen={this.changeModal}
             reviewData={reviewData} />
-
-          <QAContainer
-            currentQuestion={this.state.currentQuestion}
-            data={qaData}
-            id={currentProductId}
-            handleHandR={this.handleIsHelpfulAndReport}
-            openAnswerForm={this.changeModal}
-            productInfo={productInfo}
-            selectQuestion={this.selectQuestion}
-            updateQaData={this.updateQaData}
-          />
-
-          <ReviewsList currentProductId={this.state.currentProductId}
-            reviewData={reviewData}
-            openReviewForm={this.changeModal}
-            reviewMeta={reviewMeta}
-            updateReviewData={this.updateReviewData}
-          />
+          <Suspense fallback={<div>Loading...</div>}>
+            <QAContainer
+              data={qaData}
+              id={currentProductId}
+              openAnswerForm={this.changeModal}
+              productInfo={productInfo}
+              selectQuestion={this.selectQuestion}
+              updateQaData={this.updateQaData}
+            />
+          </Suspense>
+          <Suspense fallback={<div>Loading...</div>}>
+            <ReviewsList currentProductId={this.state.currentProductId}
+              reviewData={reviewData}
+              openReviewForm={this.changeModal}
+              reviewMeta={reviewMeta}
+              updateReviewData={this.updateReviewData}
+            />
+          </Suspense>
 
           {fullscreen || answerForm || questionForm || reviewForm ? <Modal
             onClose={this.changeModal}
@@ -186,7 +174,7 @@ class App extends React.Component {
             currentQuestion={currentQuestion}
             productInfo={productInfo}
             reviewMeta={reviewMeta}
-            /> : null}
+          /> : null}
         </main>
       </div>
     );
