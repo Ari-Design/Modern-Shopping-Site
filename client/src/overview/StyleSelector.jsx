@@ -1,8 +1,6 @@
 import React from 'react';
 
-
 const StyleSelector = ({ styles, onClick, styleName }) => {
-
   return (
     styles.map((style, i) => {
       if (i < 8) {

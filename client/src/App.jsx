@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import axios from 'axios';
 
 import Container from './overview/Container.jsx';
-import QAContainer from './qa/QAContainer.jsx'
-import ReviewsList from './Reviews/ReviewsList.jsx';
-import Modal from './shared/Modal.jsx'
 import Dropdown from './shared/Dropdown.jsx';
 import mountainLogo from '../../dist/assets/images/mountain-logo.png';
+const QAContainer = React.lazy(() => import('./qa/QAContainer.jsx'));
+const ReviewsList = React.lazy(() => import('./Reviews/ReviewsList.jsx'));
+import Modal from './shared/Modal.jsx';
 
 
 class App extends React.Component {
@@ -142,22 +142,24 @@ class App extends React.Component {
             getCurrentImg={this.getCurrentImg}
             openFullscreen={this.changeModal}
             reviewData={reviewData} />
-
-          <QAContainer
-            data={qaData}
-            id={currentProductId}
-            openAnswerForm={this.changeModal}
-            productInfo={productInfo}
-            selectQuestion={this.selectQuestion}
-            updateQaData={this.updateQaData}
-          />
-
-          <ReviewsList currentProductId={this.state.currentProductId}
-            reviewData={reviewData}
-            openReviewForm={this.changeModal}
-            reviewMeta={reviewMeta}
-            updateReviewData={this.updateReviewData}
-          />
+          <Suspense fallback={<div>Loading...</div>}>
+            <QAContainer
+              data={qaData}
+              id={currentProductId}
+              openAnswerForm={this.changeModal}
+              productInfo={productInfo}
+              selectQuestion={this.selectQuestion}
+              updateQaData={this.updateQaData}
+            />
+          </Suspense>
+          <Suspense fallback={<div>Loading...</div>}>
+            <ReviewsList currentProductId={this.state.currentProductId}
+              reviewData={reviewData}
+              openReviewForm={this.changeModal}
+              reviewMeta={reviewMeta}
+              updateReviewData={this.updateReviewData}
+            />
+          </Suspense>
 
           {fullscreen || answerForm || questionForm || reviewForm ? <Modal
             onClose={this.changeModal}

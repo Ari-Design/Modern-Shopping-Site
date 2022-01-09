@@ -18,9 +18,7 @@ class ClickCounter extends React.Component {
       <>
         {React.Children.map(this.props.children, (child) => {
           return React.cloneElement(child, {
-            onClick: (e) => {
-              this.handleChange(e);
-            }
+            onClick: (e) => {this.handleChange(e)}
           })
         })}
       </>
